@@ -1,0 +1,48 @@
+//======================================================================
+// Styles applied to global application
+//======================================================================
+
+// Padding on main area on larger screens
+//----------------------------------------------------------------------
+
+@media (min-width: $medium-width) {
+  #main {
+    padding: $spacing-normal;
+  }
+}
+
+// Left sidebar on larger screens
+//----------------------------------------------------------------------
+
+@media (min-width: $large-width) {
+  #left-sidebar {
+    background-color: transparent;
+    border-right-color: transparent;
+  }
+}
+
+// Main navigation
+//----------------------------------------------------------------------
+
+#main-nav {
+  .list-item:hover {
+    background-color: color("hover");
+  }
+
+  .list-item:active {
+    background-color: darken(color("hover"), 5%);
+  }
+}
+
+// Active tab
+.controller-applications #applications-tab,
+.controller-contacts #contacts-tab,
+.controller-users #users-tab,
+.controller-settings #settings-tab,
+.controller-profiles #settings-tab,
+.controller-notifications #settings-tab,
+.controller-contact_informations #settings-tab,
+.controller-message_templates #settings-tab {
+  background-color: color("hover");
+  font-weight: bold;
+}

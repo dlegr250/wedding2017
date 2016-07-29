@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag "mailer", media: "all", "data-turbolinks-track" => true %>
+</head>
+<body class="email-template">
+  <table class="email-background">
+    <tr>
+      <td>
+        <table class="email-container">
+          <tr>
+            <td>
+              <div class="email-main">
+                <div class="email-branding">
+                  Dan and Jacqueline Wedding 2017
+                </div>
+                <%= yield %>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

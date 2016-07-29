@@ -1,0 +1,18 @@
+<% content_for(:authentication_title) { "Reset Password" } %>
+<% content_for :authentication_subtitle do %>
+  Enter your email address and we will send you instructions to reset your password.
+<% end %>
+
+<%= form_tag password_resets_path do %>
+  <div class="field field-xsmall">
+    <div class="field-label">
+      <%= label_tag :email, "Email" %>
+    </div>
+    <div class="field-element">
+      <%= text_field_tag :email, params[:email], class: "full-width", autofocus: true %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Reset Password", class: "button button-raised-primary", id: "request-password-reset-button" %>
+  </div>
+<% end %>

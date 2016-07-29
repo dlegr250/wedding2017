@@ -1,5 +1,13 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  force_ssl if Rails.env.production?
+
+  private
+
+  # Accessible from multiple places, so makes sense to put it here.
+  def destroy_session_for_user(msg = nil)
+    cookies.delete(:user_authentication_token)
+    flash[:error] = msg if msg.present?
+    redirect_to login_path
+  end
 end

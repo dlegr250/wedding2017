@@ -1,0 +1,20 @@
+<% content_for(:authentication_title) { "Reset Password" } %>
+<% content_for(:authentication_subtitle) { "Enter and confirm your new password." } %>
+
+<%= form_for @user, { url: password_reset_path(@user.password_reset_token), method: "PUT" } do |f| %>
+  <div class="field field-xsmall">
+    <%= f.label :password, "Password", class: "top" %>
+    <%= f.password_field :password, class: "full-width", autofocus: true %>
+    <div class="helper-text helper-text-bottom error-messages">
+      <%= bottom_error_messages_helper @user, :password %>
+    </div>
+  </div>
+  <div class="field field-xsmall">
+    <%= f.label :password_confirmation, "Confirm Password", class: "top" %>
+    <%= f.password_field :password_confirmation, class: "full-width" %>
+    <%= bottom_error_messages_helper @user, :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", class: "button button-raised-primary full-width", id: "password-reset-button" %>
+  </div>
+<% end %>

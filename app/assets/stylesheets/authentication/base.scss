@@ -1,0 +1,30 @@
+//======================================================================
+// Styles applied only to the authentication pages
+//======================================================================
+
+#authentication-container {
+  padding: $spacing-normal;
+
+  .authentication-flash {
+    @extend .box;
+    margin-bottom: $spacing-normal;
+  }
+
+  .authentication-flash-notice {
+    background-color: color("green");
+    color: color("white");
+  }
+
+  .authentication-flash-error {
+    background-color: color("red");
+    color: color("white");
+  }
+
+  // Add additional spacing on the authentication pages
+  .card {
+    .card-content {
+      padding: $spacing-xlarge;
+      padding-top: $spacing-normal;
+    }
+  }
+}

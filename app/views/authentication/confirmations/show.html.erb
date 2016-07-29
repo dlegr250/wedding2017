@@ -1,0 +1,30 @@
+<% content_for(:authentication_title) { "Confirmation" } %>
+<% content_for(:authentication_subtitle) { "Fill out this information to confirm your invitation." } %>
+
+<%= form_for @user, as: :user, url: confirmation_path(@user.confirmation_token), method: "PUT" do |f| %>
+  <div class="field field-xsmall align-center">
+    <strong><%= @user.email %></strong>
+  </div>
+  <div class="field field-xsmall">
+    <%= f.label :full_name, "Full Name", class: "top" %>
+    <%= f.text_field :full_name, class: "full-width", autofocus: true, required: true %>
+    <div class="helper-text helper-text-bottom error-messages">
+      <%= bottom_error_messages_helper @user, :full_name %>
+    </div>
+  </div>
+  <div class="field field-xsmall">
+    <%= f.label :password, "Password", class: "top" %>
+    <%= f.password_field :password, class: "full-width", required: true %>
+    <div class="helper-text helper-text-bottom error-messages">
+      <%= bottom_error_messages_helper @user, :password %>
+    </div>
+  </div>
+  <div class="field field-xsmall">
+    <%= f.label :password_confirmation, "Confirm Password", class: "top" %>
+    <%= f.password_field :password_confirmation, class: "full-width", required: true %>
+    <%= bottom_error_messages_helper @user, :password_confirmation %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Confirm", class: "button button-raised-primary full-width", id: "password-reset-button" %>
+  </div>
+<% end %>

@@ -1,0 +1,6 @@
+<div class="email-block">
+  You have been invited to join the team
+</div>
+<div class="email-block email-block-large">
+  <%= link_to "Accept the Invitation", confirmation_url(@user.confirmation_token), class: "button", target: "_blank" %>
+</div>

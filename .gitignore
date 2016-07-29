@@ -11,3 +11,20 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore secure files.
+.env
+
+# Ignore secure files
+/ssl
+/ssl/*
+
+# Ignore code coverage dir
+/coverage
+
+# Ignore codeship status
+.codeship.yml
