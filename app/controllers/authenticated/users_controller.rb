@@ -63,7 +63,8 @@ module Authenticated
 
     def invitation_params
       params.require(:user).permit(
-        :email
+        :email,
+        :admin
       )
     end
 

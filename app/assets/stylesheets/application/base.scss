@@ -41,3 +41,12 @@
   background-color: color("hover");
   font-weight: bold;
 }
+
+// Toggle fix
+//----------------------------------------------------------------------
+
+// TODO Tmp solution until I fix UI gem
+.toggle {
+  padding-top: $spacing-small;
+  padding-bottom: $spacing-small;
+}

@@ -12,7 +12,7 @@
   </div>
   <div class="card-content">
     <%= form_for @user, as: :user, url: users_path do |f| %>
-      <div class="field field-xsmall">
+      <div class="field field-xsmall field-responsive">
         <div class="field-label">
           <%= f.label :email, class: "required" %>
         </div>
@@ -21,7 +21,21 @@
           <%= bottom_error_messages_helper @user, :email %>
         </div>
       </div>
-      <div class="actions">
+      <div class="field field-xsmall field-responsive">
+        <div class="field-label">
+          <%= f.label :admin %>
+        </div>
+        <div class="field-element">
+          <div class="toggle toggle-primary">
+            <%= f.check_box :admin %>
+            <label for="user_admin"></label>
+          </div>
+          <div class="helper-text helper-text-bottom">
+            Can only allow Admin on Invitations at the moment
+          </div>
+        </div>
+      </div>
+      <div class="actions actions-bordered">
         <%= f.submit "Send", class: "button button-raised-primary", id: "invite-user-button" %>
         <%= link_to "Cancel", users_path, class: "button button-flat-grey" %>
       </div>
