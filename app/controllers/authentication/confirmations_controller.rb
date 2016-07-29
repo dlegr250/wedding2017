@@ -19,7 +19,7 @@ module Authentication
 
       if @user.confirm(user_params)
         create_session_for_user(@user)
-        redirect_to applications_path
+        redirect_to attendees_path
       else
         flash[:error] = "Problem confirming your invitation"
         render :show
