@@ -1,11 +1,28 @@
 <% content_for(:appbar_nav_icon) do %>
-  <%= link_to "", user_path(@user.uuid), class: "zmdi zmdi-arrow-left appbar-button" %>
+  <%= link_to "", users_path, class: "zmdi zmdi-arrow-left appbar-button" %>
 <% end %>
 <% content_for(:appbar_title) { "Edit User" } %>
+<% content_for(:appbar_actions) do %>
+  <%= button_tag "Update", class: "button button-raised-white", data: { submit: "#user-form" } %>
+  <span class="appbar-divider"></span>
+  <span class="menu-container">
+    <i class="zmdi zmdi-more-vert appbar-button" role="menu-trigger" data-menu-id="appbar-menu"></i>
+    <div class="menu menu-width-3" id="appbar-menu" data-position="top-right">
+      <%= link_to user_path(@user.uuid), method: "DELETE", class: "menu-item", id: "delete-user-link", data: { "custom-confirm" => { template: "user-confirm-dialog-template" } } do %>
+        <div class="menu-item-icon">
+          <%= icon "delete" %>
+        </div>
+        <div class="menu-item-primary">
+          Delete
+        </div>
+      <% end %>
+    </div>
+  </span>
+<% end %>
 
 <div class="card full-width constrained-medium">
   <div class="card-content">
-    <%= form_for @user, as: :user, url: user_path(@user.uuid) do |f| %>
+    <%= form_for @user, as: :user, url: user_path(@user.uuid), html: { id: "user-form" } do |f| %>
       <div class="field field-xsmall">
         <div class="field-label">
           <%= f.label :full_name, class: "required" %>
@@ -26,8 +43,10 @@
       </div>
       <div class="actions">
         <%= f.submit "Update", class: "button button-raised-primary", id: "invite-user-button" %>
-        <%= link_to "Cancel", user_path(@user.uuid), class: "button button-flat-grey" %>
+        <%= link_to "Cancel", users_path, class: "button button-flat-grey" %>
       </div>
     <% end %>
   </div>
 </div>
+
+<%= render "authenticated/users/destroy_confirm_template" %>

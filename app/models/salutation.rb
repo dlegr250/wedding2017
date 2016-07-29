@@ -18,7 +18,7 @@ class Salutation < ApplicationRecord
   # Validations
   #----------------------------------------------------------------------
 
-  # NOOP
+  validates :value, presence: true
 
   # Methods
   #----------------------------------------------------------------------

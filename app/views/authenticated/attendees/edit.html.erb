@@ -4,9 +4,20 @@
 <% content_for(:appbar_title) { "Edit Attendee" } %>
 <% content_for(:appbar_actions) do %>
   <%= button_tag "Update", class: "button button-raised-white", data: { submit: "#attendee-form" } %>
-  <span class="appbar-spacer"></span>
-  <%= link_to "", attendee_path(@attendee.uuid), class: "zmdi zmdi-delete appbar-button", method: "DELETE", data: { "custom-confirm" => { template: "attendee-confirm-dialog-template" }, tooltip: "Delete" } %>
   <span class="appbar-divider"></span>
+  <span class="menu-container">
+    <i class="zmdi zmdi-more-vert appbar-button" role="menu-trigger" data-menu-id="appbar-menu"></i>
+    <div class="menu menu-width-3" id="appbar-menu" data-position="top-right">
+      <%= link_to attendee_path(@attendee.uuid), method: "DELETE", class: "menu-item", id: "delete-attendee-link", data: { "custom-confirm" => { template: "attendee-confirm-dialog-template" } } do %>
+        <div class="menu-item-icon">
+          <%= icon "delete" %>
+        </div>
+        <div class="menu-item-primary">
+          Delete
+        </div>
+      <% end %>
+    </div>
+  </span>
 <% end %>
 
 <div class="card full-width constrained-medium">

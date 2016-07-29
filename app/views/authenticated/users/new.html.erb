@@ -1,7 +1,11 @@
 <% content_for(:appbar_nav_icon) do %>
   <%= link_to "", users_path, class: "zmdi zmdi-arrow-left appbar-button" %>
 <% end %>
-<% content_for(:appbar_title) { "Invite new user" } %>
+<% content_for(:appbar_title) { "Invite New User" } %>
+<% content_for(:appbar_actions) do %>
+  <%= button_tag "Send", class: "button button-raised-white", data: { submit: "#user-form" } %>
+<% end %>
+
 
 <div class="card full-width constrained-medium">
   <div class="card-header">
@@ -11,8 +15,8 @@
     </div>
   </div>
   <div class="card-content">
-    <%= form_for @user, as: :user, url: users_path do |f| %>
-      <div class="field field-xsmall field-responsive">
+    <%= form_for @user, as: :user, url: users_path, html: { id: "user-form" } do |f| %>
+      <div class="field field-xsmall field-with-validations field-responsive">
         <div class="field-label">
           <%= f.label :email, class: "required" %>
         </div>

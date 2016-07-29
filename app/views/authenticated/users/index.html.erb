@@ -1,8 +1,7 @@
 <% content_for(:appbar_title) { "Users" } %>
 <% if current_user.admin? %>
   <% content_for(:appbar_actions) do %>
-    <%= link_to "", new_user_path, class: "zmdi zmdi-plus appbar-button", data: { tooltip: "Invite New User" } %>
-    <span class="appbar-divider"></span>
+    <%= link_to "", new_user_path, class: "zmdi zmdi-plus appbar-button", tooltip: "Invite New User" %>
   <% end %>
 
   <%= link_to "", new_user_path, class: "button fab fab-secondary zmdi zmdi-plus", id: "new-user-button", data: { "tooltip-position": "left", tooltip: "Invite New User" }, role: "fab" %>

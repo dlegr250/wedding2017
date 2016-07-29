@@ -1,10 +1,9 @@
 <% content_for(:appbar_nav_icon) do %>
   <%= link_to "", attendees_path, class: "zmdi zmdi-close appbar-button" %>
 <% end %>
-<% content_for(:appbar_title) { "Add new Attendee" } %>
+<% content_for(:appbar_title) { "New Attendee" } %>
 <% content_for(:appbar_actions) do %>
   <%= button_tag "Create", class: "button button-raised-white", data: { submit: "#attendee-form" } %>
-  <span class="appbar-divider"></span>
 <% end %>
 
 

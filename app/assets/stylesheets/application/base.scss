@@ -39,6 +39,7 @@
 .controller-salutations #salutations-tab,
 .controller-users #users-tab {
   background-color: color("hover");
+  color: color("primary");
   font-weight: bold;
 }
 
@@ -49,4 +50,8 @@
 .toggle {
   padding-top: $spacing-small + 2px;
   padding-bottom: $spacing-small;
+}
+
+.appbar-actions .button {
+  margin-right: 4px;
 }

@@ -42,7 +42,7 @@ gem "turbolinks", "~> 2.5.3"
 gem "jquery-turbolinks", "~> 2.1.0"
 gem "nokogiri", "~> 1.6.7.2"
 gem "premailer-rails", "~> 1.9.0"
-gem "dlegr250_material_design", "~> 0.2.51"
+gem "dlegr250_material_design", "~> 0.2.52"
 
 # For relative timestamps on client-side
 gem "local_time"

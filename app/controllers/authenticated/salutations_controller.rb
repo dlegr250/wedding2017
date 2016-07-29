@@ -31,7 +31,7 @@ module Authenticated
       @salutation = get_salutation
       if @salutation.update_attributes(salutation_params)
         flash[:notice] = "Updated Salutation"
-        redirect_to salutation_path(@salutation.uuid)
+        redirect_to salutations_path
       else
         flash[:error] = "Problem updating Salutation"
         render :edit

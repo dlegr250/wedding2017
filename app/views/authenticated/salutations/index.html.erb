@@ -1,7 +1,6 @@
 <% content_for(:appbar_title) { "Salutations" } %>
 <% content_for(:appbar_actions) do %>
-  <%= link_to "", new_salutation_path, class: "zmdi zmdi-plus appbar-button", data: { tooltip: "New Salutation" } %>
-  <span class="appbar-divider"></span>
+  <%= link_to "", new_salutation_path, class: "zmdi zmdi-plus appbar-button", title: "New Salutation" %>
 <% end %>
 
 <%= link_to "", new_salutation_path, class: "button fab fab-secondary zmdi zmdi-plus", id: "new-salutation-button", data: { "tooltip-position": "left", tooltip: "New Salutation" }, role: "fab" %>
