@@ -1,0 +1,33 @@
+<% content_for(:appbar_nav_icon) do %>
+  <%= link_to "", user_path(@user.uuid), class: "zmdi zmdi-arrow-left appbar-button" %>
+<% end %>
+<% content_for(:appbar_title) { "Edit User" } %>
+
+<div class="card full-width constrained-medium">
+  <div class="card-content">
+    <%= form_for @user, as: :user, url: user_path(@user.uuid) do |f| %>
+      <div class="field field-xsmall">
+        <div class="field-label">
+          <%= f.label :full_name, class: "required" %>
+        </div>
+        <div class="field-element">
+          <%= f.text_field :full_name, size: 50, class: "input-responsive", autofocus: true %>
+          <%= bottom_error_messages_helper @user, :full_name %>
+        </div>
+      </div>
+      <div class="field field-xsmall">
+        <div class="field-label">
+          <%= f.label :email, class: "required" %>
+        </div>
+        <div class="field-element">
+          <%= f.email_field :email, size: 50, class: "input-responsive" %>
+          <%= bottom_error_messages_helper @user, :email %>
+        </div>
+      </div>
+      <div class="actions">
+        <%= f.submit "Update", class: "button button-raised-primary", id: "invite-user-button" %>
+        <%= link_to "Cancel", user_path(@user.uuid), class: "button button-flat-grey" %>
+      </div>
+    <% end %>
+  </div>
+</div>

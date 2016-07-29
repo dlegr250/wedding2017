@@ -1,0 +1,30 @@
+<% content_for(:appbar_nav_icon) do %>
+  <%= link_to "", users_path, class: "zmdi zmdi-arrow-left appbar-button" %>
+<% end %>
+<% content_for(:appbar_title) { "Invite new user" } %>
+
+<div class="card full-width constrained-medium">
+  <div class="card-header">
+    <div class="color-helper">
+      Enter the user's email address and an email will be sent
+      to them with instructions to join your account.
+    </div>
+  </div>
+  <div class="card-content">
+    <%= form_for @user, as: :user, url: users_path do |f| %>
+      <div class="field field-xsmall">
+        <div class="field-label">
+          <%= f.label :email, class: "required" %>
+        </div>
+        <div class="field-element">
+          <%= f.email_field :email, size: 50, class: "input-responsive", autofocus: true %>
+          <%= bottom_error_messages_helper @user, :email %>
+        </div>
+      </div>
+      <div class="actions">
+        <%= f.submit "Send", class: "button button-raised-primary", id: "invite-user-button" %>
+        <%= link_to "Cancel", users_path, class: "button button-flat-grey" %>
+      </div>
+    <% end %>
+  </div>
+</div>

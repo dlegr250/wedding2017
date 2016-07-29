@@ -1,0 +1,12 @@
+<%= link_to user_path(user.uuid), class: "list-item", role: "user" do %>
+  <div class="list-item-primary">
+    <% if user.confirmed? %>
+      <%= user.full_name %>
+    <% else %>
+      <em>Invited</em>
+    <% end %>
+    <div class="list-item-primary-subtext">
+      <%= user.email %>
+    </div>
+  </div>
+<% end %>
