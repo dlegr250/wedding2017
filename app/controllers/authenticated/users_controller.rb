@@ -1,5 +1,7 @@
 module Authenticated
   class UsersController < BaseController
+    before_action :require_admin_user, except: [:index, :show]
+
     def index
       @invited_users = User.unconfirmed.alphabetical
       @users = User.confirmed.alphabetical

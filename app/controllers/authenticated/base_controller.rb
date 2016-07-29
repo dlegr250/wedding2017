@@ -18,6 +18,9 @@ module Authenticated
     def require_user
       destroy_session_for_user("Must login before continuing") unless current_user.present?
     end
-  end
 
+    def require_admin_user
+      destroy_session_for_user("Admin user required for that action") unless current_user.present? && current_user.admin?
+    end
+  end
 end
