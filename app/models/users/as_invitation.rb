@@ -19,7 +19,7 @@ module Users
     # Validations
     #----------------------------------------------------------------------
 
-    validates :confirmation_token, presence: { message: ::Initializers::MESSAGES[:required] }
+    validates :confirmation_token, presence: true
 
     # Methods
     #----------------------------------------------------------------------
