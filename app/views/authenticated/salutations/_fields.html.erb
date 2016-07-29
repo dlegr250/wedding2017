@@ -1,0 +1,19 @@
+<div class="field field-xsmall">
+  <div class="field-label">
+    <%= f.label :value, class: "required" %>
+  </div>
+  <div class="field-element">
+    <%= f.text_field :value, size: 50, class: "full-width", autofocus: true %>
+    <%= bottom_error_messages_helper @salutation, :value %>
+  </div>
+</div>
+
+<div class="field field-xsmall">
+  <div class="field-label">
+    <%= f.label :description %>
+  </div>
+  <div class="field-element">
+    <%= f.text_area :description, class: "full-width" %>
+    <%= bottom_error_messages_helper @salutation, :description %>
+  </div>
+</div>

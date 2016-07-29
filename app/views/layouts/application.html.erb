@@ -40,15 +40,34 @@
         <%= yield :left_sidebar %>
       <% else %>
         <nav class="list list-hoverable" id="main-nav">
-          <%= link_to applications_path, class: "list-item", id: "applications-tab" do %>
+          <%= link_to attendees_path, class: "list-item", id: "attendees-tab" do %>
             <div class="list-item-icon">
-              <%= icon "collection-text" %>
+              <%= icon "accounts" %>
             </div>
             <div class="list-item-primary">
-              Applications
+              Attendees
             </div>
-            <div class="list-item-secondary font-size-normal">
-              <%= current_account.loan_applications.submitted.count %>
+          <% end %>
+
+          <%= link_to salutations_path, class: "list-item", id: "salutations-tab" do %>
+            <div class="list-item-icon">
+              <%= icon "settings" %>
+            </div>
+            <div class="list-item-primary">
+              Salutations
+            </div>
+          <% end %>
+
+          <hr class="divider" />
+
+          <%= link_to users_path, class: "list-item", id: "users-tab" do %>
+            <div class="list-item-icon">
+              <%= icon "account-circle" %>
+            </div>
+            <div class="list-item-primary">
+              Users
+            </div>
+            <div class="list-item-secondary">
             </div>
           <% end %>
         </nav>
@@ -63,6 +82,11 @@
             <div class="list-item-primary-subtext truncate-text">
               <span role="logged_in_as"><%= current_user.email %></span>
             </div>
+            <% if current_user.admin? %>
+              <div class="list-item-primary-subtext">
+                Admin
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="list-item">

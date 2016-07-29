@@ -1,0 +1,22 @@
+<div class="blank-state">
+  <div class="blank-state-icon">
+    <div class="blank-state-icon-circle">
+      <%= icon "settings" %>
+    </div>
+  </div>
+  <div class="blank-state-primary">
+    Salutations
+    <div class="blank-state-primary-subtext">
+      Hmmm...no salutations yet!
+    </div>
+    <div class="blank-state-primary-subtext">
+      A "Salutation" is a proper title for attendees.
+    </div>
+  </div>
+  <div class="blank-state-actions">
+    <%= link_to new_salutation_path, class: "button button-raised-green", id: "new-salutation-button" do %>
+      <i class="zmdi zmdi-plus zmdi-fw zmdi-hc-lg icon-left"></i>
+      Add the First Salutation
+    <% end %>
+  </div>
+</div>

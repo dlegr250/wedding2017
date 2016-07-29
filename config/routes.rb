@@ -12,6 +12,15 @@ Rails.application.routes.draw do
     resources :confirmations
   end
 
+  # Standard
+  #----------------------------------------------------------------------
+
+  scope module: :authenticated do
+    resources :attendees
+    resources :salutations
+    resources :users
+  end
+
   # Root
   #----------------------------------------------------------------------
 

@@ -1,0 +1,21 @@
+<% content_for(:appbar_nav_icon) do %>
+  <%= link_to "", salutations_path, class: "zmdi zmdi-arrow-left appbar-button" %>
+<% end %>
+<% content_for(:appbar_title) { "Add new Salutation" } %>
+
+<div class="card full-width constrained-medium">
+  <div class="card-header">
+    <div class="color-helper">
+      A Salutation is an official/proper title used to address attendees.
+    </div>
+  </div>
+  <div class="card-content">
+    <%= form_for @salutation, url: salutations_path do |f| %>
+      <%= render "authenticated/salutations/fields", f: f %>
+      <div class="actions">
+        <%= f.submit "Send", class: "button button-raised-primary", id: "create-salutation-button" %>
+        <%= link_to "Cancel", salutations_path, class: "button button-flat-grey" %>
+      </div>
+    <% end %>
+  </div>
+</div>

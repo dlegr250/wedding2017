@@ -1,16 +1,16 @@
 module Authenticated
   class UsersController < BaseController
     def index
-      @invited_users = current_account.users.unconfirmed.alphabetical
-      @users = current_account.users.confirmed.alphabetical
+      @invited_users = User.unconfirmed.alphabetical
+      @users = User.confirmed.alphabetical
     end
 
     def new
-      @user = current_account.users.new
+      @user = User.new
     end
 
     def create
-      @user = ::Users::AsInvitation.new(invitation_params.merge(account: current_account))
+      @user = ::Users::AsInvitation.new(invitation_params)
       if @user.save
         flash[:notice] = "Invitation sent"
         redirect_to users_path
@@ -42,8 +42,8 @@ module Authenticated
     def destroy
       @user = get_user
 
-      if @user.primary?
-        flash[:error] = "Cannot remove Primary user"
+      if @user.admin?
+        flash[:error] = "Cannot remove Admin user"
         redirect_to users_path
         return false
       end
@@ -68,13 +68,12 @@ module Authenticated
     def user_params
       params.require(:user).permit(
         :email,
-        :full_name,
-        :cell_phone
+        :full_name
       )
     end
 
     def get_user
-      current_account.users.find_by(uuid: params[:id])
+      User.find_by(uuid: params[:id])
     end
   end
 end

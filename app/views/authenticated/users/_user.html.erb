@@ -5,6 +5,9 @@
     <% else %>
       <em>Invited</em>
     <% end %>
+    <% if user.admin? %>
+      <span class="color-green">&middot; Admin</span>
+    <% end %>
     <div class="list-item-primary-subtext">
       <%= user.email %>
     </div>

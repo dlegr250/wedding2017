@@ -1,0 +1,16 @@
+<% content_for(:appbar_nav_icon) do %>
+  <%= link_to "", attendee_path(@attendee.uuid), class: "zmdi zmdi-arrow-left appbar-button" %>
+<% end %>
+<% content_for(:appbar_title) { "Edit Attendee" } %>
+
+<div class="card full-width constrained-medium">
+  <div class="card-content">
+    <%= form_for @attendee, url: attendee_path(@attendee.uuid) do |f| %>
+      <%= render "authenticated/attendees/fields", f: f %>
+      <div class="actions actions-bordered">
+        <%= f.submit "Update", class: "button button-raised-primary", id: "update-attendee-button" %>
+        <%= link_to "Cancel", attendees_path, class: "button button-flat-grey" %>
+      </div>
+    <% end %>
+  </div>
+</div>

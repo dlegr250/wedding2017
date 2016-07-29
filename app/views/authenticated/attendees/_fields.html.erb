@@ -1,0 +1,180 @@
+<div class="field-title">
+  General
+  <div class="field-subtitle">
+    If none of the Salutations are appropriate, write out the exact
+    value in the Party Name field.
+  </div>
+  <div class="field-subtitle">
+    For example: "The Most Honorable John Smith"
+  </div>
+</div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :salutation_id %>
+  </div>
+  <div class="field-element">
+    <%= f.collection_select :salutation_id, Salutation.alphabetical, :id, :value, { include_blank: true }, { class: "input-responsive" } %>
+    <%= bottom_error_messages_helper @attendee, :salutation_id %>
+  </div>
+</div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :full_name, "Party Name", class: "required" %>
+  </div>
+  <div class="field-element">
+    <%= f.text_field :full_name, size: 50, class: "input-responsive", autofocus: true %>
+    <%= bottom_error_messages_helper @attendee, :full_name %>
+    <div class="helper-text helper-text-bottom">
+      If Mr. &amp; Mrs. John Smith are both attending, just enter "John Smith".
+    </div>
+  </div>
+</div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :party %>
+  </div>
+  <div class="field-element">
+    <div class="segmented-control-container segmented-control-primary">
+      <div class="segmented-control">
+        <%= f.radio_button :party, "bride" %>
+        <%= f.label :party_bride, raw("#{icon('female')} Bride") %>
+      </div>
+      <div class="segmented-control">
+        <%= f.radio_button :party, "groom" %>
+        <%= f.label :party_groom, raw("#{icon('male')} Groom") %>
+      </div>
+      <div class="segmented-control">
+        <%= f.radio_button :party, "both" %>
+        <%= f.label :party_both, raw("#{icon('male-female')} Both") %>
+      </div>
+    </div>
+
+    <%= bottom_error_messages_helper @attendee, :party %>
+  </div>
+</div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :notes %>
+  </div>
+  <div class="field-element">
+    <%= f.text_area :notes, class: "full-width" %>
+  </div>
+</div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :wedding_gift %>
+  </div>
+  <div class="field-element">
+    <%= f.text_area :wedding_gift, class: "full-width" %>
+  </div>
+</div>
+
+
+<hr class="divider normal" />
+
+<div class="field-title">
+  Counts
+</div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :number_invited %>
+  </div>
+  <div class="field-element">
+    <%= f.text_field :number_invited, size: 3, data: { format: "years" } %>
+  </div>
+</div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :number_attending %>
+    <div class="helper-text helper-text-bottom">
+      (Confirmed number)
+    </div>
+  </div>
+  <div class="field-element">
+    <%= f.text_field :number_attending, size: 3, data: { format: "years" } %>
+  </div>
+</div>
+
+
+<hr class="divider normal" />
+
+<div class="field-title">
+  Contact
+</div>
+<div class="field field-small field-with-validations field-responsive">
+  <div class="field-label">
+    <%= f.label :email %>
+  </div>
+  <div class="field-element">
+    <%= f.email_field :email, size: 50, class: "input-responsive" %>
+  </div>
+</div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :phone_number, "Phone Number" %>
+  </div>
+  <div class="field-element">
+    <%= f.telephone_field :phone_number, size: 16, data: { format: "phone" } %>
+    <%= bottom_error_messages_helper @attendee, :phone_number %>
+  </div>
+</div>
+
+<hr class="divider normal" />
+
+<div class="field-title">
+  Address
+  <div class="field-subtitle">
+    For sending invitations, thank you letters, etc...
+  </div>
+</div>
+<div class="field field-xsmall field-with-validations field-responsive">
+  <div class="field-label">
+    <%= f.label :address1, "Street Address" %>
+  </div>
+  <div class="field-element">
+    <%= f.text_field :address1, size: 50, class: "input-responsive" %>
+    <%= bottom_error_messages_helper @attendee, :address1 %>
+  </div>
+</div>
+
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :address2, "Address Line 2" %>
+    <span class="helper-text">
+      (Apartment, suite, unit, etc)
+    </span>
+  </div>
+  <div class="field-element">
+    <%= f.text_field :address2, size: 50, class: "input-responsive" %>
+  </div>
+</div>
+
+<div class="field field-xsmall field-with-validations field-responsive">
+  <div class="field-label">
+    <%= f.label :city %>
+  </div>
+  <div class="field-element">
+    <%= f.text_field :city, size: 20 %>
+    <%= bottom_error_messages_helper @attendee, :city %>
+  </div>
+</div>
+
+<div class="field field-xsmall field-with-validations field-responsive">
+  <div class="field-label">
+    <%= f.label :state %>
+  </div>
+  <div class="field-element">
+    <%= f.text_field :state, size: 20 %>
+    <%= bottom_error_messages_helper @attendee, :state %>
+  </div>
+</div>
+
+<div class="field field-xsmall field-with-validations field-responsive">
+  <div class="field-label">
+    <%= f.label :zip %>
+  </div>
+  <div class="field-element">
+    <%= f.telephone_field :zip, size: 10 %>
+    <%= bottom_error_messages_helper @attendee, :zip %>
+  </div>
+</div>

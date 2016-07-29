@@ -35,14 +35,9 @@
 }
 
 // Active tab
-.controller-applications #applications-tab,
-.controller-contacts #contacts-tab,
-.controller-users #users-tab,
-.controller-settings #settings-tab,
-.controller-profiles #settings-tab,
-.controller-notifications #settings-tab,
-.controller-contact_informations #settings-tab,
-.controller-message_templates #settings-tab {
+.controller-attendees #attendees-tab,
+.controller-salutations #salutations-tab,
+.controller-users #users-tab {
   background-color: color("hover");
   font-weight: bold;
 }

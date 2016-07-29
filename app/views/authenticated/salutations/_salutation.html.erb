@@ -1,0 +1,8 @@
+<%= link_to salutation_path(salutation.uuid), class: "list-item", role: "salutation" do %>
+  <div class="list-item-primary">
+    <%= salutation.value %>
+    <div class="list-item-primary-subtext">
+      <%= salutation.description %>
+    </div>
+  </div>
+<% end %>

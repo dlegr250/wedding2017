@@ -1,0 +1,16 @@
+<% content_for(:appbar_nav_icon) do %>
+  <%= link_to "", salutation_path(@salutation.uuid), class: "zmdi zmdi-arrow-left appbar-button" %>
+<% end %>
+<% content_for(:appbar_title) { "Edit Salutation" } %>
+
+<div class="card full-width constrained-medium">
+  <div class="card-content">
+    <%= form_for @salutation, url: salutation_path(@salutation.uuid) do |f| %>
+      <%= render "authenticated/salutations/fields", f: f %>
+      <div class="actions">
+        <%= f.submit "Update", class: "button button-raised-primary", id: "update-salutation-button" %>
+        <%= link_to "Cancel", salutation_path(@salutation.uuid), class: "button button-flat-grey" %>
+      </div>
+    <% end %>
+  </div>
+</div>

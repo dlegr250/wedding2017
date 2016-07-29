@@ -11,7 +11,7 @@ module Authentication
       if user.present? && user.authenticate(params[:password])
         flash[:notice] = user.email
         create_session_for_user(user)
-        redirect_to applications_path
+        redirect_to attendees_path
       else
         flash[:error] = "Invalid email or password"
         render :new

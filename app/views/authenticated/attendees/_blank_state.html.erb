@@ -1,0 +1,23 @@
+<div class="blank-state">
+  <div class="blank-state-icon">
+    <div class="blank-state-icon-circle">
+      <%= icon "accounts" %>
+    </div>
+  </div>
+  <div class="blank-state-primary">
+    Attendees
+    <div class="blank-state-primary-subtext">
+      Hmmm...looks like no one is attending yet!
+    </div>
+    <div class="blank-state-primary-subtext">
+      An "Attendee" would include a group/couple/etc,
+      such as a Mr. &amp; Mrs. or a family that's coming as a single unit.
+    </div>
+  </div>
+  <div class="blank-state-actions">
+    <%= link_to new_attendee_path, class: "button button-raised-green", id: "new-residence-button" do %>
+      <i class="zmdi zmdi-plus zmdi-fw zmdi-hc-lg icon-left"></i>
+      Add the First Attendee
+    <% end %>
+  </div>
+</div>

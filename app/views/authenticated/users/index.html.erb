@@ -1,5 +1,5 @@
-<% content_for(:appbar_title) { "Users (#{current_account.users.count})" } %>
-<% if current_user.primary? %>
+<% content_for(:appbar_title) { "Users" } %>
+<% if current_user.admin? %>
   <% content_for(:appbar_actions) do %>
     <%= link_to "", new_user_path, class: "zmdi zmdi-plus appbar-button", data: { tooltip: "Invite New User" } %>
     <span class="appbar-divider"></span>
@@ -11,7 +11,7 @@
 <div class="list list-bordered list-divided list-hoverable rounded-corners background-color-white allow-room-for-fab-at-bottom" id="users">
   <div class="list-header">
     <div class="list-header-primary">
-      Only a Primary User may manage users
+      Only an Admin User may manage users
     </div>
   </div>
   <%= render @invited_users %>

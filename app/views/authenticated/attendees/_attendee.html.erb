@@ -1,0 +1,31 @@
+<%= link_to edit_attendee_path(attendee.uuid), class: "list-item", role: "attendee" do %>
+  <div class="list-item-primary flex-2">
+    <div class="helper-text">
+      <%= attendee.salutation_value %>
+    </div>
+    <%= attendee.full_name %>
+  </div>
+  <div class="list-item-primary flex-1">
+    <%= attendee.number_attending || 0 %> /
+    <%= attendee.number_invited || 0 %>
+  </div>
+  <div class="list-item-primary flex-1 small-only color-helper">
+    <%= icon("female", size: "lg") if attendee.bride? %>
+    <%= icon("male", size: "lg") if attendee.groom? %>
+    <%= icon("male-female", size: "lg") if attendee.both? %>
+  </div>
+  <div class="list-item-primary flex-1 medium-and-large-only">
+    <%= attendee.party.to_s.capitalize %>
+  </div>
+  <div class="list-item-primary flex-1 small-only color-helper">
+    <% if attendee.full_address.present? %>
+      <%= icon "pin", size: "lg" %>
+    <% end %>
+  </div>
+  <div class="list-item-primary flex-2 medium-and-large-only">
+    <%= attendee.full_address %>
+  </div>
+  <div class="list-item-secondary one-actions">
+      <%= icon "chevron-right" %>
+    </div>
+<% end %>
