@@ -69,6 +69,52 @@
   </div>
 </div>
 
+<hr class="divider normal" />
+
+<div class="field-title">
+  Save the Dates / Invitations
+</div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :delivery_format %>
+  </div>
+  <div class="field-element">
+    <div class="segmented-control-container segmented-control-primary">
+      <div class="segmented-control">
+        <%= f.radio_button :delivery_format, "deliver" %>
+        <%= f.label :delivery_format_deliver, "Deliver" %>
+      </div>
+      <div class="segmented-control">
+        <%= f.radio_button :delivery_format, "mail" %>
+        <%= f.label :delivery_format_mail, "Mail" %>
+      </div>
+    </div>
+
+    <%= bottom_error_messages_helper @attendee, :delivery_format %>
+  </div>
+</div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :sent_save_the_date, "Sent Save the Date?" %>
+  </div>
+  <div class="field-element">
+    <div class="toggle toggle-primary">
+      <%= f.check_box :sent_save_the_date %>
+      <label for="attendee_sent_save_the_date"></label>
+    </div>
+  </div>
+</div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :sent_invitation, "Sent Invitation?" %>
+  </div>
+  <div class="field-element">
+    <div class="toggle toggle-primary">
+      <%= f.check_box :sent_invitation %>
+      <label for="attendee_sent_invitation"></label>
+    </div>
+  </div>
+</div>
 
 <hr class="divider normal" />
 
@@ -77,24 +123,21 @@
 </div>
 <div class="field field-xsmall field-responsive">
   <div class="field-label">
-    <%= f.label :number_invited %>
+    <%= f.label :number_invited, "Attending / Invited" %>
   </div>
   <div class="field-element">
-    <%= f.text_field :number_invited, size: 3, data: { format: "years" } %>
+    <%= f.telephone_field :number_attending, size: 3, data: { format: "years" } %> /
+    <%= f.telephone_field :number_invited, size: 3, data: { format: "years" } %>
   </div>
 </div>
 <div class="field field-xsmall field-responsive">
   <div class="field-label">
-    <%= f.label :number_attending %>
-    <div class="helper-text helper-text-bottom">
-      (Confirmed number)
-    </div>
+    <%= f.label :number_who_drink %>
   </div>
   <div class="field-element">
-    <%= f.text_field :number_attending, size: 3, data: { format: "years" } %>
+    <%= f.telephone_field :number_who_drink, size: 3, data: { format: "years" } %>
   </div>
 </div>
-
 
 <hr class="divider normal" />
 

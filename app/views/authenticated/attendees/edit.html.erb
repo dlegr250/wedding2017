@@ -1,7 +1,11 @@
 <% content_for(:appbar_nav_icon) do %>
-  <%= link_to "", attendee_path(@attendee.uuid), class: "zmdi zmdi-arrow-left appbar-button" %>
+  <%= link_to "", attendees_path, class: "zmdi zmdi-arrow-left appbar-button" %>
 <% end %>
 <% content_for(:appbar_title) { "Edit Attendee" } %>
+<% content_for(:appbar_actions) do %>
+  <%= link_to "", attendee_path(@attendee.uuid), class: "zmdi zmdi-delete appbar-button", method: "DELETE", data: { "custom-confirm" => { template: "attendee-confirm-dialog-template" }, tooltip: "Delete" } %>
+  <span class="appbar-divider"></span>
+<% end %>
 
 <div class="card full-width constrained-medium">
   <div class="card-content">
@@ -14,3 +18,5 @@
     <% end %>
   </div>
 </div>
+
+<%= render "authenticated/attendees/destroy_confirm_template" %>

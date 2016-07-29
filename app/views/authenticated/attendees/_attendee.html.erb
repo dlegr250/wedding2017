@@ -1,31 +1,30 @@
 <%= link_to edit_attendee_path(attendee.uuid), class: "list-item", role: "attendee" do %>
-  <div class="list-item-primary flex-2">
+  <div class="list-item-icon">
+    <%= attendee.party.to_s[0..1].upcase %>
+  </div>
+  <div class="list-item-primary flex-3">
     <div class="helper-text">
       <%= attendee.salutation_value %>
     </div>
     <%= attendee.full_name %>
   </div>
-  <div class="list-item-primary flex-1">
+  <div class="list-item-primary">
+    <% if attendee.sent_save_the_date? %>
+      <span class="color-icon"><%= icon "email", size: "lg" %></span>
+    <% else %>
+      <span class="color-divider"><%= icon "email", size: "lg" %></span>
+    <% end %>
+    <% if attendee.sent_invitation? %>
+      <span class="color-icon"><%= icon "email", size: "lg" %></span>
+    <% else %>
+      <span class="color-divider"><%= icon "email", size: "lg" %></span>
+    <% end %>
+  </div>
+  <div class="list-item-primary">
     <%= attendee.number_attending || 0 %> /
     <%= attendee.number_invited || 0 %>
   </div>
-  <div class="list-item-primary flex-1 small-only color-helper">
-    <%= icon("female", size: "lg") if attendee.bride? %>
-    <%= icon("male", size: "lg") if attendee.groom? %>
-    <%= icon("male-female", size: "lg") if attendee.both? %>
-  </div>
-  <div class="list-item-primary flex-1 medium-and-large-only">
-    <%= attendee.party.to_s.capitalize %>
-  </div>
-  <div class="list-item-primary flex-1 small-only color-helper">
-    <% if attendee.full_address.present? %>
-      <%= icon "pin", size: "lg" %>
-    <% end %>
-  </div>
-  <div class="list-item-primary flex-2 medium-and-large-only">
-    <%= attendee.full_address %>
-  </div>
   <div class="list-item-secondary one-actions">
-      <%= icon "chevron-right" %>
-    </div>
+    <%= icon "chevron-right" %>
+  </div>
 <% end %>

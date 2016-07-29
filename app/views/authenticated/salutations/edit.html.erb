@@ -1,7 +1,12 @@
 <% content_for(:appbar_nav_icon) do %>
-  <%= link_to "", salutation_path(@salutation.uuid), class: "zmdi zmdi-arrow-left appbar-button" %>
+  <%= link_to "", salutations_path, class: "zmdi zmdi-arrow-left appbar-button" %>
 <% end %>
 <% content_for(:appbar_title) { "Edit Salutation" } %>
+<% content_for(:appbar_actions) do %>
+  <%= link_to "", salutation_path(@salutation.uuid), class: "zmdi zmdi-delete appbar-button", method: "DELETE", data: { "custom-confirm" => { template: "salutation-confirm-dialog-template" }, tooltip: "Delete" } %>
+  <span class="appbar-divider"></span>
+<% end %>
+
 
 <div class="card full-width constrained-medium">
   <div class="card-content">
@@ -9,8 +14,10 @@
       <%= render "authenticated/salutations/fields", f: f %>
       <div class="actions">
         <%= f.submit "Update", class: "button button-raised-primary", id: "update-salutation-button" %>
-        <%= link_to "Cancel", salutation_path(@salutation.uuid), class: "button button-flat-grey" %>
+        <%= link_to "Cancel", salutations_path, class: "button button-flat-grey" %>
       </div>
     <% end %>
   </div>
 </div>
+
+<%= render "authenticated/salutations/destroy_confirm_template" %>

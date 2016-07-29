@@ -47,6 +47,10 @@
             <div class="list-item-primary">
               Attendees
             </div>
+            <div class="list-item-secondary font-size-normal">
+              <%= Attendee.sum(:number_attending) || 0 %> /
+              <%= Attendee.sum(:number_invited) || 0 %>
+            </div>
           <% end %>
 
           <%= link_to salutations_path, class: "list-item", id: "salutations-tab" do %>

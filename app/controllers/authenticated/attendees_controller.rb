@@ -67,7 +67,11 @@ module Authenticated
         :number_attending,
         :notes,
         :wedding_gift,
-        :party
+        :party,
+        :sent_save_the_date,
+        :sent_invitation,
+        :delivery_format,
+        :number_who_drink
       )
     end
 

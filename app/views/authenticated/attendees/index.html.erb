@@ -17,6 +17,12 @@
         </div>
       </div>
       <div class="list-header-primary align-center">
+        <%= Attendee.sum(:number_who_drink) || 0 %>
+        <div class="list-header-primary-subtext">
+          Drink
+        </div>
+      </div>
+      <div class="list-header-primary align-center">
         <%= Attendee.bride.sum(:number_attending) || 0 %> /
         <%= Attendee.bride.sum(:number_invited) || 0 %>
         <div class="list-header-primary-subtext">
