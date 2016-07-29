@@ -44,7 +44,7 @@ module Authenticated
     def destroy
       @user = get_user
 
-      if @user.admin?
+      if @user.email == "dan.legrand@gmail.com"
         flash[:error] = "Cannot remove Admin user"
         redirect_to users_path
         return false
