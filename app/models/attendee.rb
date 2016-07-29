@@ -43,6 +43,12 @@ class Attendee < ApplicationRecord
     party.to_s.downcase == "both"
   end
 
+  def party_abbreviation
+    return "B" if bride?
+    return "G" if groom?
+    return "BG" if both?
+  end
+
   def full_address
     "#{[address1, address2, city, state].reject(&:blank?).join(', ')} #{zip}"
   end
