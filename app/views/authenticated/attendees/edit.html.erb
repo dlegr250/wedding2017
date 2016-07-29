@@ -3,13 +3,15 @@
 <% end %>
 <% content_for(:appbar_title) { "Edit Attendee" } %>
 <% content_for(:appbar_actions) do %>
+  <%= button_tag "Update", class: "button button-raised-white", data: { submit: "#attendee-form" } %>
+  <span class="appbar-spacer"></span>
   <%= link_to "", attendee_path(@attendee.uuid), class: "zmdi zmdi-delete appbar-button", method: "DELETE", data: { "custom-confirm" => { template: "attendee-confirm-dialog-template" }, tooltip: "Delete" } %>
   <span class="appbar-divider"></span>
 <% end %>
 
 <div class="card full-width constrained-medium">
   <div class="card-content">
-    <%= form_for @attendee, url: attendee_path(@attendee.uuid) do |f| %>
+    <%= form_for @attendee, url: attendee_path(@attendee.uuid), html: { id: "attendee-form" } do |f| %>
       <%= render "authenticated/attendees/fields", f: f %>
       <div class="actions actions-bordered">
         <%= f.submit "Update", class: "button button-raised-primary", id: "update-attendee-button" %>

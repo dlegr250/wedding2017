@@ -17,12 +17,12 @@
     <%= bottom_error_messages_helper @attendee, :salutation_id %>
   </div>
 </div>
-<div class="field field-xsmall field-responsive">
+<div class="field field-xsmall field-with-validations field-responsive">
   <div class="field-label">
     <%= f.label :full_name, "Party Name", class: "required" %>
   </div>
   <div class="field-element">
-    <%= f.text_field :full_name, size: 50, class: "input-responsive", autofocus: true %>
+    <%= f.text_field :full_name, size: 50, class: "input-responsive", required: true, autofocus: true %>
     <%= bottom_error_messages_helper @attendee, :full_name %>
     <div class="helper-text helper-text-bottom">
       If Mr. &amp; Mrs. John Smith are both attending, just enter "John Smith".

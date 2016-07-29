@@ -1,14 +1,19 @@
 <% content_for(:appbar_nav_icon) do %>
-  <%= link_to "", attendees_path, class: "zmdi zmdi-arrow-left appbar-button" %>
+  <%= link_to "", attendees_path, class: "zmdi zmdi-close appbar-button" %>
 <% end %>
 <% content_for(:appbar_title) { "Add new Attendee" } %>
+<% content_for(:appbar_actions) do %>
+  <%= button_tag "Create", class: "button button-raised-white", data: { submit: "#attendee-form" } %>
+  <span class="appbar-divider"></span>
+<% end %>
+
 
 <div class="card full-width constrained-medium">
   <div class="card-content">
-    <%= form_for @attendee, url: attendees_path do |f| %>
+    <%= form_for @attendee, url: attendees_path, html: { id: "attendee-form" } do |f| %>
       <%= render "authenticated/attendees/fields", f: f %>
       <div class="actions actions-bordered">
-        <%= f.submit "Send", class: "button button-raised-primary", id: "create-attendee-button" %>
+        <%= f.submit "Create", class: "button button-raised-primary", id: "create-attendee-button" %>
         <%= link_to "Cancel", attendees_path, class: "button button-flat-grey" %>
       </div>
     <% end %>
