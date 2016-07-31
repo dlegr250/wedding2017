@@ -98,7 +98,7 @@
     <%= f.label :sent_save_the_date, "Sent Save the Date?" %>
   </div>
   <div class="field-element">
-    <div class="toggle toggle-primary">
+    <div class="switch switch-primary">
       <%= f.check_box :sent_save_the_date %>
       <label for="attendee_sent_save_the_date"></label>
     </div>
@@ -109,9 +109,9 @@
     <%= f.label :sent_invitation, "Sent Invitation?" %>
   </div>
   <div class="field-element">
-    <div class="toggle toggle-primary">
+    <div class="checkbox checkbox-primary">
       <%= f.check_box :sent_invitation %>
-      <label for="attendee_sent_invitation"></label>
+      <label for="attendee_sent_invitation"><%= icon "square-o" %></label>
     </div>
   </div>
 </div>

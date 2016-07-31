@@ -1,8 +1,12 @@
+Account.delete_all
 User.delete_all
 
+account = Account.create
+
 User.create(
+  account: account,
   full_name: "Dan LeGrand",
-  admin: true,
+  account_owner: true,
   email: "dan.legrand@gmail.com",
   password: "password",
   password_confirmation: "password",

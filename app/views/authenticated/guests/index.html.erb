@@ -1,0 +1,8 @@
+<% content_for(:appbar_title) { "Guests" } %>
+<% content_for(:appbar_actions) do %>
+  <%= link_to "", new_guest_path, class: "zmdi zmdi-plus appbar-button", title: "New Attendee" %>
+<% end %>
+
+<%= link_to "", new_guest_path, class: "button fab fab-secondary zmdi zmdi-plus", id: "new-attendee-button", data: { "tooltip-position": "left", tooltip: "New Attendee" }, role: "fab" %>
+
+todo...

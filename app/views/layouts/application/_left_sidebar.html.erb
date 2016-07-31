@@ -1,0 +1,60 @@
+<aside class="sidebar" id="left-sidebar">
+  <div class="sidebar-header">
+    Wedding 2017
+  </div>
+  <% if content_for(:left_sidebar) %>
+    <%= yield :left_sidebar %>
+  <% else %>
+    <nav class="list list-hoverable" id="main-nav">
+      <%= link_to guests_path, class: "list-item", id: "guests-tab" do %>
+        <div class="list-item-icon">
+          <i class="material-icons">person</i>
+        </div>
+        <div class="list-item-primary">
+          Guests
+        </div>
+      <% end %>
+      <%= link_to users_path, class: "list-item", id: "users-tab" do %>
+      <div class="list-item-icon">
+        <i class="material-icons">account_circle</i>
+      </div>
+        <div class="list-item-primary">
+          Users
+        </div>
+      <% end %>
+
+      <hr class="divider normal" />
+
+      <%= link_to nil, class: "list-item", id: "settings-tab" do %>
+      <div class="list-item-icon">
+        <i class="material-icons">settings</i>
+      </div>
+        <div class="list-item-primary">
+          Settings
+        </div>
+      <% end %>
+    </nav>
+  <% end %>
+
+  <hr class="spacer normal" />
+
+  <div class="list">
+    <div class="list-item truncate-text">
+      <div class="list-item-primary">
+        <%= current_user.full_name %>
+        <%= "(Owner)" if current_user.account_owner? %>
+        <div class="list-item-primary-subtext">
+          <span role="logged_in_as"><%= current_user.email %></span>
+        </div>
+        <div class="list-item-primary-subtext">
+          <%= link_to "Logout", logout_path, class: "bold color-helper" %>
+        </div>
+      </div>
+    </div>
+    <div class="list-item">
+      <div class="list-item-primary helper-text">
+        SHA1 commit <strong><%= Git::COMMIT %></strong>
+      </div>
+    </div>
+  </div>
+</aside>

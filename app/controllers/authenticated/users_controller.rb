@@ -1,18 +1,18 @@
 module Authenticated
   class UsersController < BaseController
-    before_action :require_admin_user, except: [:index, :show]
+    before_action :require_account_owner, except: [:index, :show]
 
     def index
-      @invited_users = User.unconfirmed.alphabetical
-      @users = User.confirmed.alphabetical
+      @invited_users = current_account.users.unconfirmed.alphabetical
+      @users = current_account.users.confirmed.alphabetical
     end
 
     def new
-      @user = User.new
+      @user = current_account.users.new
     end
 
     def create
-      @user = ::Users::AsInvitation.new(invitation_params)
+      @user = ::Users::AsInvitation.new(invitation_params.merge(account: current_account))
       if @user.save
         flash[:notice] = "Invitation sent"
         redirect_to users_path
@@ -63,8 +63,8 @@ module Authenticated
 
     def invitation_params
       params.require(:user).permit(
-        :email,
-        :admin
+        :full_name,
+        :email
       )
     end
 
@@ -76,7 +76,7 @@ module Authenticated
     end
 
     def get_user
-      User.find_by(uuid: params[:id])
+      current_account.users.find_by(uuid: params[:id])
     end
   end
 end

@@ -1,0 +1,15 @@
+<header class="appbar" id="appbar">
+  <div class="appbar-nav-icon">
+    <% if content_for?(:appbar_nav_icon) %>
+      <%= yield :appbar_nav_icon %>
+    <% else %>
+      <i class="material-icons appbar-button small-and-medium-only" role="left-sidebar-toggle">menu</i>
+    <% end %>
+  </div>
+  <div class="appbar-title">
+    <%= yield :appbar_title %>
+  </div>
+  <div class="appbar-actions">
+    <%= yield :appbar_actions %>
+  </div>
+</header>

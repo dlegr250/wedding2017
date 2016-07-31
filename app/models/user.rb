@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+
   # Scopes
   #----------------------------------------------------------------------
 
@@ -15,11 +15,12 @@ class User < ApplicationRecord
   # Associations
   #----------------------------------------------------------------------
 
-  # NOOP
+  belongs_to :account
 
   # Validations
   #----------------------------------------------------------------------
 
+  validates :account, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /@/, message: "is invalid" }
   validates :password, presence: true, length: { minimum: 8 }, allow_nil: true
 

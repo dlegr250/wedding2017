@@ -2,56 +2,35 @@
 // Styles applied to global application
 //======================================================================
 
-// Padding on main area on larger screens
-//----------------------------------------------------------------------
-
-@media (min-width: $medium-width) {
-  #main {
-    padding: $spacing-normal;
-  }
-}
-
-// Left sidebar on larger screens
-//----------------------------------------------------------------------
-
-@media (min-width: $large-width) {
-  #left-sidebar {
-    background-color: transparent;
-    border-right-color: transparent;
-  }
-}
-
 // Main navigation
 //----------------------------------------------------------------------
 
 #main-nav {
-  .list-item:hover {
-    background-color: color("hover");
-  }
-
-  .list-item:active {
-    background-color: darken(color("hover"), 5%);
+  .list-item-primary {
+    font-weight: bold;
   }
 }
 
 // Active tab
-.controller-attendees #attendees-tab,
-.controller-salutations #salutations-tab,
-.controller-users #users-tab {
+.controller-guests #guests-tab,
+.controller-users #users-tab,
+.controller-settings #settings-tab {
   background-color: color("hover");
-  color: color("primary");
-  font-weight: bold;
+
+  .list-item-icon,
+  .list-item-primary {
+    color: color("primary");
+  }
 }
 
-// Toggle fix
+// Trying out new form validation format
 //----------------------------------------------------------------------
 
-// TODO Tmp solution until I fix UI gem
-.toggle {
-  padding-top: $spacing-small + 2px;
-  padding-bottom: $spacing-small;
-}
+.field.has-errors {
+  background-color: transparent;
 
-.appbar-actions .button {
-  margin-right: 4px;
+  input.invalid {
+    background-color: color("light-red");
+    border: 1px solid color("red");
+  }
 }

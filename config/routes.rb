@@ -16,8 +16,7 @@ Rails.application.routes.draw do
   #----------------------------------------------------------------------
 
   scope module: :authenticated do
-    resources :attendees
-    resources :salutations
+    resources :guests
     resources :users
   end
 

@@ -1,9 +1,9 @@
-class Salutation < ApplicationRecord
+class Account < ApplicationRecord
 
   # Scopes
   #----------------------------------------------------------------------
 
-  scope :alphabetical, -> { order(:value) }
+  # NOOP
 
   # Macros
   #----------------------------------------------------------------------
@@ -13,12 +13,12 @@ class Salutation < ApplicationRecord
   # Associations
   #----------------------------------------------------------------------
 
-  has_many :attendees
+  has_many :users
 
   # Validations
   #----------------------------------------------------------------------
 
-  validates :value, presence: true
+  # NOOP
 
   # Methods
   #----------------------------------------------------------------------
