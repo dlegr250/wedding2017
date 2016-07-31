@@ -4,19 +4,21 @@
 <% content_for(:appbar_title) { "Edit User" } %>
 <% content_for(:appbar_actions) do %>
   <%= button_tag "Update", class: "button button-raised-white", data: { submit: "#user-form" } %>
-  <span class="menu-container">
-    <i class="material-icons appbar-button" role="menu-trigger" data-menu-id="appbar-menu">more_vert</i>
-    <div class="menu menu-width-2" id="appbar-menu" data-position="top-right">
-      <%= link_to user_path(@user.uuid), method: "DELETE", class: "menu-item", id: "delete-user-link", data: { "custom-confirm" => { template: "user-confirm-dialog-template" } } do %>
-        <div class="menu-item-icon">
-          <i class="material-icons">delete</i>
-        </div>
-        <div class="menu-item-primary">
-          Remove
-        </div>
-      <% end %>
-    </div>
-  </span>
+  <% unless @user.account_owner? %>
+    <span class="menu-container">
+      <i class="material-icons appbar-button" role="menu-trigger" data-menu-id="appbar-menu">more_vert</i>
+      <div class="menu menu-width-2" id="appbar-menu" data-position="top-right">
+        <%= link_to user_path(@user.uuid), method: "DELETE", class: "menu-item disabled", id: "delete-user-link", data: { "custom-confirm" => { template: "user-confirm-dialog-template" } } do %>
+          <div class="menu-item-icon">
+            <i class="material-icons">delete</i>
+          </div>
+          <div class="menu-item-primary">
+            Remove
+          </div>
+        <% end %>
+      </div>
+    </span>
+  <% end %>
 <% end %>
 
 <div class="card full-width constrained-small">
