@@ -1,8 +1,19 @@
 <% content_for(:appbar_title) { "Guests" } %>
 <% content_for(:appbar_actions) do %>
-  <%= link_to "", new_guest_path, class: "zmdi zmdi-plus appbar-button", title: "New Attendee" %>
+  <%= link_to "add", new_guest_path, class: "material-icons appbar-button", id: "new-guest-button", data: { "tooltip-position": "bottom-left", tooltip: "New Guest" } %>
 <% end %>
 
-<%= link_to "", new_guest_path, class: "button fab fab-secondary zmdi zmdi-plus", id: "new-attendee-button", data: { "tooltip-position": "left", tooltip: "New Attendee" }, role: "fab" %>
+<%= link_to new_guest_path, class: "button fab fab-secondary", id: "new-guest-fab", data: { "tooltip-position": "left", tooltip: "New Guest" }, role: "fab" do %>
+  <i class="material-icons">add</i>
+<% end %>
 
-todo...
+<% if @guests.any? %>
+  <div class="list-subheader">
+    A Party is a group of associated Guests
+  </div>
+  <div class="list list-bordered list-two-lines list-divided list-hoverable rounded-corners background-color-white allow-room-for-fab-at-bottom" id="guests">
+    <%= @guests %>
+  </div>
+<% else %>
+  <%= render "authenticated/guests/blank_state" %>
+<% end %>

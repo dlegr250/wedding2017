@@ -1,19 +1,18 @@
 <% content_for(:appbar_nav_icon) do %>
-  <%= link_to "", attendees_path, class: "zmdi zmdi-close appbar-button" %>
+  <%= link_to "arrow_back", guests_path, class: "material-icons appbar-button" %>
 <% end %>
-<% content_for(:appbar_title) { "New Attendee" } %>
+<% content_for(:appbar_title) { "New Guest" } %>
 <% content_for(:appbar_actions) do %>
-  <%= button_tag "Create", class: "button button-raised-white", data: { submit: "#attendee-form" } %>
+  <%= button_tag "Create", class: "button button-raised-white", data: { submit: "#guest-form" } %>
 <% end %>
 
-
-<div class="card full-width constrained-medium">
+<div class="card full-width constrained-small">
   <div class="card-content">
-    <%= form_for @attendee, url: attendees_path, html: { id: "attendee-form" } do |f| %>
-      <%= render "authenticated/attendees/fields", f: f %>
+    <%= form_for @guest, url: guests_path, html: { id: "guest-form" } do |f| %>
+      fields...
       <div class="actions actions-bordered">
-        <%= f.submit "Create", class: "button button-raised-primary", id: "create-attendee-button" %>
-        <%= link_to "Cancel", attendees_path, class: "button button-flat-grey" %>
+        <%= f.submit "Create", class: "button button-raised-primary", id: "create-guest-button" %>
+        <%= link_to "Cancel", guests_path, class: "button button-flat-grey" %>
       </div>
     <% end %>
   </div>

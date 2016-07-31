@@ -1,0 +1,8 @@
+<%= link_to edit_gest_path(guest.uuid), class: "list-item", role: "guest" do %>
+  <div class="list-item-primary">
+    <%= guest.full_name %>
+    <div class="list-item-primary-subtext">
+      <%= guest.party_name %>
+    </div>
+  </div>
+<% end %>

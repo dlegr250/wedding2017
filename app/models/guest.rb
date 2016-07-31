@@ -8,7 +8,7 @@ class Guest < ApplicationRecord
   # Macros
   #----------------------------------------------------------------------
 
-  # NOOP
+  delegate :name, to: :party, prefix: true, allow_nil: true
 
   # Associations
   #----------------------------------------------------------------------

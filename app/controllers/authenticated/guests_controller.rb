@@ -1,6 +1,7 @@
 module Authenticated
   class GuestsController < BaseController
     def index
+      # TODO guests need to be associated to account...
       @guests = Guest.includes(:party).alphabetical
     end
 
