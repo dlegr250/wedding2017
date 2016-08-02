@@ -1,0 +1,34 @@
+<% content_for(:appbar_nav_icon) do %>
+  <%= link_to "arrow_back", parties_path, class: "material-icons appbar-button" %>
+<% end %>
+<% content_for(:appbar_title) { "Edit Party" } %>
+<% content_for(:appbar_actions) do %>
+  <%= button_tag "Update", class: "button button-raised-white", data: { submit: "#party-form" } %>
+  <span class="menu-container">
+    <i class="material-icons appbar-button" role="menu-trigger" data-menu-id="appbar-menu">more_vert</i>
+    <div class="menu menu-width-2" id="appbar-menu" data-position="top-right">
+      <%= link_to party_path(@party.uuid), method: "DELETE", class: "menu-item disabled", id: "delete-party-link", data: { "custom-confirm" => { template: "party-confirm-dialog-template" } } do %>
+        <div class="menu-item-icon">
+          <i class="material-icons">delete</i>
+        </div>
+        <div class="menu-item-primary">
+          Remove
+        </div>
+      <% end %>
+    </div>
+  </span>
+<% end %>
+
+<div class="card full-width constrained-small">
+  <div class="card-content">
+    <%= form_for @party, url: party_path(@party.uuid), html: { id: "party-form" } do |f| %>
+      <%= render "authenticated/parties/fields", f: f %>
+      <div class="actions actions-bordered">
+        <%= f.submit "Update", class: "button button-raised-primary", id: "update-party-button" %>
+        <%= link_to "Cancel", parties_path, class: "button button-flat-grey" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "authenticated/parties/destroy_confirm_template" %>

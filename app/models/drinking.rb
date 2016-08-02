@@ -1,4 +1,4 @@
-class Account < ApplicationRecord
+class Drinking < ApplicationRecord
 
   # Scopes
   #----------------------------------------------------------------------
@@ -13,9 +13,8 @@ class Account < ApplicationRecord
   # Associations
   #----------------------------------------------------------------------
 
-  has_many :guests
-  has_many :parties
-  has_many :users
+  belongs_to :alcoholic_beverage
+  belongs_to :guest
 
   # Validations
   #----------------------------------------------------------------------

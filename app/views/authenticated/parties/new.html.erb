@@ -1,0 +1,19 @@
+<% content_for(:appbar_nav_icon) do %>
+  <%= link_to "arrow_back", parties_path, class: "material-icons appbar-button" %>
+<% end %>
+<% content_for(:appbar_title) { "New Party" } %>
+<% content_for(:appbar_actions) do %>
+  <%= button_tag "Create", class: "button button-raised-white", data: { submit: "#party-form" } %>
+<% end %>
+
+<div class="card full-width constrained-small">
+  <div class="card-content">
+    <%= form_for @party, url: parties_path, html: { id: "party-form" } do |f| %>
+      <%= render "authenticated/parties/fields", f: f %>
+      <div class="actions actions-bordered">
+        <%= f.submit "Create", class: "button button-raised-primary", id: "create-party-button" %>
+        <%= link_to "Cancel", parties_path, class: "button button-flat-grey" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<%= link_to edit_party_path(party.uuid), class: "list-item", role: "party" do %>
+  <div class="list-item-primary">
+    <%= party.name %>
+  </div>
+  <div class="list-item-primary color-helper">
+    <%= pluralize party.guests.count, "guest" %>
+  </div>
+<% end %>

@@ -9,7 +9,7 @@
 <div class="card full-width constrained-small">
   <div class="card-content">
     <%= form_for @guest, url: guests_path, html: { id: "guest-form" } do |f| %>
-      fields...
+      <%= render "authenticated/guests/fields", f: f %>
       <div class="actions actions-bordered">
         <%= f.submit "Create", class: "button button-raised-primary", id: "create-guest-button" %>
         <%= link_to "Cancel", guests_path, class: "button button-flat-grey" %>

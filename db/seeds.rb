@@ -1,5 +1,6 @@
 Account.delete_all
 User.delete_all
+AlcoholicBeverage.delete_all
 
 account = Account.create
 
@@ -14,3 +15,6 @@ User.create(
   confirmation_token: ::Modules::Generator.random_token,
   authentication_token: ::Modules::Generator.random_token
 )
+
+AlcoholicBeverage.create(name: "Beer")
+AlcoholicBeverage.create(name: "Wine")

@@ -1,9 +1,9 @@
-class Account < ApplicationRecord
+class AlcoholicBeverage < ApplicationRecord
 
   # Scopes
   #----------------------------------------------------------------------
 
-  # NOOP
+  scope :alphabetical, -> { order(:name) }
 
   # Macros
   #----------------------------------------------------------------------
@@ -13,14 +13,13 @@ class Account < ApplicationRecord
   # Associations
   #----------------------------------------------------------------------
 
-  has_many :guests
-  has_many :parties
-  has_many :users
+  has_many :guests, through: :drinkings
+  has_many :drinkings
 
   # Validations
   #----------------------------------------------------------------------
 
-  # NOOP
+  validates :name, presence: true
 
   # Methods
   #----------------------------------------------------------------------

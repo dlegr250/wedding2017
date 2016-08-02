@@ -13,22 +13,36 @@
         <div class="list-item-primary">
           Guests
         </div>
+        <div class="list-item-secondary">
+          <%= Guest.count %>
+        </div>
       <% end %>
-      <%= link_to users_path, class: "list-item", id: "users-tab" do %>
-      <div class="list-item-icon">
-        <i class="material-icons">account_circle</i>
-      </div>
+      <%= link_to parties_path, class: "list-item", id: "parties-tab" do %>
+        <div class="list-item-icon">
+          <i class="material-icons">people</i>
+        </div>
         <div class="list-item-primary">
-          Users
+          Parties
+        </div>
+        <div class="list-item-secondary">
+          <%= current_account.parties.count %>
         </div>
       <% end %>
 
       <hr class="divider normal" />
 
+      <%= link_to users_path, class: "list-item", id: "users-tab" do %>
+        <div class="list-item-icon">
+          <i class="material-icons">account_circle</i>
+        </div>
+        <div class="list-item-primary">
+          Users
+        </div>
+      <% end %>
       <%= link_to nil, class: "list-item", id: "settings-tab" do %>
-      <div class="list-item-icon">
-        <i class="material-icons">settings</i>
-      </div>
+        <div class="list-item-icon">
+          <i class="material-icons">settings</i>
+        </div>
         <div class="list-item-primary">
           Settings
         </div>

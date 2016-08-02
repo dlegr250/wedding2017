@@ -1,8 +1,7 @@
 module Authenticated
   class GuestsController < BaseController
     def index
-      # TODO guests need to be associated to account...
-      @guests = Guest.includes(:party).alphabetical
+      @guests = current_account.guests.includes(:party).alphabetical
     end
 
     def new
@@ -55,25 +54,10 @@ module Authenticated
 
     def guest_params
       params.require(:guest).permit(
-        :salutation_id,
+        :party_id,
         :full_name,
-        :phone_number,
-        :email,
-        :address1,
-        :address2,
-        :city,
-        :state,
-        :zip,
-        :number_invited,
-        :number_attending,
-        :notes,
-        :wedding_gift,
-        :party,
-        :sent_save_the_date,
-        :sent_invitation,
-        :delivery_format,
-        :number_who_drink
-      )
+        alcoholic_beverage_ids: []
+      ).merge(account: current_account)
     end
 
     def get_guest
