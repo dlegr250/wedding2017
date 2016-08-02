@@ -18,10 +18,7 @@
 </div>
 <div class="field field-xsmall">
   <div class="field-element">
-    <%= f.collection_select :party_id, current_account.parties.alphabetical, :id, :name, { include_blank: true }, { class: "full-width" } %>
-    <div class="helper-text helper-text-bottom">
-      Leave blank to automatically create a new Party
-    </div>
+    <%= f.collection_select :party_id, current_account.parties.alphabetical, :id, :name, { include_blank: "Create a new Party for this Guest" }, { class: "full-width" } %>
   </div>
 </div>
 
