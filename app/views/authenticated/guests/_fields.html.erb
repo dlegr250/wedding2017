@@ -6,24 +6,6 @@
     <%= f.text_field :full_name, required: true, class: "full-width", autofocus: true %>
   </div>
 </div>
-
-<hr class="spacer small" />
-
-<div class="field-title">
-  Party Information
-  <div class="field-subtitle">
-    A Party is a group of associated Guests who share the same address
-    and will receive a single invitation.
-  </div>
-</div>
-<div class="field field-xsmall">
-  <div class="field-element">
-    <%= f.collection_select :party_id, current_account.parties.alphabetical, :id, :name, { include_blank: "Create a new Party for this Guest" }, { class: "full-width" } %>
-  </div>
-</div>
-
-<hr class="divider small" />
-
 <div class="field field-xsmall">
   <div class="field-label">
     <%= f.label :alcoholic_beverages %>

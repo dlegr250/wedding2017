@@ -6,17 +6,6 @@
     <%= yield :left_sidebar %>
   <% else %>
     <nav class="list list-hoverable" id="main-nav">
-      <%= link_to guests_path, class: "list-item", id: "guests-tab" do %>
-        <div class="list-item-icon">
-          <i class="material-icons">person</i>
-        </div>
-        <div class="list-item-primary">
-          Guests
-        </div>
-        <div class="list-item-secondary">
-          <%= Guest.count %>
-        </div>
-      <% end %>
       <%= link_to parties_path, class: "list-item", id: "parties-tab" do %>
         <div class="list-item-icon">
           <i class="material-icons">people</i>
@@ -25,7 +14,7 @@
           Parties
         </div>
         <div class="list-item-secondary">
-          <%= current_account.parties.count %>
+          <%= current_account.guests.count %>
         </div>
       <% end %>
 

@@ -30,6 +30,11 @@ class Guest < ApplicationRecord
   # Methods
   #----------------------------------------------------------------------
 
+  def initials
+    name_parts = full_name.split(" ")
+    name_parts.size > 1 ? "#{name_parts.first.first}#{name_parts.last.first}" : full_name[0..1].upcase
+  end
+
   def alcoholic_beverage_names
     @alcoholic_beverage_names ||= generate_alcoholic_beverage_names
   end

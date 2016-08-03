@@ -1,7 +1,7 @@
 module Authenticated
   class PartiesController < BaseController
     def index
-      @parties = current_account.parties.alphabetical
+      @parties = current_account.parties.includes(:guests).alphabetical
     end
 
     def new
@@ -17,6 +17,10 @@ module Authenticated
         flash[:error] = "Problem adding Party"
         render :new
       end
+    end
+
+    def show
+      @party = get_party
     end
 
     def edit
@@ -55,7 +59,7 @@ module Authenticated
     end
 
     def get_party
-      current_account.parties.find_by(uuid: params[:id])
+      current_account.parties.find_by(uuid: params[:uuid])
     end
   end
 end

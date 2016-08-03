@@ -1,18 +1,23 @@
 <% content_for(:appbar_nav_icon) do %>
-  <%= link_to "arrow_back", guests_path, class: "material-icons appbar-button" %>
+  <%= link_to "arrow_back", party_path(@party.uuid), class: "material-icons appbar-button" %>
 <% end %>
-<% content_for(:appbar_title) { "New Guest" } %>
+<% content_for(:appbar_title) do %>
+  <%= @party.name %>
+  <div class="appbar-subtitle">
+    New Guest
+  </div>
+<% end %>
 <% content_for(:appbar_actions) do %>
   <%= button_tag "Create", class: "button button-raised-white", data: { submit: "#guest-form" } %>
 <% end %>
 
 <div class="card full-width constrained-small">
   <div class="card-content">
-    <%= form_for @guest, url: guests_path, html: { id: "guest-form" } do |f| %>
+    <%= form_for @guest, url: party_guests_path(@party.uuid), html: { id: "guest-form" } do |f| %>
       <%= render "authenticated/guests/fields", f: f %>
       <div class="actions actions-bordered">
         <%= f.submit "Create", class: "button button-raised-primary", id: "create-guest-button" %>
-        <%= link_to "Cancel", guests_path, class: "button button-flat-grey" %>
+        <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
       </div>
     <% end %>
   </div>

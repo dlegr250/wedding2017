@@ -12,7 +12,6 @@
 }
 
 // Active tab
-.controller-guests #guests-tab,
 .controller-parties #parties-tab,
 .controller-users #users-tab,
 .controller-settings #settings-tab {
@@ -33,5 +32,30 @@
   input.invalid {
     background-color: color("light-red");
     border: 1px solid color("red");
+  }
+}
+
+.list-divided-on-last {
+  .list-item:last-child {
+    border-bottom: 1px solid color("divider");
+  }
+}
+
+// List item secondary buttons
+//----------------------------------------------------------------------
+
+.list-item-secondary-button {
+  color: color("icon");
+  padding: $spacing-small;
+  text-align: center;
+  @include rounded-corners(50%);
+  @include transition(background-color 0.30s ease, color 0.30s ease);
+
+  &:hover {
+    color: color("black");
+  }
+
+  &:active {
+    background-color: darken(color("hover"), 5%);
   }
 }

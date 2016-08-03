@@ -1,13 +1,18 @@
 <% content_for(:appbar_nav_icon) do %>
-  <%= link_to "arrow_back", guests_path, class: "material-icons appbar-button" %>
+  <%= link_to "arrow_back", party_path(@party.uuid), class: "material-icons appbar-button" %>
 <% end %>
-<% content_for(:appbar_title) { "Edit Guest" } %>
+<% content_for(:appbar_title) do %>
+  <%= @party.name %>
+  <div class="appbar-subtitle">
+    Edit Guest
+  </div>
+<% end %>
 <% content_for(:appbar_actions) do %>
   <%= button_tag "Update", class: "button button-raised-white", data: { submit: "#guest-form" } %>
   <span class="menu-container">
     <i class="material-icons appbar-button" role="menu-trigger" data-menu-id="appbar-menu">more_vert</i>
     <div class="menu menu-width-2" id="appbar-menu" data-position="top-right">
-      <%= link_to guest_path(@guest.uuid), method: "DELETE", class: "menu-item disabled", id: "delete-guest-link", data: { "custom-confirm" => { template: "guest-confirm-dialog-template" } } do %>
+      <%= link_to party_guest_path(@party.uuid, @guest.uuid), method: "DELETE", class: "menu-item disabled", id: "delete-guest-link", data: { "custom-confirm" => { template: "guest-confirm-dialog-template" } } do %>
         <div class="menu-item-icon">
           <i class="material-icons">delete</i>
         </div>
@@ -21,11 +26,11 @@
 
 <div class="card full-width constrained-small">
   <div class="card-content">
-    <%= form_for @guest, url: guest_path(@guest.uuid), html: { id: "guest-form" } do |f| %>
+    <%= form_for @guest, url: party_guest_path(@party.uuid, @guest.uuid), html: { id: "guest-form" } do |f| %>
       <%= render "authenticated/guests/fields", f: f %>
       <div class="actions actions-bordered">
         <%= f.submit "Update", class: "button button-raised-primary", id: "update-guest-button" %>
-        <%= link_to "Cancel", guests_path, class: "button button-flat-grey" %>
+        <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
       </div>
     <% end %>
   </div>
