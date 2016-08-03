@@ -52,6 +52,7 @@
   @include transition(background-color 0.30s ease, color 0.30s ease);
 
   &:hover {
+    background-color: color("hover");
     color: color("black");
   }
 
@@ -60,9 +61,24 @@
   }
 }
 
+.list-hoverable .list-item-secondary-button {
+  &:hover {
+    background-color: darken(color("hover"), 5%);
+  }
+
+  &:active {
+    background-color: darken(color("hover"), 15%);
+  }
+}
+
 [data-url] {
   cursor: pointer;
+  @include no-touch-highlight();
 
+  // &:hover {
+  //   background-color: color("hover");
+  // }
+  //
   // &:active {
   //   background-color: darken(color("hover"), 5%);
   // }
