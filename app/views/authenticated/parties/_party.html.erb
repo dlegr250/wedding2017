@@ -1,8 +1,42 @@
-<%= link_to party_path(party.uuid), class: "list-item", role: "party" do %>
+<div class="list-item" role="party" data-url="<%= party_path(party.uuid) %>">
   <div class="list-item-primary">
     <%= party.name %>
     <div class="list-item-primary-subtext">
       <%= pluralize party.guests.count, "guest" %>
     </div>
   </div>
-<% end %>
+  <div class="list-item-secondary">
+    <span class="menu-container">
+      <i class="material-icons list-item-secondary-button" role="menu-trigger" data-menu-id="party-<%= party.id %>-menu">more_vert</i>
+      <div class="menu menu-width-2" id="party-<%= party.id %>-menu" data-position="top-right">
+        <%= link_to nil, class: "menu-item" do %>
+          <div class="menu-item-icon">
+          </div>
+          <div class="menu-item-primary">
+            Accept All
+          </div>
+        <% end %>
+        <%= link_to nil, class: "menu-item" do %>
+          <div class="menu-item-icon">
+          </div>
+          <div class="menu-item-primary">
+            Reject All
+          </div>
+        <% end %>
+
+        <hr class="divider xsmall" />
+
+        <%= link_to party_path(party.uuid), method: "DELETE", class: "menu-item disabled", id: "delete-user-link", data: { "custom-confirm" => { template: "party-confirm-dialog-template" } } do %>
+          <div class="menu-item-icon">
+            <i class="material-icons">delete</i>
+          </div>
+          <div class="menu-item-primary">
+            Remove Party
+          </div>
+        <% end %>
+      </div>
+    </span>
+  </div>
+</div>
+
+<%= render "authenticated/parties/destroy_confirm_template" %>

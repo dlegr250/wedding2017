@@ -29,14 +29,6 @@
 
 <div class="list list-bordered list-divided list-two-lines rounded-corners background-color-white allow-room-for-fab-at-bottom">
   <%= render @party.guests.alphabetical %>
-  <%= link_to new_party_guest_path(@party.uuid), class: "list-item" do %>
-    <div class="list-item-icon color-primary">
-      <i class="material-icons">add</i>
-    </div>
-    <div class="list-item-primary color-primary">
-      Add Guest to Party
-    </div>
-  <% end %>
 </div>
 
 <%= render "authenticated/parties/destroy_confirm_template" %>

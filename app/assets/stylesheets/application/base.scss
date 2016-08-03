@@ -59,3 +59,11 @@
     background-color: darken(color("hover"), 5%);
   }
 }
+
+[data-url] {
+  cursor: pointer;
+
+  // &:active {
+  //   background-color: darken(color("hover"), 5%);
+  // }
+}
