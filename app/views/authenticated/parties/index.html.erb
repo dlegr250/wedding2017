@@ -5,7 +5,10 @@
 <% end %>
 
 <% if @parties.any? %>
-  <div class="list list-bordered list-two-lines list-divided list-hoverable rounded-corners background-color-white allow-room-for-fab-at-bottom" id="parties">
+  <div class="list-subheader">
+    A Party is a group of associated Guests
+  </div>
+  <div class="list list-bordered list-two-lines list-divided rounded-corners background-color-white allow-room-for-fab-at-bottom" id="parties">
     <% @parties.each do |letter, parties| %>
       <div class="list-header">
         <div class="list-header-primary">
@@ -18,5 +21,3 @@
 <% else %>
   <%= render "authenticated/parties/blank_state" %>
 <% end %>
-
-<%= render "authenticated/parties/destroy_confirm_template" %>

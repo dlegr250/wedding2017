@@ -7,7 +7,7 @@
   </div>
   <div class="list-item-secondary">
     <span class="menu-container">
-      <i class="material-icons list-item-secondary-button" role="menu-trigger" data-menu-id="party-<%= party.id %>-menu">more_vert</i>
+      <i class="material-icons button-icon" role="menu-trigger" data-menu-id="party-<%= party.id %>-menu">more_vert</i>
       <div class="menu menu-width-2" id="party-<%= party.id %>-menu" data-position="top-right">
         <%= link_to nil, class: "menu-item" do %>
           <div class="menu-item-icon">
@@ -38,5 +38,3 @@
     </span>
   </div>
 </div>
-
-<%= render "authenticated/parties/destroy_confirm_template" %>

@@ -35,61 +35,7 @@
   }
 }
 
-.list-divided-on-last {
-  .list-item:last-child {
-    border-bottom: 1px solid color("divider");
-  }
-}
-
-// List item secondary buttons
-//----------------------------------------------------------------------
-
-.list-item-secondary-button {
-  color: color("icon");
-  padding: $spacing-small;
-  text-align: center;
-  @include rounded-corners(50%);
-  @include transition(background-color 0.30s ease, color 0.30s ease);
-
-  &:hover {
-    background-color: color("hover");
-    color: color("black");
-  }
-
-  &:active {
-    background-color: darken(color("hover"), 5%);
-  }
-}
-
-.list-hoverable .list-item-secondary-button {
-  &:hover {
-    background-color: darken(color("hover"), 5%);
-  }
-
-  &:active {
-    background-color: darken(color("hover"), 15%);
-  }
-}
-
 [data-url] {
   cursor: pointer;
   @include no-touch-highlight();
-
-  // &:hover {
-  //   background-color: color("hover");
-  // }
-  //
-  // &:active {
-  //   background-color: darken(color("hover"), 5%);
-  // }
-}
-.list-item-primary-label {
-  color: color("helper");
-  font-size: $font-size-small;
-  // font-weight: bold;
-  padding-bottom: $spacing-xsmall;
-}
-
-.button-icon {
-  text-align: center;
 }

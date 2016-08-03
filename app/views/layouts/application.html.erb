@@ -22,8 +22,14 @@
     </main>
   </div>
 
-  <div id="overlay"></div>
-  <div class="dialog" id="dialog"></div>
+  <!-- Displayed inside overlay -->
+  <div id="overlay">
+    <div class="dialog" id="dialog"></div>
+    <%= render "authenticated/parties/destroy_confirm_template" %>
+    <%= render "authenticated/guests/destroy_confirm_template" %>
+    <%= render "authenticated/users/destroy_confirm_template" %>
+  </div>
+
   <div id="snackbar"></div>
 </body>
 </html>
