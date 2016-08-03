@@ -2,10 +2,7 @@
   <%= link_to "arrow_back", parties_path, class: "material-icons appbar-button" %>
 <% end %>
 <% content_for(:appbar_title) do %>
-  <%= @party.name %>
-  <div class="appbar-subtitle">
-    <%= pluralize @party.guests.count, "guest" %>
-  </div>
+  <%#= @party.name %>
 <% end %>
 <% content_for(:appbar_actions) do %>
   <span class="menu-container">
@@ -27,8 +24,21 @@
   <i class="material-icons">add</i>
 <% end %>
 
-<div class="list list-bordered list-divided list-two-lines rounded-corners background-color-white allow-room-for-fab-at-bottom">
-  <%= render @party.guests.alphabetical %>
+<div class="card full-width">
+  <header class="card-header">
+    <div class="card-header-title">
+      <%= link_to "edit", edit_party_path(@party.uuid), class: "material-icons list-item-secondary-button float-right" %>
+      <%= @party.name %>
+      <div class="card-header-subtitle">
+        <%= pluralize @party.guests.count, "guest" %>
+      </div>
+    </div>
+  </header>
+  <div class="card-content">
+    <div class="list list-divided list-one-lines" id="guests">
+      <%= render @party.guests.alphabetical %>
+    </div>
+  </div>
 </div>
 
 <%= render "authenticated/parties/destroy_confirm_template" %>

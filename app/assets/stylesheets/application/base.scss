@@ -83,3 +83,13 @@
   //   background-color: darken(color("hover"), 5%);
   // }
 }
+.list-item-primary-label {
+  color: color("helper");
+  font-size: $font-size-small;
+  // font-weight: bold;
+  padding-bottom: $spacing-xsmall;
+}
+
+.button-icon {
+  text-align: center;
+}

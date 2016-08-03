@@ -1,7 +1,7 @@
 module Authenticated
   class PartiesController < BaseController
     def index
-      @parties = current_account.parties.includes(:guests).alphabetical
+      @parties = current_account.parties.includes(:guests).alphabetical.group_by { |p| p.name.first.upcase }
     end
 
     def new
