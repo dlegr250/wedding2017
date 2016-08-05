@@ -2,9 +2,10 @@
   <%= link_to "arrow_back", parties_path, class: "material-icons appbar-button" %>
 <% end %>
 <% content_for(:appbar_title) do %>
-  <%#= @party.name %>
+  <%= @party.name %>
 <% end %>
 <% content_for(:appbar_actions) do %>
+  <%= link_to "edit", edit_party_path(@party.uuid), class: "material-icons appbar-button" %>
   <span class="menu-container">
     <i class="material-icons appbar-button" role="menu-trigger" data-menu-id="appbar-menu">more_vert</i>
     <div class="menu menu-width-2" id="appbar-menu" data-position="top-right">
@@ -27,7 +28,6 @@
 <div class="card full-width">
   <header class="card-header">
     <div class="card-header-title">
-      <%= link_to "edit", edit_party_path(@party.uuid), class: "material-icons button-icon float-right" %>
       <%= @party.name %>
       <div class="card-header-subtitle">
         <%= pluralize @party.guests.count, "guest" %>
@@ -35,8 +35,15 @@
     </div>
   </header>
   <div class="card-content">
-    <div class="list list-divided list-two-lines" id="guests">
-      <%= render @party.guests.alphabetical %>
+    <div class="card card-flat full-width">
+      <div class="card-header background-color-hover">
+        <div class="card-header-title font-size-normal">
+          Guests in Party
+        </div>
+      </div>
+      <div class="list list-divided list-two-lines" id="guests">
+        <%= render @party.guests.alphabetical %>
+      </div>
     </div>
   </div>
 </div>

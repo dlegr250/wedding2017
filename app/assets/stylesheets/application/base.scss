@@ -35,7 +35,17 @@
   }
 }
 
-[data-url] {
+[data-link] {
   cursor: pointer;
   @include no-touch-highlight();
+}
+
+.list-hoverable .list-item-secondary .button-icon {
+  &:hover {
+    background-color: darken(color("hover"), 5%);
+  }
+
+  &:active {
+    background-color: darken(color("hover"), 15%);
+  }
 }
