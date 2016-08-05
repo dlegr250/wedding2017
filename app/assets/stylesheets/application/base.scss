@@ -40,12 +40,10 @@
   @include no-touch-highlight();
 }
 
-.list-hoverable .list-item-secondary .button-icon {
-  &:hover {
-    background-color: darken(color("hover"), 5%);
-  }
+.appbar-title {
+  // font-size: 24px;
+}
 
-  &:active {
-    background-color: darken(color("hover"), 15%);
-  }
+.menu-item {
+  font-size: $font-size-normal;
 }

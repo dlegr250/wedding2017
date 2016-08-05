@@ -8,7 +8,7 @@
     <span class="menu-container">
       <i class="material-icons appbar-button" role="menu-trigger" data-menu-id="appbar-menu">more_vert</i>
       <div class="menu menu-width-2" id="appbar-menu" data-position="top-right">
-        <%= link_to user_path(@user.uuid), method: "DELETE", class: "menu-item disabled", id: "delete-user-link", data: { "custom-confirm" => { template: "user-confirm-dialog-template" } } do %>
+        <%= link_to user_path(@user.uuid), method: "DELETE", class: "menu-item", id: "delete-user-link", data: { "custom-confirm" => { template: "user-confirm-dialog-template" } } do %>
           <div class="menu-item-icon">
             <i class="material-icons">delete</i>
           </div>
