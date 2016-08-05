@@ -3,7 +3,7 @@
     <%= guest.initials %>
   </div>
   <div class="list-item-primary">
-    <%= guest.full_name %>
+    <%= guest.first_and_last_name %>
   </div>
   <div class="list-item-secondary">
     <%= link_to "edit", edit_party_guest_path(@party.uuid, guest.uuid), class: "material-icons button-icon" %>
