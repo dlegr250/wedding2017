@@ -1,35 +1,6 @@
-<% content_for(:appbar_title) do %>
-  <span class="menu-container">
-    <span class="" role="menu-trigger" data-menu-id="appbar-party-filter-menu">
-      Parties
-    </span>
-    <div class="menu menu-width-2" id="appbar-party-filter-menu" data-position="top-left">
-      <div class="menu-item">
-        <div class="menu-item-icon">
-          <i class="material-icons">people</i>
-        </div>
-        <div class="menu-item-primary">
-          All Parties
-        </div>
-      </div>
-      <div class="menu-item">
-        <div class="menu-item-icon">
-          <i class="material-icons">people</i>
-        </div>
-        <div class="menu-item-primary">
-          Save the Dates
-        </div>
-      </div>
-      <div class="menu-item">
-        <div class="menu-item-icon">
-          <i class="material-icons">people</i>
-        </div>
-        <div class="menu-item-primary">
-          Invitations
-        </div>
-      </div>
-    </div>
-  </span>
+<% content_for(:appbar_title) { "Parties" } %>
+<% content_for(:appbar_actions) do %>
+  <%= link_to "filter_list", nil, class: "material-icons appbar-button" %>
 <% end %>
 
 <%= link_to new_party_path, class: "button fab fab-secondary", id: "new-guest-fab", data: { "tooltip-position": "left", tooltip: "New Party" }, role: "fab" do %>

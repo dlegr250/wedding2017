@@ -39,11 +39,3 @@
   cursor: pointer;
   @include no-touch-highlight();
 }
-
-.appbar-title {
-  // font-size: 24px;
-}
-
-.menu-item {
-  font-size: $font-size-normal;
-}

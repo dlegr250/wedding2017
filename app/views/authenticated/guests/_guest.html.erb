@@ -1,12 +1,12 @@
 <div class="list-item" role="guest">
-  <div class="list-item-icon bold">
-    <%= guest.initials %>
-  </div>
   <div class="list-item-primary">
     <%= guest.first_and_last_name %>
   </div>
+  <div class="list-item-primary">
+
+  </div>
   <div class="list-item-secondary">
-    <%= link_to "edit", edit_party_guest_path(@party.uuid, guest.uuid), class: "material-icons button-icon" %>
-    <%= link_to "delete", party_guest_path(@party.uuid, guest.uuid), class: "material-icons button-icon", method: "DELETE", data: { "custom-confirm" => { template: "guest-confirm-dialog-template" } } %>
+    <%#= link_to "edit", edit_party_guest_path(@party.uuid, guest.uuid), class: "material-icons button-icon" %>
+    <%#= link_to "delete", party_guest_path(@party.uuid, guest.uuid), class: "material-icons button-icon", method: "DELETE", data: { "custom-confirm" => { template: "guest-confirm-dialog-template" } } %>
   </div>
 </div>

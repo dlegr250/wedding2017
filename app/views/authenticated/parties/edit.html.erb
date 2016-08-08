@@ -12,23 +12,35 @@
           <i class="material-icons">delete</i>
         </div>
         <div class="menu-item-primary">
-          Remove
+          Delete
         </div>
       <% end %>
     </div>
   </span>
 <% end %>
 
-<div class="card full-width constrained-small">
+<%= form_for @party, url: party_path(@party.uuid), html: { id: "party-form" } do |f| %>
+<div class="card full-width">
+  <div class="card-header">
+    <div class="card-header-primary">
+      <%= f.text_field :name, class: "full-width font-size-large" %>
+    </div>
+  </div>
   <div class="card-content">
-    <%= form_for @party, url: party_path(@party.uuid), html: { id: "party-form" } do |f| %>
-      <%= render "authenticated/parties/fields", f: f %>
-      <div class="actions actions-bordered">
-        <%= f.submit "Update", class: "button button-raised-primary", id: "update-party-button" %>
-        <%= link_to "Cancel", parties_path, class: "button button-flat-grey" %>
+    <div class="card card-flat full-width">
+      <div class="card-header background-color-hover">
+        <div class="card-header-title font-size-normal">
+          Guests in Party
+        </div>
       </div>
-    <% end %>
+      <div class="list list-divided list-two-lines" id="guests">
+        <%= render partial: "authenticated/parties/guest_form", collection: @party.guests.alphabetical, as: :guest, locals: { f: f } %>
+      </div>
+    </div>
+    <div class="actions actions-bordered">
+      <%= f.submit "Update", class: "button button-raised-primary", id: "update-party-button" %>
+      <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
+    </div>
   </div>
 </div>
-
-<%= render "authenticated/parties/destroy_confirm_template" %>
+<% end %>

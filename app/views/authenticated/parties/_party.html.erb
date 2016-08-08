@@ -1,44 +1,18 @@
-<%#= link_to party_path(party.uuid), class: "list-item", role: "party" do %>
-<div class="list-item" role="party" data-link="<%= party_path(party.uuid) %>">
+<%= link_to party_path(party.uuid), class: "list-item", role: "party" do %>
   <div class="list-item-primary">
     <%= party.name %>
     <div class="list-item-primary-subtext">
-      <%= pluralize party.guests.count, "guest" %>
+      <div class="small-only">
+        <i class="material-icons color-<%= party.save_the_date_sent? ? 'icon' : 'divider' %>" title="Save the Date Sent">email</i>
+        <i class="material-icons color-<%= party.invitation_sent? ? 'icon' : 'divider' %>" title="Invitation Sent">email</i>
+      </div>
     </div>
   </div>
+  <div class="list-item-primary medium-and-large-only">
+    <i class="material-icons color-<%= party.save_the_date_sent? ? 'icon' : 'divider' %>" title="Save the Date Sent">email</i>
+    <i class="material-icons color-<%= party.invitation_sent? ? 'icon' : 'divider' %>" title="Invitation Sent">email</i>
+  </div>
   <div class="list-item-primary">
-    save_the_date, invitation, # RSVP
+    <%= party.guests.count %> / ???
   </div>
-  <div class="list-item-secondary">
-    <span class="menu-container">
-      <i class="material-icons button-icon" role="menu-trigger" data-menu-id="party-<%= party.id %>-menu">more_vert</i>
-      <div class="menu menu-width-2" id="party-<%= party.id %>-menu" data-position="top-right">
-        <div class="menu-item">
-          <div class="menu-item-icon">
-          </div>
-          <div class="menu-item-primary">
-            Accept All
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-icon">
-          </div>
-          <div class="menu-item-primary">
-            Reject All
-          </div>
-        </div>
-
-        <hr class="divider xsmall" />
-
-        <%= link_to party_path(party.uuid), class: "menu-item", method: "DELETE", data: { "custom-confirm" => { template: "party-confirm-dialog-template" } } do %>
-          <div class="menu-item-icon">
-            <i class="material-icons">delete</i>
-          </div>
-          <div class="menu-item-primary">
-            Remove
-          </div>
-        <% end %>
-      </div>
-    </span>
-  </div>
-</div>
+<% end %>

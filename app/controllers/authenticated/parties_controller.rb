@@ -31,7 +31,7 @@ module Authenticated
       @party = get_party
       if @party.update_attributes(party_params)
         flash[:notice] = "Updated Party"
-        redirect_to parties_path
+        redirect_to party_path(@party.uuid)
       else
         flash[:error] = "Problem updating Party"
         render :edit
