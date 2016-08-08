@@ -2,10 +2,10 @@
   <div class="list-item-primary">
     <%= fields_for "guests[]", guest do |guest_form| %>
       <div class="field">
-        <%= guest_form.text_field :first_name, size: 12 %>
-        <%= guest_form.text_field :last_name, size: 20 %>
+        <%= guest_form.text_field :first_name, size: 10 %>
+        <%= guest_form.text_field :last_name, size: 15 %>
       </div>
-      <div class="field field-xsmall field-responsive">
+      <div class="field field-xsmall">
         <div class="field-label">
           <%= guest_form.label :alcoholic_beverages %>
         </div>
