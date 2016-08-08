@@ -30,15 +30,40 @@
     </div>
   </div>
   <div class="card-content">
-    <div class="card card-flat full-width">
-      <div class="card-header background-color-hover">
-        <div class="card-header-title font-size-normal">
-          Guests in Party
+    <%= form_for @party, url: party_path(@party.uuid), html: { id: "party-form" } do |f| %>
+      <div class="field field-xsmall field-responsive">
+        <div class="field-label">
+          <%= f.label :save_the_date_sent, "Save the Date Sent?" %>
+        </div>
+        <div class="field-element">
+          <div class="switch switch-primary">
+            <%= f.check_box :save_the_date_sent, data: { "auto-submit-on-change" => false } %>
+            <label for="party_save_the_date_sent"></label>
+          </div>
         </div>
       </div>
-      <div class="list list-divided list-two-lines" id="guests">
-        <%= render @party.guests.alphabetical %>
+      <div class="field field-xsmall field-responsive">
+        <div class="field-label">
+          <%= f.label :invitation_sent, "Invitation Sent?" %>
+        </div>
+        <div class="field-element">
+          <div class="switch switch-primary">
+            <%= f.check_box :invitation_sent, data: { "auto-submit-on-change" => false } %>
+            <label for="party_invitation_sent"></label>
+          </div>
+        </div>
       </div>
+    <% end %>
+  </div>
+</div>
+
+<hr class="spacer small" />
+
+<div class="list list-divided list-bordered list-two-lines rounded-corners background-color-white" id="guests">
+  <div class="list-header">
+    <div class="list-header-primary">
+      Guests in Party
     </div>
   </div>
+  <%= render @party.guests.alphabetical %>
 </div>

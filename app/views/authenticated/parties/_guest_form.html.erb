@@ -1,8 +1,31 @@
 <div class="list-item">
   <div class="list-item-primary">
     <%= fields_for "guests[]", guest do |guest_form| %>
-      <%= guest_form.text_field :first_name %>
-      <%= guest_form.text_field :last_name %>
+      <div class="field">
+        <%= guest_form.text_field :first_name, size: 12 %>
+        <%= guest_form.text_field :last_name, size: 20 %>
+      </div>
+      <div class="field field-xsmall field-responsive">
+        <div class="field-label">
+          <%= guest_form.label :alcoholic_beverages %>
+        </div>
+        <div class="field-element">
+          <div class="toggle-container toggle-primary">
+            <!-- Had to generate manually because automated approaches would not respect .toggle:last-child style -->
+            <% AlcoholicBeverage.alphabetical.each do |b| %>
+              <div class="toggle">
+                <%= check_box_tag "guest[alcoholic_beverage_ids][]", b.id, guest.alcoholic_beverage_ids.include?(b.id), { id: "guest_alcoholic_beverage_ids_#{b.id}" } %>
+                <label for="guest_alcoholic_beverage_ids_<%= b.id %>"><%= b.name.capitalize %></label>
+              </div>
+            <% end %>
+          </div>
+          <%= hidden_field_tag "guest[alcoholic_beverage_ids][]" %>
+          <div class="helper-text helper-text-bottom">
+            Check all that apply
+          </div>
+        </div>
+      </div>
+
     <% end %>
   </div>
 </div>

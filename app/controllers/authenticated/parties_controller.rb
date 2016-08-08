@@ -54,7 +54,9 @@ module Authenticated
 
     def party_params
       params.require(:party).permit(
-        :name
+        :name,
+        :save_the_date_sent,
+        :invitation_sent
       )
     end
 
