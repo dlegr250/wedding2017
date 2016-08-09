@@ -26,47 +26,46 @@
         <%= f.text_field :name, class: "full-width font-size-large" %>
       </div>
     </div>
-    <div class="card-content">
-      <div class="field field-xsmall field-responsive">
-        <div class="field-label">
+    <div class="list list-divided list-hoverable">
+      <label for="party_save_the_date_sent" class="list-item">
+        <div class="list-item-primary">
           <%= f.label :save_the_date_sent, "Save the Date Sent?" %>
         </div>
-        <div class="field-element">
+        <div class="list-item-secondary">
           <div class="switch switch-primary">
             <%= f.check_box :save_the_date_sent, data: { "auto-submit-on-change" => false } %>
             <label for="party_save_the_date_sent"></label>
           </div>
         </div>
-      </div>
-      <div class="field field-xsmall field-responsive">
-        <div class="field-label">
+      </label>
+      <label for="party_invitation_sent" class="list-item no-border-bottom">
+        <div class="list-item-primary">
           <%= f.label :invitation_sent, "Invitation Sent?" %>
         </div>
-        <div class="field-element">
+        <div class="list-item-secondary">
           <div class="switch switch-primary">
             <%= f.check_box :invitation_sent, data: { "auto-submit-on-change" => false } %>
             <label for="party_invitation_sent"></label>
           </div>
         </div>
-      </div>
+      </label>
     </div>
   </div>
 
   <hr class="spacer" />
 
-
-  <div class="list list-divided list-bordered list-two-lines rounded-corners background-color-white" id="guests">
-    <div class="list-header">
-      <div class="list-header-primary">
-        Guests
+  <div class="card full-width">
+    <div class="card-header background-color-hover">
+      <div class="card-header-primary font-size-normal">
+        Guests in Party
       </div>
     </div>
-    <%= render partial: "authenticated/parties/guest_form", collection: @party.guests.alphabetical, as: :guest, locals: { f: f } %>
-    <div class="list-item">
-      <div class="list-item-primary">
-        <%= f.submit "Update", class: "button button-raised-primary", id: "update-party-button" %>
-        <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
-      </div>
+    <div class="list">
+      <%= render partial: "authenticated/parties/guest_form", collection: @party.guests.alphabetical, as: :guest, locals: { f: f } %>
+    </div>
+    <div class="card-content">
+      <%= f.submit "Update", class: "button button-raised-primary", id: "update-party-button" %>
+      <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
     </div>
   </div>
 <% end %>

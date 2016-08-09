@@ -1,31 +1,32 @@
-<div class="list-item">
-  <div class="list-item-primary">
-    <%= fields_for "guests[]", guest do |guest_form| %>
-      <div class="field">
-        <%= guest_form.text_field :first_name, size: 10 %>
-        <%= guest_form.text_field :last_name, size: 15 %>
-      </div>
-      <div class="field field-xsmall">
-        <div class="field-label">
-          <%= guest_form.label :alcoholic_beverages %>
-        </div>
-        <div class="field-element">
-          <div class="toggle-container toggle-primary">
-            <!-- Had to generate manually because automated approaches would not respect .toggle:last-child style -->
-            <% AlcoholicBeverage.alphabetical.each do |b| %>
-              <div class="toggle">
-                <%= check_box_tag "guest[alcoholic_beverage_ids][]", b.id, guest.alcoholic_beverage_ids.include?(b.id), { id: "guest_alcoholic_beverage_ids_#{b.id}" } %>
-                <label for="guest_alcoholic_beverage_ids_<%= b.id %>"><%= b.name.capitalize %></label>
-              </div>
-            <% end %>
-          </div>
-          <%= hidden_field_tag "guest[alcoholic_beverage_ids][]" %>
-          <div class="helper-text helper-text-bottom">
-            Check all that apply
-          </div>
-        </div>
-      </div>
+<hr class="spacer small" />
 
-    <% end %>
+<%= fields_for "guests[]", guest do |guest_form| %>
+  <div class="list-item no-border-bottom">
+    <div class="list-item-icon">
+      <i class="material-icons">person</i>
+    </div>
+    <div class="list-item-primary">
+      <%= guest_form.text_field :first_name, size: 8 %>
+      <%= guest_form.text_field :last_name, size: 12 %>
+    </div>
   </div>
-</div>
+  <div class="list-item">
+    <div class="list-item-icon">
+
+    </div>
+    <div class="list-item-primary">
+      <div class="toggle-container toggle-primary">
+        <!-- Had to generate manually because automated approaches would not respect .toggle:last-child style -->
+        <% AlcoholicBeverage.alphabetical.each do |b| %>
+          <div class="toggle">
+            <%= check_box_tag "guest[alcoholic_beverage_ids][]", b.id, guest.alcoholic_beverage_ids.include?(b.id), { id: "guest_alcoholic_beverage_ids_#{b.id}" } %>
+            <label for="guest_alcoholic_beverage_ids_<%= b.id %>"><%= b.name.capitalize %></label>
+          </div>
+        <% end %>
+      </div>
+      <%= hidden_field_tag "guest[alcoholic_beverage_ids][]" %>
+    </div>
+  </div>
+<% end %>
+
+<hr class="divider small" />

@@ -39,3 +39,8 @@
   cursor: pointer;
   @include no-touch-highlight();
 }
+
+.field {
+  padding-left: 0;
+  padding-right: 0;
+}
