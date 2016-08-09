@@ -21,69 +21,10 @@
 
 <%= form_for @party, url: party_path(@party.uuid), html: { id: "party-form" } do |f| %>
   <div class="card full-width">
-    <div class="card-header">
-      <div class="card-header-primary">
-        <%= f.text_field :name, class: "full-width font-size-large" %>
-      </div>
-    </div>
-    <div class="list list-divided list-hoverable">
-      <label for="party_save_the_date_sent" class="list-item">
-        <div class="list-item-primary">
-          <%= f.label :save_the_date_sent, "Save the Date Sent?" %>
-        </div>
-        <div class="list-item-secondary">
-          <div class="switch switch-primary">
-            <%= f.check_box :save_the_date_sent, data: { "auto-submit-on-change" => false } %>
-            <label for="party_save_the_date_sent"></label>
-          </div>
-        </div>
-      </label>
-      <label for="party_invitation_sent" class="list-item no-border-bottom">
-        <div class="list-item-primary">
-          <%= f.label :invitation_sent, "Invitation Sent?" %>
-        </div>
-        <div class="list-item-secondary">
-          <div class="switch switch-primary">
-            <%= f.check_box :invitation_sent, data: { "auto-submit-on-change" => false } %>
-            <label for="party_invitation_sent"></label>
-          </div>
-        </div>
-      </label>
-    </div>
-  </div>
-
-  <hr class="spacer" />
-
-  <div class="card full-width">
-    <div class="card-header background-color-hover">
-      <div class="card-header-primary font-size-normal">
-        Guests in Party
-      </div>
-    </div>
-    <div class="card-content">
-      <%= f.fields_for :guests, @party.guests.alphabetical do |guest_form| %>
-        <div class="field field-xsmall">
-          <div class="field-element">
-            <%= guest_form.text_field :first_name, size: 8 %>
-            <%= guest_form.text_field :last_name, size: 12 %>
-          </div>
-        </div>
-        <div class="field field-xsmall">
-          <div class="field-element">
-            <%= guest_form.collection_check_boxes(:alcoholic_beverage_ids, AlcoholicBeverage.alphabetical, :id, :name) do |b| %>
-              <div class="checkbox">
-                <%= b.check_box %> <%= b.label %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-
-        <hr class="divider normal" />
-      <% end %>
-      <div class="">
-        <%= f.submit "Update", class: "button button-raised-primary", id: "update-party-button" %>
-        <%= link_to "Cancel", parties_path, class: "button button-flat-grey" %>
-      </div>
+    <%= render "authenticated/parties/fields", f: f %>
+    <div class="card-actions no-border-top">
+      <%= f.submit "Update", class: "button button-raised-primary", id: "update-party-button" %>
+      <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
     </div>
   </div>
 <% end %>

@@ -1,8 +1,30 @@
-<div class="field field-xsmall field-with-validations">
-  <div class="field-label">
-    <%= f.label :name, class: "required" %>
+<div class="card-header">
+  <div class="card-header-primary field-with-validations">
+    <%= f.text_field :name, class: "full-width font-size-large", autofocus: true, placeholder: "Party Name" %>
+    <%= bottom_error_messages_helper @party, :name %>
   </div>
-  <div class="field-element">
-    <%= f.text_field :name, class: "full-width", autofocus: true %>
-  </div>
+</div>
+<div class="list list-divided list-hoverable">
+  <label for="party_save_the_date_sent" class="list-item">
+    <div class="list-item-primary">
+      <%= f.label :save_the_date_sent, "Save the Date Sent?" %>
+    </div>
+    <div class="list-item-secondary">
+      <div class="switch switch-primary">
+        <%= f.check_box :save_the_date_sent, data: { "auto-submit-on-change" => false } %>
+        <label for="party_save_the_date_sent"></label>
+      </div>
+    </div>
+  </label>
+  <label for="party_invitation_sent" class="list-item">
+    <div class="list-item-primary">
+      <%= f.label :invitation_sent, "Invitation Sent?" %>
+    </div>
+    <div class="list-item-secondary">
+      <div class="switch switch-primary">
+        <%= f.check_box :invitation_sent, data: { "auto-submit-on-change" => false } %>
+        <label for="party_invitation_sent"></label>
+      </div>
+    </div>
+  </label>
 </div>

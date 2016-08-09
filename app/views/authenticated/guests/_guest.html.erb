@@ -5,4 +5,8 @@
       <%= guest.alcoholic_beverage_names %>
     </div>
   </div>
+  <div class="list-item-secondary">
+    <%= link_to "edit", edit_party_guest_path(@party.uuid, guest.uuid), class: "material-icons button-icon" %>
+    <%= link_to "delete", party_guest_path(@party.uuid, guest.uuid), class: "material-icons button-icon", method: "DELETE", data: { "custom-confirm" => { template: "guest-confirm-dialog-template" } } %>
+  </div>
 </div>

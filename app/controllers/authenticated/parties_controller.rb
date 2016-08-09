@@ -6,13 +6,18 @@ module Authenticated
 
     def new
       @party = current_account.parties.new
+      3.times { @party.guests.build }
+      @guests = @party.guests
+    end
+
+    def build_guest
     end
 
     def create
       @party = current_account.parties.new(party_params)
       if @party.save
         flash[:notice] = "Party created"
-        redirect_to parties_path
+        redirect_to party_path(@party.uuid)
       else
         flash[:error] = "Problem adding Party"
         render :new
@@ -25,14 +30,14 @@ module Authenticated
 
     def edit
       @party = get_party
+      @guests = @party.guests.alphabetical
     end
 
     def update
       @party = get_party
       if @party.update_attributes(party_params)
-        # Guest.update(params[:guests].keys, guests_params)
         flash[:notice] = "Updated Party"
-        redirect_to parties_path
+        redirect_to party_path(@party.uuid)
       else
         flash[:error] = "Problem updating Party"
         render :edit

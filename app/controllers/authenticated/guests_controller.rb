@@ -61,7 +61,8 @@ module Authenticated
 
     def guest_params
       params.require(:guest).permit(
-        :full_name,
+        :first_name,
+        :last_name,
         alcoholic_beverage_ids: []
       ).merge(account: current_account)
     end

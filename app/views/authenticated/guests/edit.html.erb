@@ -24,16 +24,6 @@
   </span>
 <% end %>
 
-<div class="card full-width constrained-small">
-  <div class="card-content">
-    <%= form_for @guest, url: party_guest_path(@party.uuid, @guest.uuid), html: { id: "guest-form" } do |f| %>
-      <%= render "authenticated/guests/fields", f: f %>
-      <div class="actions actions-bordered">
-        <%= f.submit "Update", class: "button button-raised-primary", id: "update-guest-button" %>
-        <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<%= render "authenticated/guests/destroy_confirm_template" %>
+<%= form_for @guest, url: party_guest_path(@party.uuid, @guest.uuid), html: { id: "guest-form" } do |f| %>
+  <%= render "authenticated/guests/fields", f: f %>
+<% end %>

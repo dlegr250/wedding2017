@@ -1,4 +1,4 @@
-<%= link_to edit_party_path(party.uuid), class: "list-item", role: "party" do %>
+<%= link_to party_path(party.uuid), class: "list-item", role: "party" do %>
   <div class="list-item-primary">
     <%= party.name %>
     <div class="list-item-primary-subtext">
@@ -13,6 +13,6 @@
     <i class="material-icons color-<%= party.invitation_sent? ? 'icon' : 'divider' %>" title="Invitation Sent">email</i>
   </div>
   <div class="list-item-secondary">
-    <%= party.guests.count %> / ???
+    <%= party.guests.count %> / ?
   </div>
 <% end %>

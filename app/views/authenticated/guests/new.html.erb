@@ -11,14 +11,6 @@
   <%= button_tag "Create", class: "button button-raised-white", data: { submit: "#guest-form" } %>
 <% end %>
 
-<div class="card full-width constrained-small">
-  <div class="card-content">
-    <%= form_for @guest, url: party_guests_path(@party.uuid), html: { id: "guest-form" } do |f| %>
-      <%= render "authenticated/guests/fields", f: f %>
-      <div class="actions actions-bordered">
-        <%= f.submit "Create", class: "button button-raised-primary", id: "create-guest-button" %>
-        <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
-      </div>
-    <% end %>
-  </div>
-</div>
+<%= form_for @guest, url: party_guests_path(@party.uuid), html: { id: "guest-form" } do |f| %>
+  <%= render "authenticated/guests/fields", f: f %>
+<% end %>

@@ -1,28 +1,50 @@
-<div class="field field-xsmall field-with-validations">
-  <div class="field-label">
-    <%= f.label :full_name, class: "required" %>
-  </div>
-  <div class="field-element">
-    <%= f.text_field :full_name, required: true, class: "full-width", autofocus: true %>
-  </div>
-</div>
-<div class="field field-xsmall">
-  <div class="field-label">
-    <%= f.label :alcoholic_beverages %>
-  </div>
-  <div class="field-element">
-    <div class="toggle-container toggle-primary">
-      <!-- Had to generate manually because automated approaches would not respect .toggle:last-child style -->
-      <% AlcoholicBeverage.alphabetical.each do |b| %>
-        <div class="toggle">
-          <%= check_box_tag "guest[alcoholic_beverage_ids][]", b.id, @guest.alcoholic_beverage_ids.include?(b.id), { id: "guest_alcoholic_beverage_ids_#{b.id}" } %>
-          <label for="guest_alcoholic_beverage_ids_<%= b.id %>"><%= b.name.capitalize %></label>
-        </div>
-      <% end %>
+<div class="card constrained-small">
+  <div class="card-header">
+    <div class="card-header-primary">
+      <%= @party.name %>
     </div>
-    <%= hidden_field_tag "guest[alcoholic_beverage_ids][]" %>
-    <div class="helper-text helper-text-bottom">
-      Check all that apply
+  </div>
+  <div class="card-content">
+    <div class="field field-xsmall field-with-validations">
+      <div class="field-label">
+        <%= f.label :first_name, class: "required" %>
+      </div>
+      <div class="field-element">
+        <%= f.text_field :first_name, required: true, autofocus: true, class: "full-width" %>
+      </div>
+    </div>
+    <div class="field field-xsmall field-with-validations">
+      <div class="field-label">
+        <%= f.label :last_name %>
+      </div>
+      <div class="field-element">
+        <%= f.text_field :last_name, class: "full-width" %>
+      </div>
+    </div>
+
+    <div class="field field-xsmall">
+      <div class="field-label">
+        <%= f.label :alcoholic_beverages %>
+      </div>
+      <div class="field-element">
+        <div class="toggle-container toggle-primary">
+          <!-- Had to generate manually because automated approaches would not respect .toggle:last-child style -->
+          <% AlcoholicBeverage.alphabetical.each do |b| %>
+            <div class="toggle">
+              <%= check_box_tag "guest[alcoholic_beverage_ids][]", b.id, @guest.alcoholic_beverage_ids.include?(b.id), { id: "guest_alcoholic_beverage_ids_#{b.id}" } %>
+              <label for="guest_alcoholic_beverage_ids_<%= b.id %>"><%= b.name.capitalize %></label>
+            </div>
+          <% end %>
+        </div>
+        <%= hidden_field_tag "guest[alcoholic_beverage_ids][]" %>
+        <div class="helper-text helper-text-bottom">
+          Check all that apply
+        </div>
+      </div>
+    </div>
+    <div class="actions actions-bordered">
+      <%= f.submit class: "button button-raised-primary", id: "create-guest-button" %>
+      <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
     </div>
   </div>
 </div>

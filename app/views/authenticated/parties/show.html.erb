@@ -3,7 +3,7 @@
 <% end %>
 <% content_for(:appbar_title) { @party.name } %>
 <% content_for(:appbar_actions) do %>
-  <%= link_to "edit", edit_party_path(@party.uuid), class: "material-icons appbar-button" %>
+  <%#= link_to "edit", edit_party_path(@party.uuid), class: "material-icons appbar-button" %>
   <span class="menu-container">
     <i class="material-icons appbar-button" role="menu-trigger" data-menu-id="appbar-menu">more_vert</i>
     <div class="menu menu-width-2" id="appbar-menu" data-position="top-right">
@@ -20,7 +20,7 @@
 <% end %>
 
 <%= link_to new_party_guest_path(@party.uuid), class: "button fab fab-secondary", id: "new-guest-fab", data: { "tooltip-position": "left", tooltip: "Add Guests" }, role: "fab" do %>
-  <i class="material-icons">add</i>
+  <i class="material-icons">person_add</i>
 <% end %>
 
 <div class="card full-width">
@@ -28,16 +28,20 @@
     <div class="card-header-primary">
       <%= @party.name %>
     </div>
+    <div class="card-header-secondary">
+      <%= link_to "edit", edit_party_path(@party.uuid), class: "material-icons button-icon" %>
+    </div>
   </div>
+  <!-- Fields use auto-submit so cannot use same as new/edit forms -->
   <%= form_for @party, url: party_path(@party.uuid), html: { id: "party-form" } do |f| %>
-    <div class="list list-divided disabled">
+    <div class="list list-divided list-hoverable">
       <label for="party_save_the_date_sent" class="list-item">
         <div class="list-item-primary">
           <%= f.label :save_the_date_sent, "Save the Date Sent?" %>
         </div>
         <div class="list-item-secondary">
           <div class="switch switch-primary">
-            <%= f.check_box :save_the_date_sent, data: { "auto-submit-on-change" => false } %>
+            <%= f.check_box :save_the_date_sent, data: { "auto-submit-on-change" => true } %>
             <label for="party_save_the_date_sent"></label>
           </div>
         </div>
@@ -48,7 +52,7 @@
         </div>
         <div class="list-item-secondary">
           <div class="switch switch-primary">
-            <%= f.check_box :invitation_sent, data: { "auto-submit-on-change" => false } %>
+            <%= f.check_box :invitation_sent, data: { "auto-submit-on-change" => true } %>
             <label for="party_invitation_sent"></label>
           </div>
         </div>
@@ -59,11 +63,26 @@
 
 <hr class="spacer small" />
 
-<div class="list list-divided list-bordered list-two-lines" id="guests">
-  <div class="list-header">
-    <div class="list-header-primary">
+<div class="card full-width">
+  <div class="card-header background-color-hover">
+    <div class="card-header-primary font-size-normal">
       Guests in Party
     </div>
   </div>
-  <%= render @party.guests.alphabetical %>
+  <% if @party.guests.any? %>
+    <div class="list list-divided list-two-lines" id="guests">
+      <%= render @party.guests.alphabetical %>
+    </div>
+  <% else %>
+    <div class="list list-hoverable list-one-lines" id="guests">
+      <%= link_to new_party_guest_path(@party.uuid), class: "list-item list-item-hoverable" do %>
+        <div class="list-item-icon">
+          <i class="material-icons">add</i>
+        </div>
+        <div class="list-item-primary">
+          Add First Guest
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
