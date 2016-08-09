@@ -17,7 +17,7 @@ module Authenticated
       @party = current_account.parties.new(party_params)
       if @party.save
         flash[:notice] = "Party created"
-        redirect_to party_path(@party.uuid)
+        redirect_to new_party_guest_path(@party.uuid)
       else
         flash[:error] = "Problem adding Party"
         render :new
