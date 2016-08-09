@@ -30,6 +30,7 @@ module Authenticated
     def update
       @party = get_party
       if @party.update_attributes(party_params)
+        # Guest.update(params[:guests].keys, guests_params)
         flash[:notice] = "Updated Party"
         redirect_to party_path(@party.uuid)
       else
@@ -56,7 +57,8 @@ module Authenticated
       params.require(:party).permit(
         :name,
         :save_the_date_sent,
-        :invitation_sent
+        :invitation_sent,
+        guests_attributes: [:id, :first_name, :last_name, alcoholic_beverage_ids: []]
       )
     end
 

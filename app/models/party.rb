@@ -8,13 +8,15 @@ class Party < ApplicationRecord
   # Macros
   #----------------------------------------------------------------------
 
-  # NOOP
+
 
   # Associations
   #----------------------------------------------------------------------
 
   belongs_to :account
   has_many :guests
+
+  accepts_nested_attributes_for :guests
 
   # Validations
   #----------------------------------------------------------------------
