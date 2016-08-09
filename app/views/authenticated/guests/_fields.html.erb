@@ -2,6 +2,9 @@
   <div class="card-header">
     <div class="card-header-primary">
       <%= @party.name %>
+      <div class="card-header-primary-subtext">
+        <%= pluralize @party.guests.count, "guest" %>
+      </div>
     </div>
   </div>
   <div class="card-content">
