@@ -23,7 +23,7 @@
   <i class="material-icons">person_add</i>
 <% end %>
 
-<div class="card full-width">
+<div class="card constrained-medium">
   <div class="card-header">
     <div class="card-header-primary">
       <%= @party.name %>
@@ -63,7 +63,7 @@
 
 <hr class="spacer small" />
 
-<div class="card full-width allow-room-for-fab-at-bottom">
+<div class="card constrained-medium allow-room-for-fab-at-bottom">
   <div class="card-header background-color-hover">
     <div class="card-header-primary font-size-normal">
       <%= pluralize @party.guests.count, "Guest" %> in Party

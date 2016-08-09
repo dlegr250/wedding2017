@@ -7,7 +7,7 @@
 <% end %>
 
 <%= form_for @party, url: parties_path, html: { id: "party-form" } do |f| %>
-  <div class="card full-width">
+  <div class="card constrained-medium">
     <%= render "authenticated/parties/fields", f: f %>
     <div class="card-actions no-border-top">
       <%= f.submit "Create", class: "button button-raised-primary", id: "create-party-button" %>
