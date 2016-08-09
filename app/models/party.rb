@@ -27,5 +27,11 @@ class Party < ApplicationRecord
   # Methods
   #----------------------------------------------------------------------
 
-  # NOOP
+  def full_address
+    "#{[address1, address2, city, state].reject(&:blank?).join(', ')} #{zip}"
+  end
+
+  def has_address?
+    !full_address.blank?
+  end
 end

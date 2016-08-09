@@ -12,6 +12,11 @@
     <i class="material-icons color-<%= party.save_the_date_sent? ? 'icon' : 'divider' %>" title="Save the Date Sent">email</i>
     <i class="material-icons color-<%= party.invitation_sent? ? 'icon' : 'divider' %>" title="Invitation Sent">email</i>
   </div>
+  <div class="list-item-primary">
+    <% if party.has_address? %>
+      <i class="material-icons color-icon">place</i>
+    <% end %>
+  </div>
   <div class="list-item-secondary">
     <%= party.guests.count %> / ?
   </div>

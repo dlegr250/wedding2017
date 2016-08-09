@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805182840) do
+ActiveRecord::Schema.define(version: 20160809211515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,11 @@ ActiveRecord::Schema.define(version: 20160805182840) do
     t.datetime "updated_at",                         null: false
     t.boolean  "save_the_date_sent", default: false
     t.boolean  "invitation_sent",    default: false
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
   end
 
   add_index "parties", ["account_id"], name: "index_parties_on_account_id", using: :btree

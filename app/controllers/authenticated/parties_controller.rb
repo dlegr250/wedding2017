@@ -63,6 +63,11 @@ module Authenticated
         :name,
         :save_the_date_sent,
         :invitation_sent,
+        :address1,
+        :address2,
+        :city,
+        :state,
+        :zip,
         guests_attributes: [:id, :first_name, :last_name, alcoholic_beverage_ids: []]
       )
     end
