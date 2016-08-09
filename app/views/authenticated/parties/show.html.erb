@@ -66,7 +66,7 @@
 <div class="card full-width allow-room-for-fab-at-bottom">
   <div class="card-header background-color-hover">
     <div class="card-header-primary font-size-normal">
-      Guests in Party
+      <%= pluralize @party.guests.count, "Guest" %> in Party
     </div>
   </div>
   <% if @party.guests.any? %>
