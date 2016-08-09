@@ -7,7 +7,7 @@
   <span class="menu-container">
     <i class="material-icons appbar-button" role="menu-trigger" data-menu-id="appbar-menu">more_vert</i>
     <div class="menu menu-width-2" id="appbar-menu" data-position="top-right">
-      <%= link_to party_path(@party.uuid), method: "DELETE", class: "menu-item disabled", id: "delete-party-link", data: { "custom-confirm" => { template: "party-confirm-dialog-template" } } do %>
+      <%= link_to party_path(@party.uuid), method: "DELETE", class: "menu-item", id: "delete-party-link", data: { "custom-confirm" => { template: "party-confirm-dialog-template" } } do %>
         <div class="menu-item-icon">
           <i class="material-icons">delete</i>
         </div>
@@ -60,18 +60,16 @@
         Guests in Party
       </div>
     </div>
-    <div class="list">
+    <div class="card-content">
       <%= f.fields_for :guests, @party.guests.alphabetical do |guest_form| %>
-        <!-- <hr class="spacer small" /> -->
-
-        <div class="list-item no-border-bottom">
-          <div class="list-item-primary">
+        <div class="field field-xsmall">
+          <div class="field-element">
             <%= guest_form.text_field :first_name, size: 8 %>
             <%= guest_form.text_field :last_name, size: 12 %>
           </div>
         </div>
-        <div class="list-item">
-          <div class="list-item-primary">
+        <div class="field field-xsmall">
+          <div class="field-element">
             <%= guest_form.collection_check_boxes(:alcoholic_beverage_ids, AlcoholicBeverage.alphabetical, :id, :name) do |b| %>
               <div class="checkbox">
                 <%= b.check_box %> <%= b.label %>
@@ -80,12 +78,12 @@
           </div>
         </div>
 
-        <hr class="divider small" />
+        <hr class="divider normal" />
       <% end %>
-    </div>
-    <div class="card-content">
-      <%= f.submit "Update", class: "button button-raised-primary", id: "update-party-button" %>
-      <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
+      <div class="">
+        <%= f.submit "Update", class: "button button-raised-primary", id: "update-party-button" %>
+        <%= link_to "Cancel", parties_path, class: "button button-flat-grey" %>
+      </div>
     </div>
   </div>
 <% end %>

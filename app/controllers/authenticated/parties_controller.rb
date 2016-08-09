@@ -32,7 +32,7 @@ module Authenticated
       if @party.update_attributes(party_params)
         # Guest.update(params[:guests].keys, guests_params)
         flash[:notice] = "Updated Party"
-        redirect_to party_path(@party.uuid)
+        redirect_to parties_path
       else
         flash[:error] = "Problem updating Party"
         render :edit
