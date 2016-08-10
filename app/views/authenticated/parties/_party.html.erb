@@ -1,21 +1,18 @@
 <%= link_to party_path(party.uuid), class: "list-item", role: "party" do %>
-  <div class="list-item-primary">
+  <div class="list-item-primary flex-2">
     <%= party.name %>
     <div class="list-item-primary-subtext">
       <div class="small-only">
         <i class="material-icons color-<%= party.save_the_date_sent? ? 'icon' : 'divider' %>" title="Save the Date Sent">email</i>
         <i class="material-icons color-<%= party.invitation_sent? ? 'icon' : 'divider' %>" title="Invitation Sent">email</i>
+        <i class="material-icons color-<%= party.has_address? ? 'icon' : 'divider' %>" title="Mailing Address">place</i>
       </div>
     </div>
   </div>
   <div class="list-item-primary medium-and-large-only">
     <i class="material-icons color-<%= party.save_the_date_sent? ? 'icon' : 'divider' %>" title="Save the Date Sent">email</i>
     <i class="material-icons color-<%= party.invitation_sent? ? 'icon' : 'divider' %>" title="Invitation Sent">email</i>
-  </div>
-  <div class="list-item-primary">
-    <% if party.has_address? %>
-      <i class="material-icons color-icon">place</i>
-    <% end %>
+    <i class="material-icons color-<%= party.has_address? ? 'icon' : 'divider' %>" title="Mailing Address">place</i>
   </div>
   <div class="list-item-secondary">
     <%= party.guests.count %> / ?
