@@ -45,3 +45,16 @@
   padding-left: 0;
   padding-right: 0;
 }
+
+// .material-icons {
+  // display: inline-flex;
+  // vertical-align: baseline;
+// }
+
+.flex-parent-row {
+  @include flex-parent-row();
+}
+
+.font-size-18 {
+  font-size: 18px;
+}
