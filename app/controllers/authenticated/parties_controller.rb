@@ -35,13 +35,27 @@ module Authenticated
 
     def update
       @party = get_party
-      if @party.update_attributes(party_params)
-        flash[:notice] = "Updated Party"
-        redirect_to party_path(@party.uuid)
-      else
-        flash[:error] = "Problem updating Party"
-        render :edit
+
+      respond_to do |format|
+        if @party.update_attributes(party_params)
+          format.html { redirect_to party_path(@party.uuid), notice: "Updated Party" }
+          format.js { flash.now[:notice] = "Updated Party" }
+        else
+          format.html do
+            flash[:error] = "Problem updating Party"
+            render :edit
+          end
+          format.js { flash.now[:error] = "Problem updating Party" }
+        end
       end
+
+      # if @party.update_attributes(party_params)
+      #   flash[:notice] = "Updated Party"
+      #   redirect_to party_path(@party.uuid)
+      # else
+      #   flash[:error] = "Problem updating Party"
+      #   render :edit
+      # end
     end
 
     def destroy

@@ -49,7 +49,7 @@
       <%= f.submit class: "button button-raised-primary", id: "create-guest-button" %>
       <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
       <% if @guest.new_record? %>
-        <%= link_to "group_add", new_party_path, class: "material-icons button-icon float-right", title: "New Party" %> 
+        <%= link_to "group_add", new_party_path, class: "material-icons button-icon float-right", title: "New Party" %>
       <% end %>
     </div>
   </div>
