@@ -27,34 +27,7 @@
 // Trying out new form validation format
 //----------------------------------------------------------------------
 
-.has-errors {
-  background-color: transparent;
-
-  input.invalid {
-    background-color: color("light-red");
-    border: 1px solid color("red");
-  }
-}
-
 [data-link] {
   cursor: pointer;
   @include no-touch-highlight();
-}
-
-.field {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-// .material-icons {
-  // display: inline-flex;
-  // vertical-align: baseline;
-// }
-
-.flex-parent-row {
-  @include flex-parent-row();
-}
-
-.font-size-18 {
-  font-size: 18px;
 }

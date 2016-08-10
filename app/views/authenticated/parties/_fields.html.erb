@@ -1,14 +1,14 @@
-<div class="card-header">
-  <div class="card-header-primary field-with-validations">
-    <%= f.text_field :name, class: "full-width font-size-large", autofocus: true, placeholder: "Party Name" %>
+<div class="card-header no-border-bottom">
+  <div class="card-header-primary field-with-validations text-field-underline-container">
+    <%= f.text_field :name, class: "full-width font-size-large", autofocus: true, required: true, placeholder: "Name" %>
     <%= bottom_error_messages_helper @party, :name %>
   </div>
 </div>
-<div class="list list-divided list-hoverable">
+<div class="list list-dividede list-hoverable">
   <label for="party_save_the_date_sent" class="list-item">
     <div class="list-item-icon">
       <div class="switch switch-primary">
-        <%= f.check_box :save_the_date_sent, data: { "auto-submit-on-change" => false } %>
+        <%= f.check_box :save_the_date_sent %>
         <label for="party_save_the_date_sent"></label>
       </div>
     </div>
@@ -19,7 +19,7 @@
   <label for="party_invitation_sent" class="list-item">
     <div class="list-item-icon">
       <div class="switch switch-primary">
-        <%= f.check_box :invitation_sent, data: { "auto-submit-on-change" => false } %>
+        <%= f.check_box :invitation_sent %>
         <label for="party_invitation_sent"></label>
       </div>
     </div>
@@ -31,9 +31,6 @@
 <div class="card-content">
   <div class="field-title">
     Mailing Address
-    <div class="field-subtitle">
-      For Invitations, Thank You letters, etc.
-    </div>
   </div>
   <div class="field field-xsmall">
     <%= f.text_area :mailing_address, class: "full-width", rows: 4 %>

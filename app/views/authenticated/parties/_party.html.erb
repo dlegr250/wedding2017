@@ -2,11 +2,9 @@
   <div class="list-item-primary flex-2">
     <%= party.name %>
     <div class="list-item-primary-subtext small-only flex-parent-row">
-      <i class="material-icons color-<%= party.save_the_date_sent? ? 'icon' : 'divider' %>" title="Save the Date Sent">email</i>&nbsp;
-      <i class="material-icons color-<%= party.invitation_sent? ? 'icon' : 'divider' %>" title="Invitation Sent">email</i>&nbsp;
-      <i class="material-icons color-<%= party.has_address? ? 'icon' : 'divider' %>" title="Mailing Address">place</i>&nbsp;
-      <i class="material-icons">people</i>&nbsp;
-      <span class="font-size-18"><%= party.guests.count %></span>
+      <i class="material-icons color-<%= party.save_the_date_sent? ? 'icon' : 'divider' %>" title="Save the Date Sent">email</i>
+      <i class="material-icons color-<%= party.invitation_sent? ? 'icon' : 'divider' %>" title="Invitation Sent">email</i>
+      <i class="material-icons color-<%= party.has_address? ? 'icon' : 'divider' %>" title="Mailing Address">place</i>
     </div>
   </div>
   <div class="list-item-primary medium-and-large-only">
@@ -14,7 +12,7 @@
     <i class="material-icons color-<%= party.invitation_sent? ? 'icon' : 'divider' %>" title="Invitation Sent">email</i>
     <i class="material-icons color-<%= party.has_address? ? 'icon' : 'divider' %>" title="Mailing Address">place</i>
   </div>
-  <div class="list-item-secondary medium-and-large-only">
+  <div class="list-item-secondary">
     <div class="flex-parent-row">
       <i class="material-icons">people</i>&nbsp;
       <span class="font-size-18"><%= party.guests.count %></span>
