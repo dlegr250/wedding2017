@@ -77,6 +77,7 @@ module Authenticated
         :name,
         :save_the_date_sent,
         :invitation_sent,
+        :mailing_address,
         :address1,
         :address2,
         :city,

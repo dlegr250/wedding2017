@@ -32,6 +32,7 @@ class Party < ApplicationRecord
   end
 
   def has_address?
-    !full_address.blank?
+    # !full_address.blank?
+    !mailing_address.blank?
   end
 end

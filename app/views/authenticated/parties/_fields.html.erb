@@ -36,16 +36,6 @@
     </div>
   </div>
   <div class="field field-xsmall">
-    <%= f.text_field :address1, class: "full-width", placeholder: "Street Address" %>
-  </div>
-  <div class="field field-xsmall">
-    <%= f.text_field :address2, class: "full-width", placeholder: "Apt, Suite" %>
-  </div>
-  <div class="field field-xsmall">
-    <%= f.text_field :city, size: 15, placeholder: "City" %>
-    <%= f.text_field :state, size: 5, placeholder: "State" %>
-  </div>
-  <div class="field field-xsmall">
-    <%= f.text_field :zip, size: 5, placeholder: "Zip" %>
+    <%= f.text_area :mailing_address, class: "full-width", rows: 4 %>
   </div>
 </div>

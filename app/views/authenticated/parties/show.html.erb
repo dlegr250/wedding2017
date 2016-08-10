@@ -63,12 +63,12 @@
     <div class="field-title">
       Mailing Address
     </div>
-    <% if @party.full_address.blank? %>
+    <% if @party.has_address? %>
+      <%= simple_format @party.mailing_address, {}, { wrapper_tag: "div" } %>
+    <% else %>
       <div class="helper-text">
         No Address
       </div>
-    <% else %>
-      <%= @party.full_address %>
     <% end %>
   </div>
 </div>
