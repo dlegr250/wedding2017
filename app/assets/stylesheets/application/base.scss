@@ -45,3 +45,7 @@ textarea.disabled {
   color: color("helper");
   cursor: not-allowed;
 }
+
+textarea.updated {
+  background-color: color("highlight");
+}
