@@ -35,17 +35,13 @@
 // Mailing Address forms
 //----------------------------------------------------------------------
 
-// Highlight changed fields before submitting
-// .mailing-address-form textarea.dirty {
-//   background-color: color("highlight") !important;
-// }
-
 textarea.disabled {
-  background-color: color("hover");
-  color: color("helper");
+  background-color: color("hover") !important;
+  color: color("helper") !important;
   cursor: not-allowed;
 }
 
+// Visual feedback once updated
 textarea.updated {
   background-color: color("highlight");
 }
