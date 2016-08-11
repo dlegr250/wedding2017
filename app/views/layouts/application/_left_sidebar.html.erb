@@ -23,7 +23,7 @@
     <%= yield :left_sidebar %>
   <% else %>
     <nav class="list list-hoverable" id="main-nav">
-      <%= link_to nil, class: "list-item", id: "dashboard-tab" do %>
+      <%= link_to dashboard_path, class: "list-item", id: "dashboard-tab" do %>
         <div class="list-item-icon">
           <i class="material-icons">dashboard</i>
         </div>
