@@ -2,7 +2,7 @@
 
 <% if @parties.any? %>
   <div class="list-subheader">
-    Parties in the context of Mailing Addresses
+    Parties without a Mailing Addresses
   </div>
   <div class="list list-bordered list-three-lines list-divided rounded-corners background-color-white" id="mailing-addresses">
     <% @parties.each do |letter, parties| %>
@@ -17,7 +17,7 @@
             <%= party.name %>
           </div>
           <div class="list-item-primary flex-2">
-            <%= f.text_area :mailing_address, class: "full-width", rows: 3, placeholder: "Mailing Address" %>
+            <%= f.text_area :mailing_address, class: "full-width", rows: 3 %>
           </div>
         <% end %>
       <% end %>

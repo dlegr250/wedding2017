@@ -1,7 +1,7 @@
 module Authenticated
   class MailingAddressesController < BaseController
     def index
-      @parties = current_account.parties.alphabetical.group_by { |p| p.name.first.upcase }
+      @parties = current_account.parties.where(mailing_address: [nil, ""]).alphabetical.group_by { |p| p.name.first.upcase }
     end
 
     def update

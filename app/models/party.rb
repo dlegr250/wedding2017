@@ -27,12 +27,12 @@ class Party < ApplicationRecord
   # Methods
   #----------------------------------------------------------------------
 
-  def full_address
-    "#{[address1, address2, city, state].reject(&:blank?).join(', ')} #{zip}"
+  def has_address?
+    !mailing_address.blank?
   end
 
-  def has_address?
-    # !full_address.blank?
-    !mailing_address.blank?
+  # Cleanup before saving
+  def mailing_address=(val)
+    self[:mailing_address] = val.strip
   end
 end
