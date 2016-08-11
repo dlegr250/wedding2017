@@ -1,7 +1,4 @@
-<% content_for(:appbar_title) { "Parties" } %>
-<% content_for(:appbar_actions) do %>
-  <%= link_to "filter_list", nil, class: "material-icons appbar-button" %>
-<% end %>
+<% title "All Parties" %>
 
 <%= link_to new_party_path, class: "button fab fab-secondary", id: "new-guest-fab", data: { "tooltip-position": "left", tooltip: "New Party" }, role: "fab" do %>
   <i class="material-icons">add</i>

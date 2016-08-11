@@ -13,7 +13,7 @@
 
 // Active tab
 .controller-parties #parties-tab,
-.controller-guests #parties-tab,
+.controller-mailing_addresses #mailing-addresses-tab,
 .controller-users #users-tab,
 .controller-settings #settings-tab {
   background-color: color("hover");
@@ -30,4 +30,18 @@
 [data-link] {
   cursor: pointer;
   @include no-touch-highlight();
+}
+
+// Mailing Address forms
+//----------------------------------------------------------------------
+
+// Highlight changed fields before submitting
+// .mailing-address-form textarea.dirty {
+//   background-color: color("highlight") !important;
+// }
+
+textarea.disabled {
+  background-color: color("hover");
+  color: color("helper");
+  cursor: not-allowed;
 }

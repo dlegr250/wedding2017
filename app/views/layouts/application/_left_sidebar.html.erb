@@ -33,15 +33,28 @@
         <div class="list-item-secondary">
         </div>
       <% end %>
+      <div class="list-subheader bold uppercase">
+        Guests
+      </div>
       <%= link_to parties_path, class: "list-item", id: "parties-tab" do %>
         <div class="list-item-icon">
           <i class="material-icons">people</i>
         </div>
         <div class="list-item-primary">
-          Parties
+          All Parties
         </div>
         <div class="list-item-secondary">
           <%= current_account.guests.count %>
+        </div>
+      <% end %>
+      <%= link_to mailing_addresses_path, class: "list-item", id: "mailing-addresses-tab" do %>
+        <div class="list-item-icon">
+          <i class="material-icons">place</i>
+        </div>
+        <div class="list-item-primary">
+          Mailing Addresses
+        </div>
+        <div class="list-item-secondary">
         </div>
       <% end %>
 

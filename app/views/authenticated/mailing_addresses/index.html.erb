@@ -1,0 +1,28 @@
+<%= title "Mailing Address" %>
+
+<% if @parties.any? %>
+  <div class="list-subheader">
+    Parties in the context of Mailing Addresses
+  </div>
+  <div class="list list-bordered list-three-lines list-divided rounded-corners background-color-white" id="mailing-addresses">
+    <% @parties.each do |letter, parties| %>
+      <div class="list-header">
+        <div class="list-header-primary">
+          <%= letter %>
+        </div>
+      </div>
+      <% parties.each do |party| %>
+        <%= form_for party, url: mailing_address_path(party.uuid), html: { method: "PUT", class: "list-item mailing-address-form", id: "mailing-address-#{party.id}-form" }, remote: true do |f| %>
+          <div class="list-item-primary">
+            <%= party.name %>
+          </div>
+          <div class="list-item-primary">
+            <%= f.text_area :mailing_address, class: "full-width", rows: 3, placeholder: "Mailing Address" %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <%= render "authenticated/parties/blank_state" %>
+<% end %>

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   #----------------------------------------------------------------------
 
   scope module: :authenticated do
+    resources :mailing_addresses, param: :uuid
     resources :parties, param: :uuid do
       resources :guests, param: :uuid
     end
