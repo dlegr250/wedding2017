@@ -1,13 +1,13 @@
 module Authenticated
-  class MailingAddressesController < BaseController
+  class InvitationsController < BaseController
     def index
-      @parties = current_account.parties.missing_mailing_address.alphabetical.group_by { |p| p.name.first.upcase }
+      @parties = current_account.parties.invitation_not_sent.alphabetical.group_by { |p| p.name.first.upcase }
     end
 
     def update
       @party = get_party
       if @party.update_attributes(party_params)
-        flash.now[:notice] = "Updated Mailing Address"
+        flash.now[:notice] = "Updated Party"
       else
         # NOOP
       end
@@ -21,7 +21,7 @@ module Authenticated
 
     def party_params
       params.require(:party).permit(
-        :mailing_address
+        :invitation_sent
       )
     end
   end

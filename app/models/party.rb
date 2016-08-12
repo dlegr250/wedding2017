@@ -4,6 +4,9 @@ class Party < ApplicationRecord
   #----------------------------------------------------------------------
 
   scope :alphabetical, -> { order(:name) }
+  scope :missing_mailing_address, -> { where(mailing_address: [nil, ""]) }
+  scope :save_the_date_not_sent, -> { where(save_the_date_sent: [false, nil]) }
+  scope :invitation_not_sent, -> { where(invitation_sent: [false, nil]) }
 
   # Macros
   #----------------------------------------------------------------------

@@ -1,0 +1,33 @@
+<%= title "Save the Date not Sent" %>
+
+<% if @parties.any? %>
+  <div class="list-subheader">
+    Parties without a Save the Date
+  </div>
+  <div class="list list-bordered list-hoverable list-two-lines list-divided rounded-corners background-color-white" id="save-the-dates">
+    <% @parties.each do |letter, parties| %>
+      <div class="list-header">
+        <div class="list-header-primary">
+          <%= letter %>
+        </div>
+      </div>
+      <% parties.each do |party| %>
+        <%= form_for party, url: save_the_date_path(party.uuid), html: { method: "PUT", class: "save-the-date-form", id: "save-the-date-#{party.id}-form" }, remote: true do |f| %>
+          <label for="party_<%= party.id %>_save_the_date_sent" class="list-item border-bottom">
+            <div class="list-item-primary">
+              <%= party.name %>
+            </div>
+            <div class="list-item-secondary">
+              <div class="switch switch-primary">
+                <%= f.check_box :save_the_date_sent, id: "party_#{party.id}_save_the_date_sent", data: { "auto-submit-on-change" => true } %>
+                <label for="party_<%= party.id %>_save_the_date_sent"></label>
+              </div>
+            </div>
+          </label>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <%= render "authenticated/save_the_dates/blank_state" %>
+<% end %>

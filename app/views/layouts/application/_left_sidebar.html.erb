@@ -49,12 +49,32 @@
       <% end %>
       <%= link_to mailing_addresses_path, class: "list-item", id: "mailing-addresses-tab" do %>
         <div class="list-item-icon">
-          <i class="material-icons">place</i>
         </div>
         <div class="list-item-primary">
           Missing Addresses
         </div>
         <div class="list-item-secondary">
+          <%= current_account.parties.missing_mailing_address.count %>
+        </div>
+      <% end %>
+      <%= link_to save_the_dates_path, class: "list-item", id: "save-the-dates-tab" do %>
+        <div class="list-item-icon">
+        </div>
+        <div class="list-item-primary">
+          Save the Date not Sent
+        </div>
+        <div class="list-item-secondary">
+          <%= current_account.parties.save_the_date_not_sent.count %>
+        </div>
+      <% end %>
+      <%= link_to invitations_path, class: "list-item", id: "invitations-tab" do %>
+        <div class="list-item-icon">
+        </div>
+        <div class="list-item-primary">
+          Invitation not Sent
+        </div>
+        <div class="list-item-secondary">
+          <%= current_account.parties.invitation_not_sent.count %>
         </div>
       <% end %>
 
