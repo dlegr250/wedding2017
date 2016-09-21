@@ -5,6 +5,12 @@
 source "https://rubygems.org"
 
 #======================================================================
+# Rake
+#======================================================================
+
+gem "rake", "11.2.2"
+
+#======================================================================
 # Ruby
 #======================================================================
 
@@ -76,14 +82,24 @@ gem "puma", "~> 2.15.3"
 #======================================================================
 
 group :development, :test do
+  gem "rspec-rails", "~> 3.3.3"
+  gem "ffaker", "~> 2.1.0"
   gem "pry", "~> 0.10.3", require: false
 end
 
 group :development do
   gem "better_errors", "~> 2.1.1"
   gem "binding_of_caller", "~> 0.7.2"
+  gem "annotate", "~> 2.7.1", require: false
 
   # Hide asset calls in development logs
   # See: https://github.com/evrone/quiet_assets
   gem "quiet_assets", "~> 1.1.0"
+end
+
+group :test do
+  gem "capybara", "~> 2.5.0"
+  gem "capybara-webkit", "~> 1.7.1"
+  gem "factory_girl_rails", "~> 4.5.0"
+  gem "database_cleaner", "~> 1.5.1"
 end
