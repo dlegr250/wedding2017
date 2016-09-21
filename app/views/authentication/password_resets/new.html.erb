@@ -6,6 +6,9 @@
 <%= form_tag password_resets_path do %>
   <div class="field field-xsmall">
     <div class="field-label">
+      <div class="float-right">
+        <%= link_to "Remember Password?", login_path %>
+      </div>
       <%= label_tag :email, "Email" %>
     </div>
     <div class="field-element">

@@ -2,20 +2,6 @@
   <div class="sidebar-header">
     Wedding 2017
   </div>
-  <div class="list">
-    <div class="list-item truncate-text">
-      <div class="list-item-primary">
-        <%= current_user.full_name %>
-        <%= "(Owner)" if current_user.account_owner? %>
-        <div class="list-item-primary-subtext">
-          <span role="logged_in_as"><%= current_user.email %></span>
-        </div>
-        <div class="list-item-primary-subtext">
-          <%= link_to "Logout", logout_path, class: "bold color-helper" %>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <hr class="spacer normal" />
 
@@ -99,12 +85,27 @@
     </nav>
   <% end %>
 
-  <hr class="spacer small" />
+  <hr class="divider normal" />
 
   <div class="list">
     <div class="list-item">
       <div class="list-item-primary helper-text">
         SHA1 commit <strong><%= Git::COMMIT %></strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="list">
+    <div class="list-item truncate-text">
+      <div class="list-item-primary">
+        <%= current_user.full_name %>
+        <%= "(Owner)" if current_user.account_owner? %>
+        <div class="list-item-primary-subtext">
+          <span role="logged_in_as"><%= current_user.email %></span>
+        </div>
+        <div class="list-item-primary-subtext">
+          <%= link_to "Logout", logout_path, class: "bold color-helper" %>
+        </div>
       </div>
     </div>
   </div>

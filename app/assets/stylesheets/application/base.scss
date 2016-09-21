@@ -5,12 +5,6 @@
 // Main navigation
 //----------------------------------------------------------------------
 
-#main-nav {
-  .list-item-primary {
-    font-weight: bold;
-  }
-}
-
 // Active tab
 .controller-dashboards #dashboard-tab,
 .controller-parties #parties-tab,
@@ -22,7 +16,8 @@
   background-color: color("hover");
 
   .list-item-icon,
-  .list-item-primary {
+  .list-item-primary,
+  .list-item-secondary {
     color: color("primary");
   }
 }

@@ -1,30 +1,30 @@
 <div class="card-header no-border-bottom">
   <div class="card-header-primary field-with-validations text-field-underline-container">
-    <%= f.text_field :name, class: "full-width font-size-large", autofocus: true, required: true, placeholder: "Name" %>
+    <%= f.text_field :name, class: "full-width font-size-large", autofocus: true, required: true, placeholder: "Party Name" %>
     <%= bottom_error_messages_helper @party, :name %>
   </div>
 </div>
-<div class="list list-dividede list-hoverable">
+<div class="list list-hoverable">
   <label for="party_save_the_date_sent" class="list-item">
-    <div class="list-item-icon">
+    <div class="list-item-primary">
+      <%= f.label :save_the_date_sent, "Save the Date Sent?" %>
+    </div>
+    <div class="list-item-secondary">
       <div class="switch switch-primary">
         <%= f.check_box :save_the_date_sent %>
         <label for="party_save_the_date_sent"></label>
       </div>
     </div>
-    <div class="list-item-primary">
-      <%= f.label :save_the_date_sent, "Save the Date Sent?" %>
-    </div>
   </label>
   <label for="party_invitation_sent" class="list-item">
-    <div class="list-item-icon">
+    <div class="list-item-primary">
+      <%= f.label :invitation_sent, "Invitation Sent?" %>
+    </div>
+    <div class="list-item-secondary">
       <div class="switch switch-primary">
         <%= f.check_box :invitation_sent %>
         <label for="party_invitation_sent"></label>
       </div>
-    </div>
-    <div class="list-item-primary">
-      <%= f.label :invitation_sent, "Invitation Sent?" %>
     </div>
   </label>
 </div>
