@@ -2,8 +2,8 @@ class CreateDrinkings < ActiveRecord::Migration
   def change
     create_table :drinkings do |t|
       t.string :uuid
-      t.integer :guest_id
-      t.integer :alcoholic_beverage_id
+      t.belongs_to :guest, index: true
+      t.belongs_to :alcoholic_beverage, index: true
 
       t.timestamps null: false
     end
