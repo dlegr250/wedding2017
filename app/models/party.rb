@@ -11,7 +11,7 @@ class Party < ApplicationRecord
   # Macros
   #----------------------------------------------------------------------
 
-  # NOOP
+  before_save :append_party_to_name
 
   # Associations
   #----------------------------------------------------------------------
@@ -37,5 +37,13 @@ class Party < ApplicationRecord
   # Cleanup before saving
   def mailing_address=(val)
     self[:mailing_address] = val.strip
+  end
+
+  private
+
+  def append_party_to_name
+    if !name.to_s.strip.downcase.ends_with?("party")
+      self[:name] = "#{name.to_s.strip} Party"
+    end
   end
 end
