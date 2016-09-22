@@ -1,7 +1,7 @@
 <% content_for(:appbar_nav_icon) { up_button(parties_path) } %>
 <% content_for(:appbar_title) { "Party" } %>
 <% content_for(:appbar_actions) do %>
-  <%#= link_to "edit", edit_party_path(@party.uuid), class: "material-icons appbar-button" %>
+  <%= link_to "edit", edit_party_path(@party.uuid), class: "material-icons appbar-button", data: { tooltip: "Edit" } %>
   <span class="menu-container">
     <i class="material-icons appbar-button" role="menu-trigger" data-menu-id="appbar-menu">more_vert</i>
     <div class="menu menu-width-2" id="appbar-menu" data-position="top-right">
@@ -25,9 +25,6 @@
   <div class="card-header no-border-bottome">
     <div class="card-header-primary">
       <%= @party.name %>
-    </div>
-    <div class="card-header-secondary">
-      <%= link_to "edit", edit_party_path(@party.uuid), class: "material-icons button-icon" %>
     </div>
   </div>
   <!-- Fields use auto-submit so cannot use same as new/edit forms -->

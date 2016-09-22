@@ -1,7 +1,12 @@
 <div class="card-header no-border-bottom">
-  <div class="card-header-primary field-with-validations text-field-underline-container">
-    <%= f.text_field :name, class: "full-width font-size-large", autofocus: true, required: true, placeholder: "Party Name" %>
-    <%= bottom_error_messages_helper @party, :name %>
+  <div class="card-header-primary">
+    <div class="field-with-validations text-field-underline-container">
+      <%= f.text_field :name, class: "full-width font-size-large", autofocus: true, required: true, placeholder: "Party Name" %>
+      <div class="helper-text helper-text-bottom">
+        The word "Party" will automatically be added at the end for you
+      </div>
+      <%= bottom_error_messages_helper @party, :name %>
+    </div>
   </div>
 </div>
 <div class="list list-hoverable">

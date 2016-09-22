@@ -1,4 +1,4 @@
-<div class="card constrained-small">
+<div class="card constrained-medium">
   <div class="card-header">
     <div class="card-header-primary">
       <%= @party.name %>
@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="card-content">
-    <div class="field field-xsmall field-with-validations">
+    <div class="field field-xsmall field-responsive field-with-validations">
       <div class="field-label">
         <%= f.label :first_name, class: "required" %>
       </div>
@@ -16,7 +16,7 @@
         <%= f.text_field :first_name, required: true, autofocus: true, class: "full-width" %>
       </div>
     </div>
-    <div class="field field-xsmall field-with-validations">
+    <div class="field field-xsmall field-responsive field-with-validations">
       <div class="field-label">
         <%= f.label :last_name %>
       </div>
@@ -24,8 +24,7 @@
         <%= f.text_field :last_name, class: "full-width" %>
       </div>
     </div>
-
-    <div class="field field-xsmall">
+    <div class="field field-xsmall field-responsive">
       <div class="field-label">
         <%= f.label :alcoholic_beverages %>
       </div>
@@ -45,12 +44,12 @@
         </div>
       </div>
     </div>
-    <div class="actions actions-bordered">
-      <%= f.submit class: "button button-raised-primary", id: "create-guest-button" %>
-      <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
-      <% if @guest.new_record? %>
-        <%= link_to "group_add", new_party_path, class: "material-icons button-icon float-right", title: "New Party" %>
-      <% end %>
-    </div>
+  </div>
+  <div class="card-actions">
+    <%= f.submit "Create", class: "button button-raised-primary", id: "create-guest-button" %>
+    <%= link_to "Cancel", party_path(@party.uuid), class: "button button-flat-grey" %>
+    <% if @guest.new_record? %>
+      <%= link_to "group_add", new_party_path, class: "material-icons button-icon float-right", title: "New Party" %>
+    <% end %>
   </div>
 </div>

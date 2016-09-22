@@ -1,6 +1,4 @@
-<% content_for(:appbar_nav_icon) do %>
-  <%= link_to "arrow_back", party_path(@party.uuid), class: "material-icons appbar-button" %>
-<% end %>
+<% content_for(:appbar_nav_icon) { up_button(party_path(@party.uuid)) } %>
 <% content_for(:appbar_title) do %>
   <%= @party.name %>
   <div class="appbar-subtitle">

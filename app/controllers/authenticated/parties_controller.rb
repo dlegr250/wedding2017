@@ -16,7 +16,7 @@ module Authenticated
     def create
       @party = current_account.parties.new(party_params)
       if @party.save
-        flash[:notice] = "Party created"
+        flash[:notice] = "Created Party"
         redirect_to new_party_guest_path(@party.uuid)
       else
         flash[:error] = "Problem adding Party"
@@ -48,14 +48,6 @@ module Authenticated
           format.js { flash.now[:error] = "Problem updating Party" }
         end
       end
-
-      # if @party.update_attributes(party_params)
-      #   flash[:notice] = "Updated Party"
-      #   redirect_to party_path(@party.uuid)
-      # else
-      #   flash[:error] = "Problem updating Party"
-      #   render :edit
-      # end
     end
 
     def destroy

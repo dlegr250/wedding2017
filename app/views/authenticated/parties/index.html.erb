@@ -1,4 +1,7 @@
 <% title "All Parties" %>
+<% content_for(:appbar_actions) do %>
+  <%= link_to "add", new_party_path, class: "material-icons appbar-button", tooltip: "Invite User", id: "new-user-button", data: { tooltip: "New" } %>
+<% end %>
 
 <%= link_to new_party_path, class: "button fab fab-secondary", id: "new-guest-fab", data: { "tooltip-position": "left", tooltip: "New" }, role: "fab" do %>
   <i class="material-icons">add</i>

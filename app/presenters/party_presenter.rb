@@ -1,0 +1,2 @@
+class PartyPresenter < BasePresenter
+end

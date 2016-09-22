@@ -14,7 +14,7 @@
       <% parties.each do |party| %>
         <%= form_for party, url: mailing_address_path(party.uuid), html: { method: "PUT", class: "list-item mailing-address-form", id: "mailing-address-#{party.id}-form" }, remote: true do |f| %>
           <div class="list-item-primary flex-1">
-            <%= party.name %>
+            <strong><%= party.name %></strong>
           </div>
           <div class="list-item-primary flex-2">
             <%= f.text_area :mailing_address, class: "full-width", rows: 3 %>
