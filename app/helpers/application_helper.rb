@@ -1,4 +1,9 @@
 module ApplicationHelper
+  def page_title_helper
+    title = (@page_title.present? ? @page_title : controller_name.humanize)
+    "#{title} &middot; LoveIsLeGrand".html_safe
+  end
+
   def charset_meta_tag
     tag :meta, name: "charset", content: "utf-8"
   end
@@ -40,16 +45,5 @@ module ApplicationHelper
   def short_timestamp(datetime)
     return if datetime.blank?
     datetime.strftime("%b %d - %l:%M %p")
-  end
-
-  # Create ZMDI icon
-  # <i class="icon zmdi zmdi-{NAME} [zmdi-hc-fw zmdi-hc-lg]"></i>
-  def icon(name, options = {})
-    class_names = ["icon", "zmdi", "zmdi-#{name}"]
-
-    class_names << "zmdi-hc-fw" if options.fetch(:fixed_width, false)
-    class_names << "zmdi-hc-#{options.fetch(:size)}" if options.fetch(:size, nil)
-
-    content_tag(:i, nil, class: class_names.join(" ")).html_safe
   end
 end
