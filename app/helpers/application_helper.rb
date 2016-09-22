@@ -13,6 +13,15 @@ module ApplicationHelper
     tags.join("\n").html_safe
   end
 
+  # Appbar title
+  def title(text)
+    content_for(:appbar_title) { text }
+  end
+
+  def up_button(url)
+    link_to("arrow_back", url, class: "material-icons appbar-button", id: "up-button")
+  end
+
   def bottom_error_messages_helper(object, attribute)
     if object.try(:errors)[attribute].any?
       content_tag :div, class: "error-messages" do

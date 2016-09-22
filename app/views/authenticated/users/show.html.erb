@@ -1,34 +1,31 @@
-<% content_for(:appbar_nav_icon) do %>
-  <%= link_to "", users_path, class: "zmdi zmdi-arrow-left appbar-button" %>
-<% end %>
+<% content_for(:appbar_nav_icon) { up_button(users_path) } %>
 <% content_for(:appbar_title) { "User" } %>
-<% if current_user.primary? %>
+<% if current_user.account_owner? %>
   <% content_for(:appbar_actions) do %>
-    <%= link_to "", edit_user_path(@user.uuid), class: "zmdi zmdi-edit appbar-button", data: { tooltip: "Edit" } %>
-    <% if !@user.primary? %>
-      <%= link_to "", user_path(@user.uuid), class: "zmdi zmdi-delete appbar-button", method: "DELETE", data: { "custom-confirm" => { template: "user-confirm-dialog-template" }, tooltip: "Delete" } %>
+    <%= link_to "edit", edit_user_path(@user.uuid), class: "material-icons appbar-button", data: { tooltip: "Edit" } %>
+    <% if !@user.account_owner? %>
+      <%= link_to "delete", user_path(@user.uuid), class: "material-icons appbar-button", method: "DELETE", data: { "custom-confirm" => { template: "user-confirm-dialog-template" }, tooltip: "Delete" } %>
     <% end %>
-    <span class="appbar-divider"></span>
   <% end %>
 <% end %>
 
 <div class="card full-width constrained-medium">
   <div class="card-header">
-    <div class="card-header-title">
+    <div class="card-header-primary">
       <% if @user.confirmed? %>
         <%= @user.full_name %>
-        <% if @user.primary? %>
-          <span class="color-green">&middot; Primary</span>
+        <% if @user.account_owner? %>
+          <span class="color-green">Account Owner</span>
         <% end %>
       <% else %>
         <em>Invited</em>
       <% end %>
     </div>
   </div>
-  <div class="list">
+  <div class="list list-two-lines">
     <div class="list-item">
       <div class="list-item-icon">
-        <%= icon "email" %>
+        <i class="material-icons">mail</i>
       </div>
       <div class="list-item-primary">
         <%= @user.email %>
@@ -39,22 +36,7 @@
     </div>
     <div class="list-item">
       <div class="list-item-icon">
-        <%= icon "phone" %>
-      </div>
-      <div class="list-item-primary">
-        <% if @user.confirmed? %>
-          <%= number_to_phone @user.cell_phone, area_code: true %>
-        <% else %>
-          <em>Invited</em>
-        <% end %>
-        <div class="list-item-primary-subtext">
-          Mobile
-        </div>
-      </div>
-    </div>
-    <div class="list-item">
-      <div class="list-item-icon">
-        <%= icon "time" %>
+        <i class="material-icons">access_time</i>
       </div>
       <div class="list-item-primary">
         <%= local_time @user.created_at %>
@@ -65,5 +47,3 @@
     </div>
   </div>
 </div>
-
-<%= render "authenticated/users/destroy_confirm_template" %>

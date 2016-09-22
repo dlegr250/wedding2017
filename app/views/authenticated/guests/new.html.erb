@@ -1,0 +1,16 @@
+<% content_for(:appbar_nav_icon) do %>
+  <%= link_to "arrow_back", party_path(@party.uuid), class: "material-icons appbar-button" %>
+<% end %>
+<% content_for(:appbar_title) do %>
+  <%= @party.name %>
+  <div class="appbar-subtitle">
+    New Guest
+  </div>
+<% end %>
+<% content_for(:appbar_actions) do %>
+  <%= button_tag "Create", class: "button button-raised-white", data: { submit: "#guest-form" } %>
+<% end %>
+
+<%= form_for @guest, url: party_guests_path(@party.uuid), html: { id: "guest-form" } do |f| %>
+  <%= render "authenticated/guests/fields", f: f %>
+<% end %>

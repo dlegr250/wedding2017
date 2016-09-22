@@ -3,24 +3,30 @@
 <head>
   <%= stylesheet_link_tag "mailer", media: "all", "data-turbolinks-track" => true %>
 </head>
-<body class="email-template">
-  <table class="email-background">
-    <tr>
-      <td>
-        <table class="email-container">
-          <tr>
-            <td>
-              <div class="email-main">
-                <div class="email-branding">
-                  Dan and Jacqueline Wedding 2017
-                </div>
-                <%= yield %>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
+<body class="email-body">
+  <table class="email-container">
+    <tbody>
+      <tr>
+        <td>
+          <table>
+            <tbody>
+              <tr>
+                <td class="email-branding">
+                  LoveIsLeGand
+                </td>
+              </tr>
+              <tr>
+                <td class="email-main">
+                  <div class="email-main-border">
+                    <%= yield %>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
   </table>
 </body>
 </html>

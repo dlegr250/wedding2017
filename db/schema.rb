@@ -11,15 +11,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729002242) do
+ActiveRecord::Schema.define(version: 20160802163723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accounts", force: :cascade do |t|
+    t.string   "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "alcoholic_beverages", force: :cascade do |t|
+    t.string   "uuid"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "drinkings", force: :cascade do |t|
+    t.string   "uuid"
+    t.integer  "guest_id"
+    t.integer  "alcoholic_beverage_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "drinkings", ["alcoholic_beverage_id"], name: "index_drinkings_on_alcoholic_beverage_id", using: :btree
+  add_index "drinkings", ["guest_id"], name: "index_drinkings_on_guest_id", using: :btree
+
+  create_table "guests", force: :cascade do |t|
+    t.string   "uuid",       null: false
+    t.integer  "account_id"
+    t.integer  "party_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "guests", ["account_id"], name: "index_guests_on_account_id", using: :btree
+  add_index "guests", ["party_id"], name: "index_guests_on_party_id", using: :btree
+
+  create_table "parties", force: :cascade do |t|
+    t.integer  "account_id"
+    t.string   "uuid"
+    t.string   "name"
+    t.boolean  "save_the_date_sent", default: false
+    t.boolean  "invitation_sent",    default: false
+    t.text     "mailing_address"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "parties", ["account_id"], name: "index_parties_on_account_id", using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.boolean  "admin",                        default: false
-    t.string   "email"
     t.string   "uuid",                                         null: false
+    t.integer  "account_id"
+    t.boolean  "account_owner",                default: false
+    t.string   "email"
     t.string   "password_digest"
     t.string   "authentication_token"
     t.string   "password_reset_token"
@@ -30,5 +81,7 @@ ActiveRecord::Schema.define(version: 20160729002242) do
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
   end
+
+  add_index "users", ["account_id"], name: "index_users_on_account_id", using: :btree
 
 end

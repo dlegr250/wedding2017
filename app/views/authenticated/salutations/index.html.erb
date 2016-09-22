@@ -1,0 +1,14 @@
+<% content_for(:appbar_title) { "Salutations" } %>
+<% content_for(:appbar_actions) do %>
+  <%= link_to "", new_salutation_path, class: "zmdi zmdi-plus appbar-button", title: "New Salutation" %>
+<% end %>
+
+<%= link_to "", new_salutation_path, class: "button fab fab-secondary zmdi zmdi-plus", id: "new-salutation-button", data: { "tooltip-position": "left", tooltip: "New Salutation" }, role: "fab" %>
+
+<% if @salutations.any? %>
+  <div class="list list-bordered list-divided list-hoverable rounded-corners background-color-white allow-room-for-fab-at-bottom" id="salutations">
+    <%= render @salutations %>
+  </div>
+<% else %>
+  <%= render "authenticated/salutations/blank_state" %>
+<% end %>

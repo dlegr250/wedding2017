@@ -1,19 +1,18 @@
-<% content_for(:appbar_title) { "Users (#{current_account.users.count})" } %>
-<% if current_user.primary? %>
+<% content_for(:appbar_title) { "Users" } %>
+<% if current_user.account_owner? %>
   <% content_for(:appbar_actions) do %>
-    <%= link_to "", new_user_path, class: "zmdi zmdi-plus appbar-button", data: { tooltip: "Invite New User" } %>
-    <span class="appbar-divider"></span>
+    <%= link_to "add", new_user_path, class: "material-icons appbar-button", tooltip: "Invite User", id: "new-user-button", data: { "tooltip-position": "bottom-left", tooltip: "Invite User" } %>
   <% end %>
 
-  <%= link_to "", new_user_path, class: "button fab fab-secondary zmdi zmdi-plus", id: "new-user-button", data: { "tooltip-position": "left", tooltip: "Invite New User" }, role: "fab" %>
+  <%= link_to new_user_path, class: "button fab fab-secondary", id: "new-user-fab", data: { "tooltip-position": "left", tooltip: "Invite User" }, role: "fab" do %>
+    <i class="material-icons">add</i>
+  <% end %>
 <% end %>
 
-<div class="list list-bordered list-divided list-hoverable rounded-corners background-color-white allow-room-for-fab-at-bottom" id="users">
-  <div class="list-header">
-    <div class="list-header-primary">
-      Only a Primary User may manage users
-    </div>
-  </div>
+<div class="list-subheader">
+  Only the Account Owner can manage Users
+</div>
+<div class="list list-bordered list-two-lines list-divided list-hoverable rounded-corners background-color-white allow-room-for-fab-at-bottom" id="users">
   <%= render @invited_users %>
   <%= render @users %>
 </div>

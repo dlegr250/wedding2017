@@ -1,0 +1,11 @@
+<%= link_to edit_salutation_path(salutation.uuid), class: "list-item", role: "salutation" do %>
+  <div class="list-item-primary">
+    <%= salutation.value %>
+    <div class="list-item-primary-subtext">
+      <%= salutation.description %>
+    </div>
+  </div>
+  <div class="list-item-secondary one-actions">
+    <%= icon "chevron-right" %>
+  </div>
+<% end %>

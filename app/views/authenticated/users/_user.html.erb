@@ -1,9 +1,14 @@
 <%= link_to user_path(user.uuid), class: "list-item", role: "user" do %>
   <div class="list-item-primary">
-    <% if user.confirmed? %>
-      <%= user.full_name %>
-    <% else %>
-      <em>Invited</em>
+    <strong>
+      <% if user.confirmed? %>
+        <%= user.full_name %>
+      <% else %>
+        <em>Invited</em>
+      <% end %>
+    </strong>
+    <% if user.account_owner? %>
+      <span class="color-green">Account Owner</span>
     <% end %>
     <div class="list-item-primary-subtext">
       <%= user.email %>

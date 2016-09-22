@@ -1,70 +1,137 @@
-//======================================================================
-// Does not depend on any other asset components. This is a stand-alone
-// file for HTML emails. All styles must be inside this file.
-// These styles should not affect the rest of the application.
-//======================================================================
+// Variables
+//----------------------------------------------------------------------
 
-$primary-color: #2196f3;
+$font-size-small: 12px;
+$font-size-normal: 14px;
+$font-size-large: 24px;
 
-.email-template {
-  background-color: #fff;
-  color: #555;
-  font-family: sans-serif;
-  font-size: 16px;
-  line-height: 1.2;
-  padding: 16px;
+$spacing-xsmall: 4px;
+$spacing-small: 8px;
+$spacing-normal: 16px;
+$spacing-large: 24px;
+$spacing-xlarge: 32px;
+
+$color-divider: rgba(0, 0, 0, 0.12);
+$color-helper: rgba(0,0,0,0.54);
+$color-primary: #673ab7;
+$color-text: #3d454d;
+
+@mixin rounded-corners($radius: 4px) {
+  behavior: url(border-radius.htc);
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+@mixin full-width() {
+  box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+// Elements
+//----------------------------------------------------------------------
+
+.email-body {
+  font-family: arial, sans-serif;
+  font-size: $font-size-normal;
+  color: $color-text;
+  line-height: 21px;
 
   table {
+    border-collapse: collapse;
+    border-spacing: none;
     width: 100%;
   }
+
+  a {
+    color: $color-primary;
+    text-decoration: none;
+  }
+
+  p {
+    display: block;
+    margin: $spacing-small 0;
+  }
 }
+
+// Branding
+//----------------------------------------------------------------------
 
 .email-container {
   margin: auto;
   max-width: 600px;
-}
-
-.email-main {
-  // border: 1px solid #ccc;
-  padding: 32px;
+  text-align: center;
 }
 
 .email-branding {
-  border-bottom: 1px solid #ccc;
-  color: #222;
-  font-size: 20px;
-  margin-bottom: 8px;
-  padding-bottom: 8px;
   font-weight: bold;
-  // text-align: center;
+  text-align: left;
 }
 
-.email-branding-logo {
-  border-top: 1px solid #ccc;
-  margin-top: 16px;
-  padding-top: 16px;
+.email-main {}
+
+.email-main-border {
+  border: 1px solid color $color-divider;
+  padding: $spacing-large;
+  @include rounded-corners();
+}
+
+.email-title {
+  border-bottom: 1px solid color $color-divider;
+  font-weight: bold;
+  font-size: $font-size-large;
+  margin-bottom: $spacing-normal;
+  padding-bottom: $spacing-normal;
+}
+
+.email-salutation {
+  color: $color-helper;
+  margin-top: $spacing-normal;
+}
+
+// Helper text
+//----------------------------------------------------------------------
+
+.helper-text {
+  color: $color-helper;
+  font-weight: normal;
+}
+
+.helper-text-bottom {
+  padding-top: $spacing-xsmall;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.full-width {
+  @include full-width();
+}
+
+// Email buttons
+//----------------------------------------------------------------------
+
+.email-button-container {
+  margin: $spacing-normal 0;
   text-align: center;
 }
 
-.email-block {
-  padding: 8px 0;
-}
+.email-button td {
+  width: auto;
+  @include rounded-corners();
 
-.email-block-large {
-  padding: 16px 0;
-}
-
-.align-center {
-  text-align: center;
-}
-
-.button {
-  background-color: $primary-color;
-  color: #fff;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-a {
-  color: $primary-color;
+  a {
+    background-color: $color-primary;
+    color: #fff;
+    display: inline-block;
+    padding: $spacing-small $spacing-normal;
+    @include rounded-corners();
+  }
 }

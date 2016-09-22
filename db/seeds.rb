@@ -1,7 +1,13 @@
+Account.delete_all
 User.delete_all
+AlcoholicBeverage.delete_all
+
+account = Account.create
 
 User.create(
+  account: account,
   full_name: "Dan LeGrand",
+  account_owner: true,
   email: "dan.legrand@gmail.com",
   password: "password",
   password_confirmation: "password",
@@ -9,3 +15,6 @@ User.create(
   confirmation_token: ::Modules::Generator.random_token,
   authentication_token: ::Modules::Generator.random_token
 )
+
+AlcoholicBeverage.create(name: "Beer")
+AlcoholicBeverage.create(name: "Wine")

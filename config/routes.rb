@@ -12,6 +12,20 @@ Rails.application.routes.draw do
     resources :confirmations
   end
 
+  # Standard
+  #----------------------------------------------------------------------
+
+  scope module: :authenticated do
+    resource :dashboard
+    resources :mailing_addresses, param: :uuid
+    resources :save_the_dates, param: :uuid
+    resources :invitations, param: :uuid
+    resources :parties, param: :uuid do
+      resources :guests, param: :uuid
+    end
+    resources :users
+  end
+
   # Root
   #----------------------------------------------------------------------
 

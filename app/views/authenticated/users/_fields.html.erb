@@ -1,0 +1,18 @@
+<div class="field field-xsmall field-with-validations">
+  <div class="field-label">
+    <%= f.label :email, class: "required" %>
+  </div>
+  <div class="field-element">
+    <%= f.email_field :email, class: "full-width", autofocus: true %>
+    <%= bottom_error_messages_helper @user, :email %>
+  </div>
+</div>
+<div class="field field-xsmall field-with-validations">
+  <div class="field-label">
+    <%= f.label :full_name, class: "optional" %>
+  </div>
+  <div class="field-element">
+    <%= f.text_field :full_name, class: "full-width" %>
+    <%= bottom_error_messages_helper @user, :full_name %>
+  </div>
+</div>

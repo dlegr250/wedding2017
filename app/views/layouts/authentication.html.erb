@@ -23,14 +23,14 @@
 
     <div class="card constrained constrained-small">
       <div class="card-header align-center">
-        <div class="card-header-title">
+        <div class="card-header-primary">
           <%= yield :authentication_title %>
+          <% if content_for?(:authentication_subtitle) %>
+            <div class="card-header-primary-subtext">
+              <%= yield :authentication_subtitle %>
+            </div>
+          <% end %>
         </div>
-        <% if content_for?(:authentication_subtitle) %>
-          <div class="card-header-subtitle">
-            <%= yield :authentication_subtitle %>
-          </div>
-        <% end %>
       </div>
       <div class="card-content">
         <%= yield %>

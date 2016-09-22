@@ -19,12 +19,4 @@
     background-color: color("red");
     color: color("white");
   }
-
-  // Add additional spacing on the authentication pages
-  .card {
-    .card-content {
-      padding: $spacing-xlarge;
-      padding-top: $spacing-normal;
-    }
-  }
 }

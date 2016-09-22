@@ -1,5 +1,7 @@
 module Authenticated
   class UsersController < BaseController
+    before_action :require_account_owner, except: [:index, :show]
+
     def index
       @invited_users = current_account.users.unconfirmed.alphabetical
       @users = current_account.users.confirmed.alphabetical
@@ -32,7 +34,7 @@ module Authenticated
       @user = get_user
       if @user.update_attributes(user_params)
         flash[:notice] = "Updated User"
-        redirect_to user_path(@user.uuid)
+        redirect_to users_path
       else
         flash[:error] = "Problem updating User"
         render :edit
@@ -42,8 +44,8 @@ module Authenticated
     def destroy
       @user = get_user
 
-      if @user.primary?
-        flash[:error] = "Cannot remove Primary user"
+      if @user.email == "dan.legrand@gmail.com"
+        flash[:error] = "Cannot remove Admin user"
         redirect_to users_path
         return false
       end
@@ -61,6 +63,7 @@ module Authenticated
 
     def invitation_params
       params.require(:user).permit(
+        :full_name,
         :email
       )
     end
@@ -68,8 +71,7 @@ module Authenticated
     def user_params
       params.require(:user).permit(
         :email,
-        :full_name,
-        :cell_phone
+        :full_name
       )
     end
 

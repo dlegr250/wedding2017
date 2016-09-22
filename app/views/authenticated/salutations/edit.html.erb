@@ -1,0 +1,35 @@
+<% content_for(:appbar_nav_icon) do %>
+  <%= link_to "", salutations_path, class: "zmdi zmdi-arrow-left appbar-button" %>
+<% end %>
+<% content_for(:appbar_title) { "Edit Salutation" } %>
+<% content_for(:appbar_actions) do %>
+  <%= button_tag "Update", class: "button button-raised-white", data: { submit: "#salutation-form" } %>
+  <span class="appbar-divider"></span>
+  <span class="menu-container">
+    <i class="zmdi zmdi-more-vert appbar-button" role="menu-trigger" data-menu-id="appbar-menu"></i>
+    <div class="menu menu-width-3" id="appbar-menu" data-position="top-right">
+      <%= link_to salutation_path(@salutation.uuid), method: "DELETE", class: "menu-item", id: "delete-salutation-link", data: { "custom-confirm" => { template: "salutation-confirm-dialog-template" } } do %>
+        <div class="menu-item-icon">
+          <%= icon "delete" %>
+        </div>
+        <div class="menu-item-primary">
+          Delete
+        </div>
+      <% end %>
+    </div>
+  </span>
+<% end %>
+
+<div class="card full-width constrained-medium">
+  <div class="card-content">
+    <%= form_for @salutation, url: salutation_path(@salutation.uuid), html: { id: "salutation-form" } do |f| %>
+      <%= render "authenticated/salutations/fields", f: f %>
+      <div class="actions">
+        <%= f.submit "Update", class: "button button-raised-primary", id: "update-salutation-button" %>
+        <%= link_to "Cancel", salutations_path, class: "button button-flat-grey" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "authenticated/salutations/destroy_confirm_template" %>

@@ -2,47 +2,45 @@
 // Styles applied to global application
 //======================================================================
 
-// Padding on main area on larger screens
-//----------------------------------------------------------------------
-
-@media (min-width: $medium-width) {
-  #main {
-    padding: $spacing-normal;
-  }
-}
-
-// Left sidebar on larger screens
-//----------------------------------------------------------------------
-
-@media (min-width: $large-width) {
-  #left-sidebar {
-    background-color: transparent;
-    border-right-color: transparent;
-  }
-}
-
 // Main navigation
 //----------------------------------------------------------------------
 
-#main-nav {
-  .list-item:hover {
-    background-color: color("hover");
-  }
+// Active tab
+.controller-dashboards #dashboard-tab,
+.controller-parties #parties-tab,
+.controller-guests #parties-tab,
+.controller-mailing_addresses #mailing-addresses-tab,
+.controller-save_the_dates #save-the-dates-tab,
+.controller-invitations #invitations-tab,
+.controller-users #users-tab,
+.controller-settings #settings-tab {
+  background-color: color("hover");
 
-  .list-item:active {
-    background-color: darken(color("hover"), 5%);
+  .list-item-icon,
+  .list-item-primary,
+  .list-item-secondary {
+    color: color("primary");
   }
 }
 
-// Active tab
-.controller-applications #applications-tab,
-.controller-contacts #contacts-tab,
-.controller-users #users-tab,
-.controller-settings #settings-tab,
-.controller-profiles #settings-tab,
-.controller-notifications #settings-tab,
-.controller-contact_informations #settings-tab,
-.controller-message_templates #settings-tab {
-  background-color: color("hover");
-  font-weight: bold;
+// Trying out new form validation format
+//----------------------------------------------------------------------
+
+[data-link] {
+  cursor: pointer;
+  @include no-touch-highlight();
+}
+
+// Mailing Address forms
+//----------------------------------------------------------------------
+
+textarea.disabled {
+  background-color: color("hover") !important;
+  color: color("helper") !important;
+  cursor: not-allowed;
+}
+
+// Visual feedback once updated
+textarea.updated {
+  background-color: color("highlight");
 }

@@ -1,0 +1,13 @@
+<%= link_to party_path(party.uuid), class: "list-item", role: "party" do %>
+  <div class="list-item-primary">
+    <strong><%= party.name %></strong>
+    <div class="list-item-primary-subtext">
+      <%= pluralize party.guests.count, "Guest" %>
+    </div>
+  </div>
+  <div class="list-item-secondary">
+    <i class="material-icons color-<%= party.save_the_date_sent? ? 'icon' : 'divider' %>" title="Save the Date Sent">email</i>
+    <i class="material-icons color-<%= party.invitation_sent? ? 'icon' : 'divider' %>" title="Invitation Sent">email</i>
+    <i class="material-icons color-<%= party.has_address? ? 'icon' : 'divider' %>" title="Mailing Address">place</i>
+  </div>
+<% end %>

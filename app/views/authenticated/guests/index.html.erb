@@ -1,0 +1,18 @@
+<% content_for(:appbar_title) { "Guests" } %>
+<% content_for(:appbar_actions) do %>
+  <%= link_to "group_add", new_party_path, class: "material-icons appbar-button", id: "new-guest-button", data: { "tooltip-position": "bottom-left", tooltip: "New Party" } %>
+<% end %>
+<%= link_to new_party_path, class: "button fab fab-secondary", id: "new-guest-fab", data: { "tooltip-position": "left", tooltip: "New Party" }, role: "fab" do %>
+  <i class="material-icons">group_add</i>
+<% end %>
+
+<% if false #@parties.any? %>
+  <div class="list-subheader">
+    A Guest is an individual person
+  </div>
+  <div class="list list-bordered list-one-lines list-divided list-hoverable rounded-corners background-color-white allow-room-for-fab-at-bottom" id="guests">
+    <%#= render @guests %>
+  </div>
+<% else %>
+  <%= render "authenticated/guests/blank_state" %>
+<% end %>

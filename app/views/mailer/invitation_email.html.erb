@@ -1,6 +1,26 @@
-<div class="email-block">
-  You have been invited to join the team
-</div>
-<div class="email-block email-block-large">
-  <%= link_to "Accept the Invitation", confirmation_url(@user.confirmation_token), class: "button", target: "_blank" %>
-</div>
+<div class="email-title">Invitation to Join</div>
+
+<p>
+  You have been invited to join the team.
+</p>
+<p>
+  Click the link below to accept your invitation:
+</p>
+
+<table class="email-button-container">
+  <tbody>
+    <tr>
+      <td>
+        <table class="email-button">
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to "Accept the Invitation", confirmation_url(@user.confirmation_token), target: "_blank" %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>

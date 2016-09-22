@@ -1,0 +1,111 @@
+<aside class="sidebar" id="left-sidebar">
+  <div class="sidebar-header">LoveIsLeGrand</div>
+
+  <% if content_for(:left_sidebar) %>
+    <%= yield :left_sidebar %>
+  <% else %>
+    <nav class="list list-hoverable" id="main-nav">
+      <%= link_to dashboard_path, class: "list-item", id: "dashboard-tab" do %>
+        <div class="list-item-icon">
+          <i class="material-icons">dashboard</i>
+        </div>
+        <div class="list-item-primary">
+          Dashboard
+        </div>
+        <div class="list-item-secondary">
+        </div>
+      <% end %>
+      <div class="list-subheader bold uppercase">
+        Guests
+      </div>
+      <%= link_to parties_path, class: "list-item", id: "parties-tab" do %>
+        <div class="list-item-icon">
+          <i class="material-icons">people</i>
+        </div>
+        <div class="list-item-primary">
+          All Parties
+          <div class="list-item-primary-subtext">
+            <%= pluralize current_account.parties.count, "Party" %> &bull;
+            <%= pluralize current_account.guests.count, "Guest" %>
+          </div>
+        </div>
+        <div class="list-item-secondary">
+        </div>
+      <% end %>
+      <%= link_to mailing_addresses_path, class: "list-item", id: "mailing-addresses-tab" do %>
+        <div class="list-item-icon">
+        </div>
+        <div class="list-item-primary">
+          Missing Addresses
+        </div>
+        <div class="list-item-secondary">
+          <%= current_account.parties.missing_mailing_address.count unless current_account.parties.missing_mailing_address.count.zero? %>
+        </div>
+      <% end %>
+      <%= link_to save_the_dates_path, class: "list-item", id: "save-the-dates-tab" do %>
+        <div class="list-item-icon">
+        </div>
+        <div class="list-item-primary">
+          Save the Date not Sent
+        </div>
+        <div class="list-item-secondary">
+          <%= current_account.parties.save_the_date_not_sent.count unless current_account.parties.save_the_date_not_sent.count.zero? %>
+        </div>
+      <% end %>
+      <%= link_to invitations_path, class: "list-item", id: "invitations-tab" do %>
+        <div class="list-item-icon">
+        </div>
+        <div class="list-item-primary">
+          Invitation not Sent
+        </div>
+        <div class="list-item-secondary">
+          <%= current_account.parties.invitation_not_sent.count unless current_account.parties.invitation_not_sent.count.zero? %>
+        </div>
+      <% end %>
+
+      <hr class="divider normal" />
+
+      <%= link_to users_path, class: "list-item", id: "users-tab" do %>
+        <div class="list-item-icon">
+          <i class="material-icons">account_circle</i>
+        </div>
+        <div class="list-item-primary">
+          Users
+        </div>
+      <% end %>
+      <%= link_to nil, class: "list-item", id: "settings-tab" do %>
+        <div class="list-item-icon">
+          <i class="material-icons">settings</i>
+        </div>
+        <div class="list-item-primary">
+          Settings
+        </div>
+      <% end %>
+    </nav>
+  <% end %>
+
+  <hr class="divider normal" />
+
+  <div class="list">
+    <div class="list-item">
+      <div class="list-item-primary helper-text">
+        SHA1 commit <strong><%= Git::COMMIT %></strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="list">
+    <div class="list-item truncate-text">
+      <div class="list-item-primary">
+        <%= current_user.full_name %>
+        <%= "(Owner)" if current_user.account_owner? %>
+        <div class="list-item-primary-subtext">
+          <span role="logged_in_as"><%= current_user.email %></span>
+        </div>
+        <div class="list-item-primary-subtext">
+          <%= link_to "Logout", logout_path, class: "bold color-helper" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
