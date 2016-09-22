@@ -44,18 +44,17 @@ module Authenticated
     def destroy
       @user = get_user
 
-      if @user.email == "dan.legrand@gmail.com"
-        flash[:error] = "Cannot remove Admin user"
-        redirect_to users_path
-        return false
-      end
-
-      if @user.destroy
-        flash[:notice] = "Removed #{@user.full_name}"
+      if @user.account_owner?
+        flash[:error] = "Cannot remove Account Owner"
         redirect_to users_path
       else
-        flash[:error] = "Problem deleting User"
-        render :show
+        if @user.destroy
+          flash[:notice] = "Removed User"
+          redirect_to users_path
+        else
+          flash[:error] = "Problem deleting User"
+          render :show
+        end
       end
     end
 

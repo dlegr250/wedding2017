@@ -1,25 +1,34 @@
-<% content_for(:appbar_nav_icon) do %>
-  <%= link_to "arrow_back", users_path, class: "material-icons appbar-button" %>
-<% end %>
+<% content_for(:appbar_nav_icon) { up_button(users_path) } %>
 <% content_for(:appbar_title) { "Invite User" } %>
 <% content_for(:appbar_actions) do %>
   <%= button_tag "Send", class: "button button-raised-white", data: { submit: "#user-form" } %>
 <% end %>
 
-<div class="card full-width constrained-small">
-  <div class="card-header">
-    <div class="color-helper">
-      Enter the user's email address and an email will be sent
-      to them with instructions to join your account.
+<%= form_for @user, as: :user, url: users_path, html: { id: "user-form" } do |f| %>
+  <div class="card full-width constrained-medium">
+    <div class="card-header">
+      <div class="card-header-primary">
+        Invite New User
+        <div class="card-header-primary-subtext">
+          Enter the user's email address and an email will be sent
+          to them with instructions to join your account.
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="field field-xsmall field-responsive field-with-validations">
+        <div class="field-label">
+          <%= f.label :email, class: "required" %>
+        </div>
+        <div class="field-element">
+          <%= f.email_field :email, class: "full-width", autofocus: true %>
+          <%= bottom_error_messages_helper @user, :email %>
+        </div>
+      </div>
+    </div>
+    <div class="card-actions">
+      <%= f.submit "Send", class: "button button-raised-primary", id: "invite-user-button" %>
+      <%= link_to "Cancel", users_path, class: "button button-flat-grey" %>
     </div>
   </div>
-  <div class="card-content">
-    <%= form_for @user, as: :user, url: users_path, html: { id: "user-form" } do |f| %>
-      <%= render "authenticated/users/fields", f: f %>
-      <div class="actions actions-bordered">
-        <%= f.submit "Send", class: "button button-raised-primary", id: "invite-user-button" %>
-        <%= link_to "Cancel", users_path, class: "button button-flat-grey" %>
-      </div>
-    <% end %>
-  </div>
-</div>
+<% end %>

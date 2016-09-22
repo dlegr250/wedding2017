@@ -1,24 +1,7 @@
-<% content_for(:appbar_nav_icon) do %>
-  <%= link_to "arrow_back", users_path, class: "material-icons appbar-button" %>
-<% end %>
+<% content_for(:appbar_nav_icon) { up_button(user_path(@user.uuid)) } %>
 <% content_for(:appbar_title) { "Edit User" } %>
 <% content_for(:appbar_actions) do %>
   <%= button_tag "Update", class: "button button-raised-white", data: { submit: "#user-form" } %>
-  <% unless @user.account_owner? %>
-    <span class="menu-container">
-      <i class="material-icons appbar-button" role="menu-trigger" data-menu-id="appbar-menu">more_vert</i>
-      <div class="menu menu-width-2" id="appbar-menu" data-position="top-right">
-        <%= link_to user_path(@user.uuid), method: "DELETE", class: "menu-item", id: "delete-user-link", data: { "custom-confirm" => { template: "user-confirm-dialog-template" } } do %>
-          <div class="menu-item-icon">
-            <i class="material-icons">delete</i>
-          </div>
-          <div class="menu-item-primary">
-            Remove
-          </div>
-        <% end %>
-      </div>
-    </span>
-  <% end %>
 <% end %>
 
 <%= form_for @user, as: :user, url: user_path(@user.uuid), html: { id: "user-form" } do |f| %>
