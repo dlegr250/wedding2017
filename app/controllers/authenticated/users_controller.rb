@@ -34,7 +34,7 @@ module Authenticated
       @user = get_user
       if @user.update_attributes(user_params)
         flash[:notice] = "Updated User"
-        redirect_to users_path
+        redirect_to user_path(@user.uuid)
       else
         flash[:error] = "Problem updating User"
         render :edit

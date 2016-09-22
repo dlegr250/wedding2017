@@ -21,14 +21,26 @@
   <% end %>
 <% end %>
 
-<div class="card full-width constrained-small">
-  <div class="card-content">
-    <%= form_for @user, as: :user, url: user_path(@user.uuid), html: { id: "user-form" } do |f| %>
-      <%= render "authenticated/users/fields", f: f %>
-      <div class="actions actions-bordered">
-        <%= f.submit "Update", class: "button button-raised-primary", id: "invite-user-button" %>
-        <%= link_to "Cancel", users_path, class: "button button-flat-grey" %>
+<%= form_for @user, as: :user, url: user_path(@user.uuid), html: { id: "user-form" } do |f| %>
+  <div class="card full-width constrained-medium">
+    <div class="card-header">
+      <div class="card-header-primary">
+        <% if @user.confirmed? %>
+          <%= @user.full_name %>
+          <% if @user.account_owner? %>
+            <span class="color-green">Account Owner</span>
+          <% end %>
+        <% else %>
+          <em>Invited</em>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+    <div class="card-content">
+      <%= render "authenticated/users/fields", f: f %>
+    </div>
+    <div class="card-actions">
+      <%= f.submit "Update", class: "button button-raised-primary", id: "invite-user-button" %>
+      <%= link_to "Cancel", user_path(@user.uuid), class: "button button-flat-grey" %>
+    </div>
   </div>
-</div>
+<% end %>

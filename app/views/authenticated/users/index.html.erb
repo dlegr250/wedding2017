@@ -1,10 +1,10 @@
 <% content_for(:appbar_title) { "Users" } %>
 <% if current_user.account_owner? %>
   <% content_for(:appbar_actions) do %>
-    <%= link_to "add", new_user_path, class: "material-icons appbar-button", tooltip: "Invite User", id: "new-user-button", data: { "tooltip-position": "bottom-left", tooltip: "Invite User" } %>
+    <%= link_to "add", new_user_path, class: "material-icons appbar-button", tooltip: "Invite User", id: "new-user-button", data: { tooltip: "Invite" } %>
   <% end %>
 
-  <%= link_to new_user_path, class: "button fab fab-secondary", id: "new-user-fab", data: { "tooltip-position": "left", tooltip: "Invite User" }, role: "fab" do %>
+  <%= link_to new_user_path, class: "button fab fab-secondary", id: "new-user-fab", data: { "tooltip-position": "left", tooltip: "Invite" }, role: "fab" do %>
     <i class="material-icons">add</i>
   <% end %>
 <% end %>
