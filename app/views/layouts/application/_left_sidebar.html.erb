@@ -1,9 +1,5 @@
 <aside class="sidebar" id="left-sidebar">
-  <div class="sidebar-header">
-    Wedding 2017
-  </div>
-
-  <hr class="spacer normal" />
+  <div class="sidebar-header">LoveIsLeGrand</div>
 
   <% if content_for(:left_sidebar) %>
     <%= yield :left_sidebar %>
@@ -28,9 +24,12 @@
         </div>
         <div class="list-item-primary">
           All Parties
+          <div class="list-item-primary-subtext">
+            <%= pluralize current_account.parties.count, "Party" %> &bull;
+            <%= pluralize current_account.guests.count, "Guest" %>
+          </div>
         </div>
         <div class="list-item-secondary">
-          <%= current_account.guests.count %>
         </div>
       <% end %>
       <%= link_to mailing_addresses_path, class: "list-item", id: "mailing-addresses-tab" do %>
@@ -40,7 +39,7 @@
           Missing Addresses
         </div>
         <div class="list-item-secondary">
-          <%= current_account.parties.missing_mailing_address.count %>
+          <%= current_account.parties.missing_mailing_address.count unless current_account.parties.missing_mailing_address.count.zero? %>
         </div>
       <% end %>
       <%= link_to save_the_dates_path, class: "list-item", id: "save-the-dates-tab" do %>
@@ -50,7 +49,7 @@
           Save the Date not Sent
         </div>
         <div class="list-item-secondary">
-          <%= current_account.parties.save_the_date_not_sent.count %>
+          <%= current_account.parties.save_the_date_not_sent.count unless current_account.parties.save_the_date_not_sent.count.zero? %>
         </div>
       <% end %>
       <%= link_to invitations_path, class: "list-item", id: "invitations-tab" do %>
@@ -60,7 +59,7 @@
           Invitation not Sent
         </div>
         <div class="list-item-secondary">
-          <%= current_account.parties.invitation_not_sent.count %>
+          <%= current_account.parties.invitation_not_sent.count unless current_account.parties.invitation_not_sent.count.zero? %>
         </div>
       <% end %>
 

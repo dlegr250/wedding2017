@@ -3,7 +3,7 @@ class Guest < ApplicationRecord
   # Scopes
   #----------------------------------------------------------------------
 
-  scope :alphabetical, -> { order(:full_name) }
+  scope :alphabetical, -> { order(:first_name, :last_name) }
 
   # Macros
   #----------------------------------------------------------------------
