@@ -13,8 +13,8 @@ class AlcoholicBeverage < ApplicationRecord
   # Associations
   #----------------------------------------------------------------------
 
-  has_many :guests, through: :drinkings
   has_many :drinkings
+  has_many :guests, through: :drinkings
 
   # Validations
   #----------------------------------------------------------------------
