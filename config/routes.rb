@@ -12,6 +12,13 @@ Rails.application.routes.draw do
     resources :confirmations
   end
 
+  # RSVP
+  #----------------------------------------------------------------------
+
+  resources :rsvp, only: [:index, :create, :show, :update], param: :rsvp_code do
+    get :thanks, on: :member
+  end
+
   # Standard
   #----------------------------------------------------------------------
 

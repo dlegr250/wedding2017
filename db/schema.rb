@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923015557) do
+ActiveRecord::Schema.define(version: 20160923140606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,14 +41,15 @@ ActiveRecord::Schema.define(version: 20160923015557) do
   add_index "drinkings", ["guest_id"], name: "index_drinkings_on_guest_id", using: :btree
 
   create_table "guests", force: :cascade do |t|
-    t.string   "uuid",       null: false
+    t.string   "uuid",                      null: false
     t.integer  "account_id"
     t.integer  "party_id"
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.text     "notes"
+    t.boolean  "attending",  default: true
   end
 
   add_index "guests", ["account_id"], name: "index_guests_on_account_id", using: :btree
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160923015557) do
     t.text     "mailing_address"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
+    t.string   "rsvp_code"
   end
 
   add_index "parties", ["account_id"], name: "index_parties_on_account_id", using: :btree

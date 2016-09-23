@@ -1,0 +1,39 @@
+<%= form_tag rsvp_path(@party.rsvp_code), method: "PUT" do %>
+  <div class="card full-width constrained-medium">
+    <div class="card-header align-center">
+      <div class="card-header-primary">
+        <%= @party.name %>
+        <div class="card-header-primary-subtext">
+          Please mark all Guests who will be attending
+        </div>
+      </div>
+    </div>
+    <div class="list list-two-lines list-divided">
+      <% @party.guests.alphabetical.each do |guest| %>
+        <%= fields_for "guests[]", guest do |f| %>
+          <div class="list-item">
+            <div class="list-item-icon">
+              <div class="toggle-check-box">
+                <%= f.check_box :attending %>
+                <label for="guests_<%= guest.id %>_attending">
+                  <i class="material-icons unchecked">check_box_outline_blank</i>
+                  <i class="material-icons checked">check_box</i>
+                </label>
+              </div>
+            </div>
+            <div class="list-item-primary">
+              <%= guest.first_and_last_name %>
+            </div>
+            <div class="list-item-secondary">
+              <%= f.text_field :notes, class: "full-width", placeholder: "Notes" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="card-actions no-border-top">
+      <%= link_to "Back", rsvp_index_path, class: "button button-outline-primary" %>
+      <%= submit_tag "Confirm", class: "button button-raised-primary float-right" %>
+    </div>
+  </div>
+<% end %>

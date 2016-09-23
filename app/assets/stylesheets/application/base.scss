@@ -44,3 +44,46 @@ textarea.disabled {
 textarea.updated {
   background-color: color("highlight");
 }
+
+
+
+
+.toggle-check-box {
+  // Hide actual checkbox element
+  input {
+    // If you use 'display: none', TAB-ing will not work.
+    position: absolute;
+    left: -9999px;
+  }
+
+  label {
+    box-sizing: border-box;
+    display: inline-block;
+    font-weight: normal;
+  }
+
+  label .unchecked,
+  label .checked {
+    font-size: 32px;
+  }
+
+  // Mark focused element for visual aid with keyboard TAB nav
+  input:focus ~ label {
+    // border-color: darken(color("primary"), 10%);
+    // @include box-shadow(0 0 10px color("primary"));
+  }
+
+  input ~ label {
+    .unchecked { display: inline-block; }
+    .checked { display: none; }
+  }
+
+  // Mark selected label
+  input:checked ~ label {
+    // background-color: color("primary");
+    color: color("primary");
+
+    .unchecked { display: none; }
+    .checked { display: inline-block; }
+  }
+}
