@@ -17,12 +17,15 @@ Rails.application.routes.draw do
 
   scope module: :authenticated do
     resource :dashboard
-    resources :mailing_addresses, param: :uuid
-    resources :save_the_dates, param: :uuid
-    resources :invitations, param: :uuid
+
     resources :parties, param: :uuid do
       resources :guests, param: :uuid
     end
+
+    resources :missing_mailing_addresses, only: [:index, :update], param: :uuid
+    resources :save_the_dates, only: [:index, :update], param: :uuid
+    resources :invitations, only: [:index, :update], param: :uuid
+
     resources :users
   end
 

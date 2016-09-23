@@ -1,5 +1,7 @@
 module Authenticated
   class InvitationsController < BaseController
+    before_action :set_page_title
+
     def index
       @parties = current_account.parties.invitation_not_sent.alphabetical.group_by { |p| p.name.first.upcase }
     end
@@ -23,6 +25,10 @@ module Authenticated
       params.require(:party).permit(
         :invitation_sent
       )
+    end
+
+    def set_page_title
+      @page_title = "Invitations not Sent"
     end
   end
 end

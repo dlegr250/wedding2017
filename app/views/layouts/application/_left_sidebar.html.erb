@@ -15,9 +15,6 @@
         <div class="list-item-secondary">
         </div>
       <% end %>
-      <div class="list-subheader bold uppercase">
-        Guests
-      </div>
       <%= link_to parties_path, class: "list-item", id: "parties-tab" do %>
         <div class="list-item-icon">
           <i class="material-icons">people</i>
@@ -32,7 +29,7 @@
         <div class="list-item-secondary">
         </div>
       <% end %>
-      <%= link_to mailing_addresses_path, class: "list-item", id: "mailing-addresses-tab" do %>
+      <%= link_to missing_mailing_addresses_path, class: "list-item", id: "missing-mailing-addresses-tab" do %>
         <div class="list-item-icon">
         </div>
         <div class="list-item-primary">
@@ -46,7 +43,7 @@
         <div class="list-item-icon">
         </div>
         <div class="list-item-primary">
-          Save the Date not Sent
+          Save the Dates not Sent
         </div>
         <div class="list-item-secondary">
           <%= current_account.parties.save_the_date_not_sent.count unless current_account.parties.save_the_date_not_sent.count.zero? %>
@@ -56,7 +53,7 @@
         <div class="list-item-icon">
         </div>
         <div class="list-item-primary">
-          Invitation not Sent
+          Invitations not Sent
         </div>
         <div class="list-item-secondary">
           <%= current_account.parties.invitation_not_sent.count unless current_account.parties.invitation_not_sent.count.zero? %>

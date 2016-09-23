@@ -12,11 +12,11 @@
         </div>
       </div>
       <% parties.each do |party| %>
-        <%= form_for party, url: mailing_address_path(party.uuid), html: { method: "PUT", class: "list-item mailing-address-form", id: "mailing-address-#{party.id}-form" }, remote: true do |f| %>
-          <div class="list-item-primary flex-1">
+        <%= form_for party, url: missing_mailing_address_path(party.uuid), html: { method: "PUT", class: "list-item mailing-address-form", id: "mailing-address-#{party.id}-form" }, remote: true do |f| %>
+          <div class="list-item-primary">
             <strong><%= party.name %></strong>
           </div>
-          <div class="list-item-primary flex-2">
+          <div class="list-item-primary">
             <%= f.text_area :mailing_address, class: "full-width", rows: 3 %>
           </div>
         <% end %>
@@ -24,5 +24,5 @@
     <% end %>
   </div>
 <% else %>
-  <%= render "authenticated/mailing_addresses/blank_state" %>
+  <%= render "authenticated/missing_mailing_addresses/blank_state" %>
 <% end %>
