@@ -63,6 +63,7 @@ module Authenticated
       params.require(:guest).permit(
         :first_name,
         :last_name,
+        :notes,
         alcoholic_beverage_ids: []
       ).merge(account: current_account)
     end

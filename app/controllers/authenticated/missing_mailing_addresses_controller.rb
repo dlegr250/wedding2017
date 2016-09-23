@@ -1,5 +1,7 @@
 module Authenticated
-  class MailingAddressesController < BaseController
+  class MissingMailingAddressesController < BaseController
+    before_action :set_page_title
+
     def index
       @parties = current_account.parties.missing_mailing_address.alphabetical.group_by { |p| p.name.first.upcase }
     end
@@ -23,6 +25,10 @@ module Authenticated
       params.require(:party).permit(
         :mailing_address
       )
+    end
+
+    def set_page_title
+      @page_title = "Missing Addresses"
     end
   end
 end

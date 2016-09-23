@@ -1,7 +1,7 @@
 module ApplicationHelper
   def page_title_helper
     title = (@page_title.present? ? @page_title : controller_name.humanize)
-    "#{title} &middot; LoveIsLeGrand".html_safe
+    "#{title} &middot; Dan &amp; Jacqueline Wedding - June 2017".html_safe
   end
 
   def charset_meta_tag
