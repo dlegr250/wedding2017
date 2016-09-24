@@ -8,29 +8,26 @@
         </div>
       </div>
     </div>
-    <div class="list list-one-lines list-divided list-responsive">
+    <div class="list list-three-lines list-divided list-responsive">
       <% @party.guests.alphabetical.each do |guest| %>
         <%= fields_for "guests[]", guest do |f| %>
           <div class="list-item">
             <div class="list-item-primary">
-              <strong class="font-size-large">
-                <%= guest.first_and_last_name %>
-              </strong>
+              <strong class="font-size-large"><%= guest.first_and_last_name %></strong>
+              <div class="list-item-primary-subtext">
+                <%= f.text_field :notes, class: "full-width", placeholder: "Notes..." %>
+              </div>
               <div class="list-item-primary-subtext">
                 <div class="segmented-control-container segmented-control-primary">
                   <div class="segmented-control">
                     <%= f.radio_button :attending, true %>
-                    <%= f.label :attending_true, "Attending" %>
+                    <%= f.label :attending_true, "Accepts with Pleasure" %>
                   </div>
                   <div class="segmented-control">
                     <%= f.radio_button :attending, false %>
-                    <%= f.label :attending_false, "Not Attending" %>
+                    <%= f.label :attending_false, "Declines with Regret" %>
                   </div>
                 </div>
-              </div>
-              <div class="list-item-primary-subtext">
-                <hr class="spacer xsmall" />
-                <%= f.text_field :notes, class: "full-width", placeholder: "Notes/Allergies" %>
               </div>
             </div>
           </div>
