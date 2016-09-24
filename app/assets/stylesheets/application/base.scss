@@ -45,45 +45,40 @@ textarea.updated {
   background-color: color("highlight");
 }
 
+.list-responsive {
+  .list-item {
+    display: block;
+    padding-top: $spacing-normal;
+    padding-bottom: $spacing-normal;
 
-
-
-.toggle-check-box {
-  // Hide actual checkbox element
-  input {
-    // If you use 'display: none', TAB-ing will not work.
-    position: absolute;
-    left: -9999px;
-  }
-
-  label {
-    box-sizing: border-box;
-    display: inline-block;
-    font-weight: normal;
-  }
-
-  label .unchecked,
-  label .checked {
-    font-size: 32px;
-  }
-
-  // Mark focused element for visual aid with keyboard TAB nav
-  input:focus ~ label {
-    // border-color: darken(color("primary"), 10%);
-    // @include box-shadow(0 0 10px color("primary"));
-  }
-
-  input ~ label {
-    .unchecked { display: inline-block; }
-    .checked { display: none; }
-  }
-
-  // Mark selected label
-  input:checked ~ label {
-    // background-color: color("primary");
-    color: color("primary");
-
-    .unchecked { display: none; }
-    .checked { display: inline-block; }
+    .list-item-primary,
+    .list-item-secondary {
+      display: block;
+      padding: $spacing-xsmall $spacing-normal;
+      text-align: left;
+    }
   }
 }
+
+@media (min-width: $medium-width) {
+  .list-responsive {
+    .list-item {
+      @include flex-parent-row();
+
+      .list-item-primary,
+      .list-item-secondary {}
+
+      .list-item-secondary {
+        padding-left: 0;
+        text-align: right;
+      }
+    }
+  }
+}
+
+
+// .list-item {
+//   min-height: 48px;
+//   @include flex-parent-row();
+//   @include transition(background-color 0.30s ease);
+// }
