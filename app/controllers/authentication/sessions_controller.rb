@@ -1,5 +1,7 @@
 module Authentication
   class SessionsController < BaseController
+    before_action :set_page_title
+
     def new
       # NOOP - login form
     end
@@ -21,6 +23,12 @@ module Authentication
     # Logout
     def destroy
       destroy_session_for_user
+    end
+
+    private
+
+    def set_page_title
+      @page_title = "Login"
     end
   end
 end

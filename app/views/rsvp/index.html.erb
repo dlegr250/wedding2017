@@ -1,0 +1,21 @@
+<%= form_for @rsvp, url: rsvp_index_path, method: "POST" do |f| %>
+  <div class="card full-width constrained-small">
+    <div class="card-header align-center">
+      <div class="card-header-primary">
+        RSVP
+        <div class="card-header-primary-subtext">
+          Enter the RSVP Code found on your Invitation
+        </div>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="field field-xsmall field-with-validations">
+        <%= f.text_field :code, class: "full-width uppercase", autofocus: true, required: true, placeholder: "RSVP Code" %>
+        <%= bottom_error_messages_helper @rsvp, :code %>
+      </div>
+    </div>
+    <div class="card-actions align-right">
+      <%= f.submit "Next", class: "button button-raised-primary" %>
+    </div>
+  </div>
+<% end %>
