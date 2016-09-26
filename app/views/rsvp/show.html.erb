@@ -4,6 +4,9 @@
       <div class="card-header-primary">
         <%= @party.name %>
         <div class="card-header-primary-subtext">
+          <%= pluralize @party.guests.count, "Guest" %>
+        </div>
+        <div class="card-header-primary-subtext">
           Please mark all Guests who will be attending
         </div>
       </div>
@@ -17,8 +20,8 @@
               <hr class="spacer large medium-and-large-only" />
             </div>
             <div class="list-item-secondary">
-              <div class="segmented-control-container segmented-control-primary">
-                <div class="segmented-control">
+              <div class="segmented-control-container">
+                <div class="segmented-control segmented-control-green">
                   <%= f.radio_button :attending, true %>
                   <%= f.label :attending_true, "Accepts with Pleasure" %>
                 </div>
