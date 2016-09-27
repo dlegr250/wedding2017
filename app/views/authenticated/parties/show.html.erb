@@ -72,13 +72,28 @@
 
 <div class="card constrained-medium allow-room-for-fab-at-bottom">
   <div class="card-header background-color-hover">
-    <div class="card-header-primary font-size-normal">
-      <%= pluralize @party.guests.count, "Guest" %>
+    <div class="card-header-primary">
+      Guests
     </div>
   </div>
   <% if @party.guests.any? %>
     <div class="list list-divided list-two-lines" id="guests">
-      <%= render @party.guests.alphabetical %>
+      <% if @party.guests.attending.any? %>
+        <div class="list-header">
+          <div class="list-header-primary">
+            <%= @party.guests.attending.count %> Attending
+          </div>
+        </div>
+        <%= render @party.guests.attending.alphabetical %>
+      <% end %>
+      <% if @party.guests.not_attending.any? %>
+        <div class="list-header">
+          <div class="list-header-primary">
+            <%= @party.guests.not_attending.count %> Not Attending
+          </div>
+        </div>
+        <%= render @party.guests.not_attending.alphabetical %>
+      <% end %>
     </div>
   <% else %>
     <div class="list list-hoverable list-one-lines" id="guests">

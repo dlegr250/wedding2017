@@ -64,6 +64,7 @@ module Authenticated
         :first_name,
         :last_name,
         :notes,
+        :attending,
         alcoholic_beverage_ids: []
       ).merge(account: current_account)
     end

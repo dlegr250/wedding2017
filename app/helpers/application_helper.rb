@@ -30,7 +30,7 @@ module ApplicationHelper
   def bottom_error_messages_helper(object, attribute)
     if object.try(:errors)[attribute].any?
       content_tag :div, class: "error-messages" do
-        object.errors[attribute].join(", ").capitalize
+        object.errors[attribute].join(", ")
       end
     end
   end

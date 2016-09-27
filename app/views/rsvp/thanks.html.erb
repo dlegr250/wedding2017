@@ -1,0 +1,45 @@
+<div class="card full-width constrained-small">
+  <div class="card-header align-center">
+    <div class="card-header-primary">
+      Thank You!
+      <div class="card-header-primary-subtext">
+        Your RSVP is complete
+      </div>
+    </div>
+  </div>
+  <div class="list list-two-lines list-divided">
+    <div class="list-header">
+      <div class="list-header-primary">
+        Accepts with Pleasure
+      </div>
+    </div>
+    <% @party.guests.attending.alphabetical.each do |guest| %>
+      <div class="list-item">
+        <div class="list-item-primary">
+          <strong><%= guest.first_and_last_name %></strong>
+          <div class="list-item-primary-subtext">
+            <%= guest.rsvp_notes %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="list-header">
+      <div class="list-header-primary">
+        Declines with Regret
+      </div>
+    </div>
+    <% @party.guests.not_attending.alphabetical.each do |guest| %>
+      <div class="list-item">
+        <div class="list-item-primary">
+          <strong><%= guest.first_and_last_name %></strong>
+          <div class="list-item-primary-subtext">
+            <%= guest.rsvp_notes %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="card-actions align-center no-border-top">
+    <%= link_to "Change RSVP", rsvp_path(@party.rsvp_code), class: "button button-outline-primary" %>
+  </div>
+</div>

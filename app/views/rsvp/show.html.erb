@@ -1,0 +1,45 @@
+<%= form_tag rsvp_path(@party.rsvp_code), method: "PUT" do %>
+  <div class="card full-width constrained-medium">
+    <div class="card-header align-center">
+      <div class="card-header-primary">
+        <%= @party.name %>
+        <div class="card-header-primary-subtext">
+          <%= pluralize @party.guests.count, "Guest" %>
+        </div>
+        <div class="card-header-primary-subtext">
+          Please mark all Guests who will be attending
+        </div>
+      </div>
+    </div>
+    <div class="list list-three-lines list-divided list-responsive">
+      <% @party.guests.alphabetical.each do |guest| %>
+        <%= fields_for "guests[]", guest do |f| %>
+          <div class="list-item">
+            <div class="list-item-primary">
+              <strong class="font-size-large"><%= guest.first_and_last_name %></strong>
+              <hr class="spacer large medium-and-large-only" />
+            </div>
+            <div class="list-item-secondary">
+              <div class="segmented-control-container">
+                <div class="segmented-control segmented-control-primary">
+                  <%= f.radio_button :attending, true %>
+                  <%= f.label :attending_true, "Accepts with Pleasure" %>
+                </div>
+                <div class="segmented-control segmented-control-secondary">
+                  <%= f.radio_button :attending, false %>
+                  <%= f.label :attending_false, "Declines with Regret" %>
+                </div>
+              </div>
+              <hr class="spacer xsmall" />
+              <%= f.text_field :rsvp_notes, class: "full-width", placeholder: "Notes/Allergies" %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="card-actions no-border-top">
+      <%= link_to "Back", rsvp_index_path, class: "button button-outline-primary" %>
+      <%= submit_tag "Confirm", class: "button button-raised-primary float-right" %>
+    </div>
+  </div>
+<% end %>

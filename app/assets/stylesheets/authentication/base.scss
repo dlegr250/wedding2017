@@ -3,7 +3,7 @@
 //======================================================================
 
 #authentication-container {
-  padding: $spacing-normal;
+  // padding: $spacing-normal;
 
   .authentication-flash {
     @extend .box;
@@ -18,5 +18,11 @@
   .authentication-flash-error {
     background-color: color("red");
     color: color("white");
+  }
+}
+
+@media (min-width: $medium-width) {
+  #authentication-container {
+    padding: $spacing-normal;
   }
 }

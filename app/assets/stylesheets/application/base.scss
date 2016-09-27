@@ -44,3 +44,34 @@ textarea.disabled {
 textarea.updated {
   background-color: color("highlight");
 }
+
+.list-responsive {
+  .list-item {
+    display: block;
+    padding-top: $spacing-normal;
+    padding-bottom: $spacing-normal;
+
+    .list-item-primary,
+    .list-item-secondary {
+      display: block;
+      padding: $spacing-xsmall $spacing-normal;
+      text-align: left;
+    }
+  }
+}
+
+@media (min-width: $medium-width) {
+  .list-responsive {
+    .list-item {
+      @include flex-parent-row();
+
+      .list-item-primary,
+      .list-item-secondary {}
+
+      .list-item-secondary {
+        padding-left: 0;
+        text-align: right;
+      }
+    }
+  }
+}
