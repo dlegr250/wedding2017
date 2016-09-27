@@ -42,3 +42,14 @@
     <%= f.text_area :notes, class: "full-width", rows: 2 %>
   </div>
 </div>
+<div class="field field-xsmall field-responsive">
+  <div class="field-label">
+    <%= f.label :rsvp_notes, "RSVP Notes" %>
+    <div class="helper-text">
+      (Read Only, visible to Guests)
+    </div>
+  </div>
+  <div class="field-element">
+    <%= f.text_area :rsvp_notes, class: "full-width disabled", rows: 2 %>
+  </div>
+</div>

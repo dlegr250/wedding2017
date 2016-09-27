@@ -74,6 +74,9 @@
   <div class="card-header background-color-hover">
     <div class="card-header-primary font-size-normal">
       <%= pluralize @party.guests.count, "Guest" %>
+      <div class="card-header-primary-subtext">
+        <%= @party.guests.attending.count %> attending
+      </div>
     </div>
   </div>
   <% if @party.guests.any? %>

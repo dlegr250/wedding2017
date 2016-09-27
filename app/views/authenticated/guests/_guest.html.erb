@@ -1,4 +1,9 @@
 <div class="list-item" role="guest">
+  <div class="list-item-icon">
+    <div class="list-item-icon-circle <%= guest.attending? ? 'background-color-primary' : '' %>">
+      <em class="material-icons color-white">check</em>
+    </div>
+  </div>
   <div class="list-item-primary">
     <%= guest.first_and_last_name %>
     <div class="list-item-primary-subtext">
