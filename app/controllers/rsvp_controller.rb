@@ -58,7 +58,8 @@ class RsvpController < ::ApplicationController
   end
 
   def get_party
-    Party.includes(:guests).find_by(rsvp_code: params[:rsvp_code])
+    # Party.includes(:guests).find_by(rsvp_code: params[:rsvp_code])
+    Party.includes(:guests).where("UPPER(parties.rsvp_code) = ?", params[:rsvp_code].to_s.upcase).first #find_by(rsvp_code: params[:rsvp_code])
   end
 
   def set_page_title
