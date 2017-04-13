@@ -36,7 +36,8 @@ class Rsvp
   private
 
   def get_party
-    Party.find_by(rsvp_code: code)
+    # Party.find_by(rsvp_code: code)
+    Party.where("UPPER(parties.rsvp_code) = ?", code.to_s.upcase).first
   end
 
   def code_is_valid
