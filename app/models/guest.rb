@@ -24,7 +24,7 @@ class Guest < ApplicationRecord
   # Validations
   #----------------------------------------------------------------------
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, presence: true
 
   # Methods
   #----------------------------------------------------------------------
