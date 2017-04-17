@@ -8,28 +8,15 @@
     </div>
   </div>
   <div class="list list-two-lines list-divided">
-    <div class="list-header">
-      <div class="list-header-primary">
-        Accepts with Pleasure
-      </div>
-    </div>
-    <% @party.guests.attending.alphabetical.each do |guest| %>
+    <% @party.guests.alphabetical.each do |guest| %>
       <div class="list-item">
-        <div class="list-item-primary">
-          <strong><%= guest.first_and_last_name %></strong>
-          <div class="list-item-primary-subtext">
-            <%= guest.rsvp_notes %>
-          </div>
+        <div class="list-item-icon">
+          <% if guest.attending? %>
+            <em class="material-icons color-green">check</em>
+          <% else %>
+            <em class="material-icons color-red">close</em>
+          <% end %>
         </div>
-      </div>
-    <% end %>
-    <div class="list-header">
-      <div class="list-header-primary">
-        Declines with Regret
-      </div>
-    </div>
-    <% @party.guests.not_attending.alphabetical.each do |guest| %>
-      <div class="list-item">
         <div class="list-item-primary">
           <strong><%= guest.first_and_last_name %></strong>
           <div class="list-item-primary-subtext">
