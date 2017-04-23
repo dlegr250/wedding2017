@@ -5,7 +5,8 @@ class Guest < ApplicationRecord
 
   scope :alphabetical, -> { order(:first_name, :last_name) }
   scope :attending, -> { where(attending: true) }
-  scope :not_attending, -> { where(attending: [false, nil]) }
+  scope :not_attending, -> { where(attending: false) }
+  scope :not_rsvped, -> { where(attending: nil) }
 
   # Macros
   #----------------------------------------------------------------------

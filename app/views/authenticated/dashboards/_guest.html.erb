@@ -1,0 +1,23 @@
+<%= content_tag :div, class: "list-item" do %>
+  <div class="list-item-icon">
+    <% if guest.attending.nil? %>
+      <em class="material-icons" title="Not RSVPed">radio_button_unchecked</em>
+    <% elsif guest.attending? %>
+      <em class="material-icons color-green" title="Attending">check</em>
+    <% else %>
+      <em class="material-icons color-red" title="Not attending">close</em>
+    <% end %>
+  </div>
+  <div class="list-item-primary">
+    <%= guest.first_and_last_name %>
+    <div class="list-item-primary-subtext">
+      <strong>Notes:</strong> <%= guest.rsvp_notes %>
+    </div>
+    <div class="list-item-primary-subtext">
+      <strong>Drinks:</strong> <%= guest.alcoholic_beverage_names %>
+    </div>
+  </div>
+  <div class="list-item-secondary">
+    <%= guest.party_name %>
+  </div>
+<% end %>
