@@ -3,30 +3,33 @@
 <div class="card full-width">
   <div class="card-header">
     <div class="card-header-primary">
-      Attendance
+      Guests
+      <div class="card-header-primary-subtext">
+        <%= current_account.guests.count %> Guests invited (<%= pluralize current_account.parties.count, "Party" %>)
+      </div>
     </div>
   </div>
-  <div class="list list-two-lines align-center">
-    <div class="list-item">
-      <div class="list-item-primary">
-        <strong class="font-size-large"><%= current_account.parties.count %></strong>
-        <div class="list-item-primary-subtext">
-          Parties
-        </div>
-      </div>
-      <div class="list-item-primary">
-        <strong class="font-size-large"><%= current_account.guests.count %></strong>
-        <div class="list-item-primary-subtext">
-          Guests Invited
-        </div>
-      </div>
-      <div class="list-item-primary">
-        <strong class="font-size-large"><%= current_account.guests.attending.count %></strong>
-        <div class="list-item-primary-subtext">
-          Guests Attending
-        </div>
+  <div class="list list-divided list-two-lines">
+    <div class="list-header">
+      <div class="list-header-primary">
+        Attending (<%= @attending.count %>)
       </div>
     </div>
+    <%= render partial: "authenticated/dashboards/guest", collection: @attending, as: :guest %>
+
+    <div class="list-header">
+      <div class="list-header-primary">
+        Not Attending (<%= @not_attending.count %>)
+      </div>
+    </div>
+    <%= render partial: "authenticated/dashboards/guest", collection: @not_attending, as: :guest %>
+
+    <div class="list-header">
+      <div class="list-header-primary">
+        Not RSVPed (<%= @not_rsvped.count %>)
+      </div>
+    </div>
+    <%= render partial: "authenticated/dashboards/guest", collection: @not_rsvped, as: :guest %>
   </div>
 </div>
 
